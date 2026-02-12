@@ -15,7 +15,15 @@ export default function RootLayout() {
           <Stack.Screen name="(homeExtras)" />
           <Stack.Screen name="(bookingsExtras)" />
           <Stack.Screen name="(accountExtras)" />
-          <Stack.Screen name="selectRoomScreen" />
+          <Stack.Screen
+            name="selectRoomScreen"
+            options={{
+              title: "Select Room",
+              headerShown: true,
+              headerShadowVisible: false,
+              headerTitleAlign: "center",
+            }}
+          />
           <Stack.Screen name="exploreScreen" />
         </Stack>
       </LanguageProvider>

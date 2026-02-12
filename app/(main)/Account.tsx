@@ -78,13 +78,17 @@ const Account = () => {
             leadingiconName="headset-outline"
           />
           <AccountButton
-            onPress={() => {}}
+            onPress={() => {
+              router.push('/(accountExtras)/helpCenterScreen')
+            }}
             title="Help Center"
             leadingiconName="help-circle-outline"
           />
           <AccountButton
-            onPress={() => {}}
-            title="Privay Policy"
+            onPress={() => {
+              router.push('/(accountExtras)/privacyPolicyScreen')
+            }}
+            title="Privacy Policy"
             leadingiconName="lock-closed-outline"
           />
           <AccountButton

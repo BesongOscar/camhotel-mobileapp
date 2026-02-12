@@ -75,6 +75,24 @@ export default function AccountExtrasLayout() {
           headerTitleAlign: "center",
         }}
       />
+      <Stack.Screen
+        name="helpCenterScreen"
+        options={{
+          title: "Help Center",
+          headerShown: true,
+          headerShadowVisible: false,
+          headerTitleAlign: "center",
+        }}
+      />
+      <Stack.Screen
+        name="privacyPolicyScreen"
+        options={{
+          title: "Privacy Policy",
+          headerShown: true,
+          headerShadowVisible: false,
+          headerTitleAlign: "center",
+        }}
+      />
     </Stack>
   );
 }
