@@ -5,7 +5,7 @@ export const SettingsRowStyles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 18,
+    paddingVertical: 10,
   },
   label: {
     fontSize: 15,

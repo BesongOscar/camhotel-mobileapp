@@ -10,7 +10,7 @@ export const NotificationSettingsScreenStyles = StyleSheet.create({
   header: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 25,
+    marginBottom: 20,
   },
   headerTitle: {
     fontSize: 15,
@@ -20,6 +20,6 @@ export const NotificationSettingsScreenStyles = StyleSheet.create({
   pageTitle: {
     fontSize: 22,
     fontWeight: "600",
-    marginBottom: 25,
+    marginBottom: 20,
   },
 });

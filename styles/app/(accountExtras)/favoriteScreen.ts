@@ -4,7 +4,7 @@ export const favoriteScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingVertical: 12,
+    paddingVertical: 1,
     paddingHorizontal: 15,
   },
   favoriteHotelsContainer: {

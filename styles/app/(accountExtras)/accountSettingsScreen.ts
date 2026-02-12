@@ -19,6 +19,7 @@ export const AccountSettingsScreenStyles = StyleSheet.create({
   switchtab: {
     marginVertical: 10,
     justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   switchtabText: {
