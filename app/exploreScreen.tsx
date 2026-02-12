@@ -53,10 +53,6 @@ export default function ExploreScreen() {
     capital?: string;
     number?: number;
   };
-  const router = useRouter();
-  const handleBack = () => {
-    router.back();
-  };
 
   return (
     <SafeAreaView edges={["top", "bottom"]} style={{ flex: 1 }}>
@@ -65,7 +61,7 @@ export default function ExploreScreen() {
         <View style={styles.Separator} />
         {/* Header */}
         <View style={styles.AppBarHeader}>
-          <ArrowBack onPress={handleBack} />
+          <ArrowBack/>
           <Text style={styles.AppBarTitle}>
             {capital},{name}
           </Text>

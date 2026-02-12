@@ -88,7 +88,7 @@ export default function SelectGuestScreen() {
   return (
     <SafeAreaView edges={["top"]} style={{ padding: 15 }}>
       <View style={styles.appBar}>
-        <ArrowBack onPress={handleBack} />
+        <ArrowBack/>
         <Text style={styles.header}>Select Guests and Rooms</Text>
       </View>
       <View style={{ marginTop: 35 }}>

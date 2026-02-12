@@ -30,7 +30,9 @@ const Account = () => {
             leadingiconName="language-outline"
           />
           <AccountButton
-            onPress={() => {}}
+            onPress={() => {
+              router.push('/(accountExtras)/paymentMethod')
+            }}
             title="Saved payment method"
             leadingiconName="wallet-outline"
           />
@@ -44,17 +46,23 @@ const Account = () => {
             leadingiconName="id-card-outline"
           />
           <AccountButton
-            onPress={() => {}}
+            onPress={() => {
+              router.push("/(accountExtras)/notificationSettingsScreen")
+            }}
             title="Notification Settings"
             leadingiconName="notifications-outline"
           />
           <AccountButton
-            onPress={() => {}}
+            onPress={() => {
+              router.push('/(accountExtras)/securitySettingsScreen')
+            }}
             title="Security Settings"
             leadingiconName="shield-outline"
           />
           <AccountButton
-            onPress={() => {}}
+            onPress={() => {
+              router.push('/(accountExtras)/accountSettingsScreen')
+            }}
             title="Account Settings"
             leadingiconName="settings-outline"
           />

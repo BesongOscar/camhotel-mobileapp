@@ -140,7 +140,7 @@ export default function ChooseDateScreen() {
     <SafeAreaView style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <ArrowBack onPress={HandleBack} />
+        <ArrowBack/>
         <Text style={styles.headerTitle}>Choose date</Text>
         <View style={{ width: 24 }} />
       </View>

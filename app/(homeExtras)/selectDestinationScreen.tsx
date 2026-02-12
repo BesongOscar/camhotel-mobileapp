@@ -22,7 +22,7 @@ export default function SelectDestination() {
     <SafeAreaView edges={["top", "bottom"]} style={{ padding: 15 }}>
       {/* Header */}
       <View style={styles.appBar}>
-        <ArrowBack onPress={handleBack} />
+        <ArrowBack />
         <Text style={styles.header}>Select Destination</Text>
       </View>
 
