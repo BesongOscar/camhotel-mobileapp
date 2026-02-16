@@ -3,6 +3,7 @@ import Button from "@/components/button";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { liveLocationModalStyles as styles } from "@/styles/components/modal/liveLocationModal";
+import { colors } from "@/src/themes";
 
 export default function LiveLocationModal({
   visible,
@@ -31,7 +32,7 @@ export default function LiveLocationModal({
             }}
           >
             <View style={styles.iconContainer}>
-              <Ionicons name="location" size={30} color="#00ee" />
+              <Ionicons name="location" size={30} color={colors.primary} />
             </View>
             <View style={{ flexDirection: "column" }}>
               <Text style={styles.ModalText}>Camhotel wants to use</Text>

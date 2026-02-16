@@ -17,11 +17,15 @@ type KYCstep1Props = {
 const KYCstep1 = ({ handlePreviousScreen, onNext }: KYCstep1Props) => {
   return (
     <View>
-      <ArrowBack onPress={handlePreviousScreen} />
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>Camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("createAccountStep6.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("createAccountStep6.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("createAccountStep6.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("createAccountStep6.description")}
+        </Text>
       </View>
       <ProgressBar currentStep={6} totalSteps={6} />
       <View style={styles.imgContainer}>

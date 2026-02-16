@@ -1,6 +1,7 @@
 import { Text, View, Pressable, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { exploreScreenButtonsStyles as styles } from "@/styles/components/(Main)_Components/exploreScreenButtons";
+import { colors } from "@/src/themes";
 
 type ExploreScreenButtonProps = {
   name: string;
@@ -15,7 +16,7 @@ export default function ExploreScreenButton({
       <Ionicons
         name={iconName}
         size={20}
-        color="black"
+        color= {colors.textPrimary}
         style={{ fontWeight: "bold" }}
       />
       <Text style={styles.ExploreButtonText}>{name}</Text>

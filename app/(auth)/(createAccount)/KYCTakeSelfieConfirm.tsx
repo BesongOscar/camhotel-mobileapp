@@ -12,6 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import ArrowBack from "../../../components/arrowback";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 export default function KYCTakeSelfieConfirm() {
   const router = useRouter();
@@ -95,7 +96,7 @@ const localStyles = StyleSheet.create({
   retakeBtn: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: colors.background,
     paddingHorizontal: 25,
     paddingVertical: 10,
     borderRadius: 10,
@@ -103,7 +104,7 @@ const localStyles = StyleSheet.create({
   confirmBtn: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#4a60ff",
+    backgroundColor: colors.primary,
     paddingHorizontal: 25,
     paddingVertical: 10,
     borderRadius: 10,

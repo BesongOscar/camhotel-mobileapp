@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { AccountSettingsScreenStyles as styles } from "@/styles/app/(accountExtras)/accountSettingsScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import { colors } from "@/src/themes";
 
 export default function AccountSettings() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -14,8 +15,8 @@ export default function AccountSettings() {
           <Switch
             value={isDarkMode}
             onValueChange={setIsDarkMode}
-            trackColor={{ false: "#C7C7CC", true: "#B8C1FF" }}
-            thumbColor={isDarkMode ? "#00ee" : "#f4f3f4"}
+            trackColor={{ false: colors.secondary, true: colors.switchtracktrue }}
+            thumbColor={isDarkMode ? colors.primary : colors.switchthumbtrue}
           />
         </View>
         <View style={{ marginVertical: 10 }}>
@@ -23,7 +24,7 @@ export default function AccountSettings() {
             style={{ flexDirection: "row", justifyContent: "space-between" }}
             onPress={() => {}}
           >
-            <Text style={{ fontSize: 16, letterSpacing: 0.2,color: "red" }}>
+            <Text style={{ fontSize: 16, letterSpacing: 0.2,color:colors.error }}>
               Delete Account
             </Text>
             <Ionicons

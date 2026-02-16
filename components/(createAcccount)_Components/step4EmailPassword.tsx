@@ -8,6 +8,7 @@ import { step4Styles as styles } from "@/styles/components/(createAccount)_Compo
 import Button from "../button";
 import ProgressBar from "./ProgressIndicator";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 type StepFourProps = StepProps;
 
@@ -25,16 +26,22 @@ export default function StepFour({
   const [confirmpasswordVisible, setConfirmPasswordVisible] = useState(false);
   return (
     <View>
-      <ArrowBack onPress={handlePreviousScreen} />
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("CreateAccountStep4.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("CreateAccountStep4.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("CreateAccountStep4.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("CreateAccountStep4.description")}
+        </Text>
         <ProgressBar currentStep={step} totalSteps={6} />
       </View>
 
       <View style={styles.formGroup}>
-        <Text style={styles.label}>{i18n.t("CreateAccountStep4.EmailPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep4.EmailPlaceholder")}
+        </Text>
         <TextInput
           placeholder="Enter Email"
           style={styles.input}
@@ -46,7 +53,9 @@ export default function StepFour({
           <Text style={styles.error}>{errors.email}</Text>
         )}
 
-        <Text style={styles.label}>{i18n.t("CreateAccountStep4.CreatePasswordPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep4.CreatePasswordPlaceholder")}
+        </Text>
         <View style={styles.loginInput}>
           <TextInput
             placeholder="Enter Password"
@@ -62,7 +71,7 @@ export default function StepFour({
             <Ionicons
               name={passwordVisible ? "eye-off" : "eye"}
               size={20}
-              color="#555"
+              color={colors.textSecondary}
             />
           </TouchableOpacity>
         </View>
@@ -70,7 +79,9 @@ export default function StepFour({
           <Text style={styles.error}>{errors.password}</Text>
         )}
 
-        <Text style={styles.label}>{i18n.t("CreateAccountStep4.ConfirmPasswordPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep4.ConfirmPasswordPlaceholder")}
+        </Text>
         <View style={styles.loginInput}>
           <TextInput
             placeholder="Confirm Password"
@@ -84,9 +95,9 @@ export default function StepFour({
             onPress={() => setConfirmPasswordVisible(!confirmpasswordVisible)}
           >
             <Ionicons
-              name={passwordVisible ? "eye-off" : "eye"}
+              name={confirmpasswordVisible ? "eye-off" : "eye"}
               size={20}
-              color="#555"
+              color={colors.textSecondary}
             />
           </TouchableOpacity>
         </View>

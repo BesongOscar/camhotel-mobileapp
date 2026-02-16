@@ -3,6 +3,7 @@ import { useState } from "react";
 import Entypo from "@expo/vector-icons/Entypo";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { guestAndRoomsStyles as styles } from "@/styles/components/(Main)_Components/guestAndRoomsDetails";
+import { colors } from "@/src/themes";
 
 type GuestandRoomDetailsProps = {
   title: string;
@@ -42,7 +43,7 @@ export default function GuestandRoomDetails({
           <Entypo
             name="minus"
             size={18}
-            color={disableSubtract ? "grey" : "#00ee"}
+            color={disableSubtract ? colors.textSecondary : colors.primary}
           />
         </Pressable>
 
@@ -58,7 +59,7 @@ export default function GuestandRoomDetails({
           <MaterialIcons
             name="add"
             size={18}
-            color={disableAdd ? "grey" : "#00ee"}
+            color={disableAdd ? colors.textSecondary : colors.primary}
           />
         </Pressable>
       </View>

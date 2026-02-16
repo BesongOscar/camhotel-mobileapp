@@ -1,5 +1,6 @@
 import { Alert, Pressable, Text, View } from "react-native";
 import { buttonStyles as styles } from "@/styles/components/button";
+import { colors } from "@/src/themes";
 
 type Props = {
   label: string;
@@ -33,12 +34,12 @@ export default function Button({
     return (
       <View style={[styles.buttonContainer, customSize]}>
         <Pressable
-          style={[styles.button, { backgroundColor: "lightgrey" }]}
+          style={[styles.button, { backgroundColor: colors.secondary }]}
           onPress={
             onPress ? onPress : () => Alert.alert("Button", "Button Pressed!")
           }
         >
-          <Text style={[styles.buttonLabel, { color: "white" }]}>{label}</Text>
+          <Text style={[styles.buttonLabel, { color: colors.background }]}>{label}</Text>
         </Pressable>
       </View>
     );
@@ -46,12 +47,12 @@ export default function Button({
     return (
       <View style={[styles.buttonContainer, customSize]}>
         <Pressable
-          style={[styles.button, { backgroundColor: "blue" }]}
+          style={[styles.button, { backgroundColor: colors.primary }]}
           onPress={
             onPress ? onPress : () => Alert.alert("Button", "Button Pressed!")
           }
         >
-          <Text style={[styles.buttonLabel, { color: "white" }]}>{label}</Text>
+          <Text style={[styles.buttonLabel, { color: colors.background }]}>{label}</Text>
         </Pressable>
       </View>
     );
@@ -59,12 +60,12 @@ export default function Button({
     return (
       <View style={[styles.buttonContainer, customSize]}>
         <Pressable
-          style={[styles.button, { backgroundColor: "#f2f2ff" }]}
+          style={[styles.button, { backgroundColor: colors.background }]}
           onPress={
             onPress ? onPress : () => Alert.alert("Button", "Button Pressed!")
           }
         >
-          <Text style={[styles.buttonLabel, { color: "#00ee" }]}>{label}</Text>
+          <Text style={[styles.buttonLabel, { color: colors.primary }]}>{label}</Text>
         </Pressable>
       </View>
     );

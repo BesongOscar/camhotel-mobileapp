@@ -4,6 +4,7 @@ import { Tabs } from "expo-router";
 import { useRouter } from "expo-router";
 import { Picker } from "@react-native-picker/picker";
 import { Ionicons } from "@expo/vector-icons";
+import { colors } from "@/src/themes";
 
 const Mainlayout = () => {
   const [selectedLocation, setSelectedLocation] = useState("Buea");
@@ -17,10 +18,10 @@ const Mainlayout = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#00ee",
-        tabBarInactiveTintColor: "#777",
-        tabBarStyle: { backgroundColor: "#fff", paddingTop: 2 },
-        headerStyle: { backgroundColor: "#fff" },
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.secondary,
+        tabBarStyle: { backgroundColor: colors.background, paddingTop: 2 },
+        headerStyle: { backgroundColor: colors.background },
         headerShadowVisible: false,
       }}
     >
@@ -32,13 +33,13 @@ const Mainlayout = () => {
             <View style={styles.headerLeftContainer}>
               <Text style={styles.locationLabel}>Location</Text>
               <View style={styles.locationRow}>
-                <Ionicons name="location" size={25} color="#00ee" />
+                <Ionicons name="location" size={25} color={colors.primary} />
 
                 {/* Picker — placed close to icon */}
                 <View style={styles.pickerWrapper}>
                   <Picker
                     selectedValue={selectedLocation}
-                    dropdownIconColor="#00ee"
+                    dropdownIconColor={colors.primary}
                     style={styles.picker}
                     onValueChange={(itemValue) =>
                       setSelectedLocation(itemValue)
@@ -134,7 +135,7 @@ const Mainlayout = () => {
               onPress={() => alert("Help tapped")}
               style={{ marginRight: 12 }}
             >
-              <Ionicons name="help-circle" size={28} color="#00ee" />
+              <Ionicons name="help-circle" size={28} color={colors.primary} />
             </Pressable>
           ),
           tabBarIcon: ({ focused, color }) => (
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
   },
   locationLabel: {
     fontSize: 12,
-    color: "#666",
+    color: colors.secondary,
   },
   locationRow: {
     flexDirection: "row",
@@ -186,12 +187,12 @@ const styles = StyleSheet.create({
   picker: {
     width: 120,
     height: 35,
-    color: "#222",
+    color: colors.textPrimary,
   },
   locationText: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#333",
+    color: colors.textSecondary,
     marginLeft: 6,
   },
 });

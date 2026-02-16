@@ -7,6 +7,7 @@ import { step2Styles as styles } from "@/styles/components/(createAccount)_Compo
 import Button from "../button";
 import ProgressBar from "./ProgressIndicator";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 type StepTwoProps = StepProps;
 
@@ -24,16 +25,22 @@ export default function StepTwo({
   const [confirmPINVisible, setConfirmPINVisible] = useState(false);
   return (
     <View>
-      <ArrowBack onPress={handlePreviousScreen} />
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("CreateAccountStep2.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("CreateAccountStep2.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("CreateAccountStep2.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("CreateAccountStep2.description")}
+        </Text>
         <ProgressBar currentStep={step} totalSteps={6} />
       </View>
 
       <View style={styles.formGroup}>
-        <Text style={styles.label}>{i18n.t("CreateAccountStep2.PhoneNumberPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep2.PhoneNumberPlaceholder")}
+        </Text>
         <TextInput
           placeholder="Enter Phone Number"
           style={styles.input}
@@ -46,7 +53,9 @@ export default function StepTwo({
           <Text style={styles.error}>{errors.PhoneNumber}</Text>
         )}
 
-        <Text style={styles.label}>{i18n.t("CreateAccountStep2.createPinPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep2.createPinPlaceholder")}
+        </Text>
         <View style={styles.loginInput}>
           <TextInput
             placeholder="Enter Five Digit PIN"
@@ -60,7 +69,7 @@ export default function StepTwo({
           <TouchableOpacity onPress={() => setPinVisible(!pinVisible)}>
             <Ionicons
               name={pinVisible ? "eye-off" : "eye"}
-              color={"grey"}
+              color={colors.textSecondary}
               size={20}
             />
           </TouchableOpacity>
@@ -69,7 +78,9 @@ export default function StepTwo({
           <Text style={styles.error}>{errors.PIN}</Text>
         )}
 
-        <Text style={styles.label}>{i18n.t("CreateAccountStep2.confirmPinPlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep2.confirmPinPlaceholder")}
+        </Text>
         <View style={styles.loginInput}>
           <TextInput
             placeholder="Confirm PIN"
@@ -84,7 +95,7 @@ export default function StepTwo({
           >
             <Ionicons
               name={confirmPINVisible ? "eye-off" : "eye"}
-              color={"grey"}
+              color={colors.textSecondary}
               size={20}
             />
           </TouchableOpacity>

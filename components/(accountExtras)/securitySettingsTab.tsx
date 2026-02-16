@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { colors } from "@/src/themes";
 
 type ProfileScreenTab = {
   tabName: string;
@@ -14,7 +15,7 @@ export default function SecuritySettingsTab({ tabName, onPress }: ProfileScreenT
         onPress={onPress}
       >
         <Text style={{fontSize: 16, letterSpacing: 0.2}}>{tabName}</Text>
-        <Ionicons name="chevron-forward-outline" size={17} color={"black"} />
+        <Ionicons name="chevron-forward-outline" size={17} color={colors.textPrimary} />
       </TouchableOpacity>
     </View>
   );

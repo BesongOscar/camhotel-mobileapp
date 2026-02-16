@@ -5,6 +5,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import ArrowBack from "@/components/arrowback";
 import { selectDestinationStyles as styles } from "@/styles/app/(homeExtras)/selectDestinationScreen";
+import { colors } from "@/src/themes";
 
 export default function SelectDestination() {
   const router = useRouter();
@@ -28,10 +29,10 @@ export default function SelectDestination() {
 
       {/* Search Bar */}
       <View style={styles.searchContainer}>
-        <Entypo name="location-pin" size={24} color="#00ee" />
+        <Entypo name="location-pin" size={24} color={colors.primary} />
         <TextInput
           placeholder="Search destination / Hotel name"
-          placeholderTextColor="grey"
+          placeholderTextColor={colors.textSecondary}
           style={styles.textInput}
         />
       </View>
@@ -39,12 +40,12 @@ export default function SelectDestination() {
       {/* Action Buttons */}
       <View style={styles.buttonContainer}>
         <Pressable style={styles.button} onPress={handleMapNavigation}>
-          <FontAwesome6 name="map-location-dot" size={20} color="#00ee" />
+          <FontAwesome6 name="map-location-dot" size={20} color={colors.primary} />
           <Text style={styles.buttonText}> Continue on map</Text>
         </Pressable>
 
         <Pressable style={styles.button} onPress={handleLiveLocation}>
-          <Entypo name="location" size={20} color="#00ee" />
+          <Entypo name="location" size={20} color={colors.primary} />
           <Text style={styles.buttonText}> Live Location</Text>
         </Pressable>
       </View>

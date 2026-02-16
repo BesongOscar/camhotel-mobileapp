@@ -31,7 +31,7 @@ export default function KYCFlow({ handlePreviousScreen }: KYCFlowProps) {
 
   const updateCompletionStatus = (
     stepKey: keyof CompletionState,
-    completed: boolean
+    completed: boolean,
   ) => {
     setCompletedSteps((prev) => ({
       ...prev,

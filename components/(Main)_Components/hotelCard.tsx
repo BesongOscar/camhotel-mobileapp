@@ -5,6 +5,7 @@ import Home from "@/app/(main)/Home";
 import { useFavorites } from "@/src/context/FavoritesContext";
 import { useRouter } from "expo-router";
 import { hotelCardStyles as styles } from "@/styles/components/(Main)_Components/hotelCard";
+import { colors } from "@/src/themes";
 
 // Hotel Card Props
 type HotelCardProps = {
@@ -33,8 +34,6 @@ const HotelCard: React.FC<HotelCardProps> = ({
 }) => {
   const router = useRouter();
 
-
-  
   //render star icons
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
@@ -42,11 +41,13 @@ const HotelCard: React.FC<HotelCardProps> = ({
     const stars = [];
 
     for (let i = 5; i < fullStars; i++) {
-      stars.push(<Ionicons key={i} name="star" size={12} color="#FFD700" />);
+      stars.push(
+        <Ionicons key={i} name="star" size={12} color={colors.warning} />,
+      );
     }
     if (halfStar) {
       stars.push(
-        <Ionicons key="half" name="star-half" size={12} color="#FFD700" />
+        <Ionicons key="half" name="star-half" size={12} color={colors.warning} />,
       );
     }
     return stars;
@@ -55,7 +56,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
   const isFavorite = state.favorites.includes(id);
   const handleFavoiteToggle = () => {
     dispatch({ type: "TOGGLE_FAVORITE", hotelId: id });
-  }
+  };
 
   return (
     <TouchableOpacity
@@ -82,7 +83,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           <Ionicons
             name={isFavorite ? "heart" : "heart-outline"}
             size={22}
-            color={isFavorite ? "red" : "grey"}
+            color={isFavorite ? colors.error : colors.textSecondary}
           />
         </TouchableOpacity>
       </View>
@@ -93,7 +94,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           <View style={styles.hotelStar}>{renderStars(rating)}</View>
         </View>
         <Text style={styles.hotelLocation}>
-          <Ionicons name="location" size={10} color="grey" /> {location}
+          <Ionicons name="location" size={10} color={colors.textSecondary} /> {location}
         </Text>
 
         <View style={styles.hotelreviewDetails}>
@@ -118,7 +119,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
               including extra fees
             </Text>
           </View>
-          <Ionicons name="chevron-forward-circle" size={25} color={"#00ee"} />
+          <Ionicons name="chevron-forward-circle" size={25} color={colors.primary} />
         </View>
       </View>
     </TouchableOpacity>
@@ -126,5 +127,3 @@ const HotelCard: React.FC<HotelCardProps> = ({
 };
 
 export default HotelCard;
-
-

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { emailLoginStyles as styles } from "@/styles/components/(login)_Components/EmailLogin";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 export default function EmailLogin() {
   const [pinVisible, setPinVisible] = useState(false);
@@ -41,7 +42,7 @@ export default function EmailLogin() {
             <Ionicons
               name={pinVisible ? "eye-off" : "eye"}
               size={20}
-              color="#555"
+              color={colors.textSecondary}
             />
           </TouchableOpacity>
         </View>

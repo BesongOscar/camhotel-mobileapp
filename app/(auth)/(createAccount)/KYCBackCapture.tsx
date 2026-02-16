@@ -51,7 +51,7 @@ export default function KYCBackCapture() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack onPress={handleBack} />
+      <ArrowBack/>
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
         <Text style={styles.subtitle}>{i18n.t("kycVerificationStep2.subtitle")}</Text>

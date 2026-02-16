@@ -3,6 +3,7 @@ import Button from "../button";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { useRouter } from "expo-router";
+import { colors } from "@/src/themes";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -46,7 +47,7 @@ export default function LoginComponent() {
             value={values.email}
             style={{
               borderWidth: 1,
-              borderColor: "#ccc",
+              borderColor: colors.secondary,
               padding: 10,
               marginBottom: 5,
             }}
@@ -66,14 +67,14 @@ export default function LoginComponent() {
             secureTextEntry
             style={{
               borderWidth: 1,
-              borderColor: "#ccc",
+              borderColor: colors.secondary,
               padding: 10,
               marginBottom: 5,
             }}
           />
 
           {touched.password && errors.password ? (
-            <Text style={{ color: "red", marginBottom: 10 }}>
+            <Text style={{ color: colors.error, marginBottom: 10 }}>
               {errors.password}
             </Text>
           ) : null}
@@ -85,7 +86,7 @@ export default function LoginComponent() {
             value={values.FirstName}
             style={{
               borderWidth: 1,
-              borderColor: "#ccc",
+              borderColor: colors.secondary,
               padding: 10,
               marginBottom: 5,
             }}
@@ -97,7 +98,7 @@ export default function LoginComponent() {
             value={values.LastName}
             style={{
               borderWidth: 1,
-              borderColor: "#ccc",
+              borderColor: colors.secondary,
               padding: 10,
               marginBottom: 5,
             }}

@@ -6,6 +6,7 @@ import { CalendarList } from "react-native-calendars";
 import { Ionicons } from "@expo/vector-icons";
 import ArrowBack from "@/components/arrowback";
 import { calendarStyles as styles } from "@/styles/app/(homeExtras)/calendarScreen";
+import { colors } from "@/src/themes";
 
 // --- Helpers ---
 const formatDate = (dateString: string | null) => {
@@ -72,7 +73,7 @@ export default function ChooseDateScreen() {
     if (startDate) {
       marks[startDate] = {
         startingDay: true,
-        color: "#00ee",
+        color: colors.primary,
         textColor: "white",
       };
     }
@@ -80,7 +81,7 @@ export default function ChooseDateScreen() {
     if (endDate) {
       marks[endDate] = {
         endingDay: true,
-        color: "#00ee",
+        color: colors.primary,
         textColor: "white",
       };
 
@@ -90,7 +91,7 @@ export default function ChooseDateScreen() {
         curr.setDate(curr.getDate() + 1);
         const iso = curr.toISOString().split("T")[0];
         if (iso !== startDate && iso !== endDate)
-          marks[iso] = { color: "#CFE1FF", textColor: "#000" };
+          marks[iso] = { color: colors.calendarPrimary, textColor: colors.textPrimary };
       }
     }
 
@@ -98,8 +99,8 @@ export default function ChooseDateScreen() {
     marks[todayIso] = {
       ...(marks[todayIso] || {}),
       customStyles: {
-        container: { borderColor: "#00ee", borderWidth: 1 },
-        text: { color: "#00ee", fontWeight: "600" },
+        container: { borderColor: colors.primary, borderWidth: 1 },
+        text: { color: colors.primary, fontWeight: "600" },
       },
     };
 
@@ -156,7 +157,7 @@ export default function ChooseDateScreen() {
           </Text>
         </View>
 
-        <Ionicons name="arrow-forward" size={22} color="#000" />
+        <Ionicons name="arrow-forward" size={22} color={colors.textPrimary} />
 
         <View style={styles.dateBox}>
           <Text style={styles.dateLabel}>Check out</Text>
@@ -181,8 +182,8 @@ export default function ChooseDateScreen() {
             textMonthFontWeight: "600",
             textMonthFontSize: 18,
             textDayHeaderFontWeight: "500",
-            monthTextColor: "#000",
-            arrowColor: "#000",
+            monthTextColor: colors.textPrimary,
+            arrowColor: colors.textPrimary,
             "stylesheet.calendar.header": {
               week: {
                 marginTop: 10,

@@ -18,6 +18,7 @@ import {
   View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "@/src/themes";
 
 type Hotel = {
   id: string;
@@ -65,11 +66,11 @@ export default function HotelDetailScreen() {
     const stars = [];
 
     for (let i = 5; i < fullStars; i++) {
-      stars.push(<Ionicons key={i} name="star" size={12} color="#FFD700" />);
+      stars.push(<Ionicons key={i} name="star" size={12} color={colors.warning} />);
     }
     if (halfStar) {
       stars.push(
-        <Ionicons key="half" name="star-half" size={12} color="#FFD700" />
+        <Ionicons key="half" name="star-half" size={12} color={colors.warning} />
       );
     }
     return stars;
@@ -164,7 +165,7 @@ export default function HotelDetailScreen() {
                   <Text style={styles.resDate}>15 April</Text>
                 </View>
                 <View style={styles.resSeparator}>
-                  <Ionicons name="arrow-forward" size={16} color="#777" />
+                  <Ionicons name="arrow-forward" size={16} color={colors.textSecondary} />
                 </View>
                 <View style={styles.resColumn}>
                   <Text style={styles.resLabel}>Check out</Text>
@@ -172,12 +173,12 @@ export default function HotelDetailScreen() {
                 </View>
               </View>
               <TouchableOpacity style={styles.detailBox}>
-                <Ionicons name="calendar-outline" size={16} color="#222" />
+                <Ionicons name="calendar-outline" size={16} color={colors.textPrimary} />
                 <Text style={styles.detailText}>1 night</Text>
                 <Ionicons
                   name="chevron-down"
                   size={16}
-                  color="#222"
+                  color={colors.textPrimary}
                   style={{ paddingLeft: 25 }}
                 />
               </TouchableOpacity>
@@ -187,12 +188,12 @@ export default function HotelDetailScreen() {
               <Text style={styles.resLabel}>Guest</Text>
               <Text>1 Adults, 0 Children</Text>
               <TouchableOpacity style={styles.detailBox}>
-                <MaterialIcons name="meeting-room" size={24} color="black" />
+                <MaterialIcons name="meeting-room" size={24} color={colors.textPrimary} />
                 <Text style={styles.detailText}>1 Room</Text>
                 <Ionicons
                   name="chevron-down"
                   size={16}
-                  color="#222"
+                  color={colors.textPrimary}
                   style={{ paddingLeft: 20 }}
                 />
               </TouchableOpacity>

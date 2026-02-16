@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { accountTabButtonStyles as styles } from "@/styles/components/(Main)_Components/AccountTabButton";
+import { colors } from "@/src/themes";
 
 type AccountButtonProps = {
   onPress?: () => void;
@@ -21,11 +22,11 @@ export default function AccountButton({
             <Ionicons
               name={leadingiconName}
               size={20}
-              color="black"
+              color={colors.textPrimary}
             />
             <Text style={{ fontWeight: "400" }}>{title}</Text>
           </View>
-          <Ionicons name="chevron-forward-outline" size={15} color={"black"} />
+          <Ionicons name="chevron-forward-outline" size={15} color={colors.textPrimary} />
         </TouchableOpacity>
       </View>
     </>

@@ -5,6 +5,7 @@ import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { KYCfrontConfirmStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCFrontConfirm";
 import ArrowBack from "../../../components/arrowback";
+import { colors } from "@/src/themes";
 import i18n from "@/locales/i18n";
 
 export default function KYCFrontConfirm() {
@@ -90,7 +91,7 @@ const localStyles = StyleSheet.create({
   retakeBtn: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#e5e5e5",
+    backgroundColor: colors.background,
     paddingHorizontal: 25,
     paddingVertical: 10,
     borderRadius: 10,
@@ -98,7 +99,7 @@ const localStyles = StyleSheet.create({
   confirmBtn: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#4a60ff",
+    backgroundColor: colors.primary,
     paddingHorizontal: 25,
     paddingVertical: 10,
     borderRadius: 10,

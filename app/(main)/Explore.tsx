@@ -113,8 +113,6 @@ const Explore: React.FC = () => {
       </View>
 
       <View style={styles.divider} />
-
-      {/* Hotels Section  <View style={localstyles.informationContainer}></View> ,*/}
       <View style={{ marginTop: 5 }}>
         <View
           style={{

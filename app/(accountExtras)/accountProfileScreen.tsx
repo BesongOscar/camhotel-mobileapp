@@ -5,6 +5,7 @@ import ProfileScreenTab from "@/components/(accountExtras)/profileScreenTab";
 import { useFavorites } from "@/src/context/FavoritesContext";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { colors,spacing,typography } from "@/src/themes";
 
 export default function AccountProfile() {
     const router = useRouter();
@@ -19,7 +20,7 @@ export default function AccountProfile() {
           <Image style={styles.avatar} />
           <View style={styles.CameraIconContainer}>
             <Pressable onPress={() => {}}>
-              <Ionicons name="camera" size={28} color="#00ee" />
+              <Ionicons name="camera" size={28} color={colors.primary} />
             </Pressable>
           </View>
         </View>
@@ -27,7 +28,7 @@ export default function AccountProfile() {
         {/* user name and varification status*/}
         <View style={styles.userNameContainer}>
           <Text style={styles.userName}>Besong Oscar</Text>
-          <Ionicons name="checkmark-circle" size={20} color="#00ee" />
+          <Ionicons name="checkmark-circle" size={20} color={colors.primary} />
         </View>
         {/* Email */}
         <Text style={styles.userEmail}>Wildeo963@gmail.com</Text>
@@ -40,7 +41,7 @@ export default function AccountProfile() {
               style={styles.statsNumberContainer}
             >
               <Text style={styles.totalBookingNumber}>12</Text>
-              <Ionicons name="calendar" color={"#000"} size={20} />
+              <Ionicons name="calendar" color={colors.textPrimary} size={20} />
             </View>
           </View>
           {/* Favorite Hotels */}
@@ -50,7 +51,7 @@ export default function AccountProfile() {
               style={styles.statsNumberContainer}
             >
               <Text style={styles.favouriteHotelNumber}>{favoriteCount}</Text>
-              <Ionicons name="heart" color={"#000"} size={20} />
+              <Ionicons name="heart" color={colors.textPrimary} size={20} />
             </View>
           </View>
           {/* Total Reviews */}
@@ -60,7 +61,7 @@ export default function AccountProfile() {
               style={styles.statsNumberContainer}
             >
               <Text style={styles.totalReviewsNumber}>8</Text>
-              <Ionicons name="chatbubble" color={"#000"} size={20} />
+              <Ionicons name="chatbubble" color={colors.textPrimary} size={20} />
             </View>
           </View>
         </View>

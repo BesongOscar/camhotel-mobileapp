@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { favoriteHotelCardsStyles as styles } from "@/styles/components/(accountExtras)/favoriteHotelCards";
 import { useFavorites } from "@/src/context/FavoritesContext";
+import { colors } from "@/src/themes";
 
 type favoriteHotelCardProps = {
   hotel: {
@@ -21,11 +22,11 @@ export default function FavoriteHotelCards({ hotel }: favoriteHotelCardProps) {
     const stars = [];
 
     for (let i = 5; i < fullStars; i++) {
-      stars.push(<Ionicons key={i} name="star" size={12} color="#FFD700" />);
+      stars.push(<Ionicons key={i} name="star" size={12} color={colors.warning} />);
     }
     if (halfStar) {
       stars.push(
-        <Ionicons key="half" name="star-half" size={12} color="#FFD700" />
+        <Ionicons key="half" name="star-half" size={12} color={colors.warning} />
       );
     }
     return stars;
@@ -63,9 +64,9 @@ export default function FavoriteHotelCards({ hotel }: favoriteHotelCardProps) {
        {/* trailing icons */}
         <View style={styles.trailingIcons}>
           <Pressable>
-            <Ionicons name="heart" color={"red"} size={20} />
+            <Ionicons name="heart" color={colors.error} size={20} />
           </Pressable>
-          <Ionicons name="chevron-forward" size={20} color={"#00ee"} />
+          <Ionicons name="chevron-forward" size={20} color={colors.primary} />
         </View>
     </Pressable>
   );

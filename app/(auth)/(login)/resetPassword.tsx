@@ -8,6 +8,7 @@ import Button from "@/components/button";
 import { resetPasswordStyles as styles } from "@/styles/app/(auth)/(login)/resetPassword";
 import { Ionicons } from "@expo/vector-icons";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 export default function ResetPassword() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -40,9 +41,9 @@ export default function ResetPassword() {
               <Ionicons
                 name={passwordVisible ? "eye-off" : "eye"}
                 size={20}
-                color="#555"
+                color={colors.secondary}
               />
-            </TouchableOpacity>
+            </TouchableOpacity> 
           </View>
         </View>
 
@@ -60,7 +61,7 @@ export default function ResetPassword() {
               <Ionicons
                 name={confirmPassword ? "eye-off" : "eye"}
                 size={20}
-                color="#555"
+                color={colors.secondary}
               />
             </TouchableOpacity>
           </View>

@@ -9,6 +9,7 @@ import Button from "../button";
 import ArrowBack from "../arrowback";
 import i18n from "@/locales/i18n";
 import ProgressBar from "./ProgressIndicator";
+import { colors } from "@/src/themes";
 
 export default function StepOne({
   step,
@@ -61,19 +62,25 @@ export default function StepOne({
 
   return (
     <View>
-      <ArrowBack/>
+      <ArrowBack />
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("CreateAccountStep1.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("CreateAccountStep1.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("CreateAccountStep1.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("CreateAccountStep1.description")}
+        </Text>
         <ProgressBar currentStep={step} totalSteps={totalSteps || 6} />
       </View>
 
       {/* Form Fields */}
-      <View style={styles.formGroup }>
+      <View style={styles.formGroup}>
         {/* First Name */}
-        <Text style={styles.label}>{i18n.t("CreateAccountStep1.FirstNamePlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep1.FirstNamePlaceholder")}
+        </Text>
         <TextInput
           placeholder="Enter First Name"
           style={styles.input}
@@ -88,7 +95,9 @@ export default function StepOne({
         )}
 
         {/* Last Name */}
-        <Text style={styles.label}>{i18n.t("CreateAccountStep1.LastNamePlaceholder")}</Text>
+        <Text style={styles.label}>
+          {i18n.t("CreateAccountStep1.LastNamePlaceholder")}
+        </Text>
         <TextInput
           placeholder="Enter Last Name"
           style={styles.input}
@@ -106,7 +115,9 @@ export default function StepOne({
         <View style={styles.row}>
           {/* ID Type Dropdown */}
           <View style={styles.column}>
-            <Text style={styles.label}>{i18n.t("CreateAccountStep1.IdTypePlaceholder")}</Text>
+            <Text style={styles.label}>
+              {i18n.t("CreateAccountStep1.IdTypePlaceholder")}
+            </Text>
             <View style={styles.pickerContainer}>
               <Picker
                 selectedValue={values.IDType}
@@ -132,7 +143,9 @@ export default function StepOne({
 
           {/* Document Number */}
           <View style={styles.column}>
-            <Text style={styles.label}>{i18n.t("CreateAccountStep1.DocumentNumberPlaceholder")}</Text>
+            <Text style={styles.label}>
+              {i18n.t("CreateAccountStep1.DocumentNumberPlaceholder")}
+            </Text>
             <TextInput
               placeholder={getDocumentPlaceholder()}
               style={styles.input}
@@ -160,7 +173,7 @@ export default function StepOne({
       {/* Footer Login Link */}
       <Text style={styles.footerText}>
         {i18n.t("CreateAccountStep1.caption")}{" "}
-        <Link href={"/(auth)/(login)/login"} style={{ color: "#00ee" }}>
+        <Link href={"/(auth)/(login)/login"} style={{ color: colors.primary }}>
           {i18n.t("CreateAccountStep1.loginText")}
         </Link>
       </Text>

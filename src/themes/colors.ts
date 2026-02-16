@@ -10,8 +10,12 @@ export const colors = {
   link: "#007AFF",
   border: "",
   buttonText: "#fff",
-  buttonPrimary: "#007AFF",
   buttonSecondary: "#ccc",
+  // calendar colors
+  calendarPrimary: "#CFE1FF",
+  // switch colors
+  switchtracktrue: "#B8C1FF",
+  switchthumbtrue: "#f4f3f4",
   // status colors
   error: "#ff3b30",
   success: "#4cd964",

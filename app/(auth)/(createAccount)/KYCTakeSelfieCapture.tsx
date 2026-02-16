@@ -9,6 +9,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import ArrowBack from "../../../components/arrowback";
 import CameraButton from "@/components/(createAcccount)_Components/kycVerification_Components/cameraButton";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes/colors";
 
 export default function KYCTakeSelfieCapture() {
   const router = useRouter();
@@ -48,7 +49,7 @@ export default function KYCTakeSelfieCapture() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack onPress={() => router.back()} />
+      <ArrowBack/>
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
         <Text style={styles.subtitle}>{i18n.t("kycVerificationStep3.subtitle")}</Text>
@@ -85,7 +86,7 @@ const localStyles = StyleSheet.create({
   },
   cameraButton: {
     alignSelf: "center",
-    backgroundColor: "#4a60ff",
+    backgroundColor: colors.primary,
     padding: 15,
     borderRadius: 50,
   },

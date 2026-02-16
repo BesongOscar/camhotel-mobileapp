@@ -6,6 +6,7 @@ import { Link, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "@/src/themes/colors";
 
 export default function LiveLocation() {
   const router = useRouter();
@@ -19,10 +20,10 @@ export default function LiveLocation() {
   return (
     <SafeAreaView style={styles.Container} edges={["top"]}>
        <LiveLocationModal visible= {modalVisible} onClose={() => setModalVisible(false)}/>
-      <ArrowBack onPress={handleBack} />
+      <ArrowBack />
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.iconContainer}>
-          <Ionicons name="location" size={50} color="#00ee" />
+          <Ionicons name="location" size={50} color={colors.primary} />
         </View>
         <View style={styles.TextContainer}>
           <Text style={styles.title}>What is your location</Text>

@@ -6,6 +6,7 @@ import { useState, useCallback } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "../button";
 import { informationContainerStyles as styles } from "@/styles/components/(Main)_Components/informationContainer";
+import { colors } from "@/src/themes";
 
 export default function InformationContainer() {
   const router = useRouter();
@@ -119,8 +120,8 @@ export default function InformationContainer() {
         onPress={handleDestinationPress}
       >
         <View style={styles.SearchButtonContents}>
-          <Ionicons name="location-outline" size={24} color="grey" />
-          <Text style={{ color: destination ? "#000" : "grey" }}>
+          <Ionicons name="location-outline" size={24} color={colors.secondary} />
+          <Text style={{ color: destination ? colors.textPrimary : colors.textSecondary }}>
             {destination || "Search destination / Hotel name"}
           </Text>
         </View>
@@ -135,8 +136,8 @@ export default function InformationContainer() {
             onPress={() => handleDatePress("checkIn")}
           >
             <View style={styles.DateButtonContents}>
-              <Ionicons name="calendar-outline" size={25} color="grey" />
-              <Text style={{ color: checkInDate ? "#000" : "#999" }}>
+              <Ionicons name="calendar-outline" size={25} color={colors.secondary} />
+              <Text style={{ color: checkInDate ? colors.textPrimary : colors.textSecondary }}>
                 {checkInDate || "_ _ /_ _ /_ _ _ _"}
               </Text>
             </View>
@@ -149,8 +150,8 @@ export default function InformationContainer() {
             onPress={() => handleDatePress("checkOut")}
           >
             <View style={styles.DateButtonContents}>
-              <Ionicons name="calendar-outline" size={25} color="grey" />
-              <Text style={{ color: checkOutDate ? "#000" : "#999" }}>
+              <Ionicons name="calendar-outline" size={25} color={colors.secondary} />
+              <Text style={{ color: checkOutDate ? colors.textPrimary : colors.textSecondary }}>
                 {checkOutDate || "_ _ /_ _ /_ _ _ _"}
               </Text>
             </View>
@@ -164,11 +165,11 @@ export default function InformationContainer() {
         onPress={handleGuestPress}
       >
         <View style={{ gap: 10 }}>
-          <Text style={{ color: guestInfo ? "#000" : "grey" }}>
+          <Text style={{ color: guestInfo ? colors.textPrimary : colors.textSecondary }}>
             {guestInfo || "Select guests and rooms"}
           </Text>
         </View>
-        <Ionicons name="chevron-down-circle" size={25} color="grey" />
+        <Ionicons name="chevron-down-circle" size={25} color={colors.textSecondary} />
       </TouchableOpacity>
 
       <Button 

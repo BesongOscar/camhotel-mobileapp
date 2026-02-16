@@ -2,6 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { colors } from "@/src/themes";
 import { SafeAreaView } from "react-native-safe-area-context";
 //components
 import ArrowBack from "@/components/arrowback";
@@ -39,7 +40,7 @@ export default function ResetPin() {
               <Ionicons
                 name={pinVisible ? "eye-off" : "eye"}
                 size={20}
-                color="#555"
+                color={colors.secondary}
               />
             </TouchableOpacity>
           </View>
@@ -57,7 +58,7 @@ export default function ResetPin() {
               <Ionicons
                 name={confirmPin ? "eye-off" : "eye"}
                 size={20}
-                color="#555"
+                color={colors.secondary}
               />
             </TouchableOpacity>
           </View>

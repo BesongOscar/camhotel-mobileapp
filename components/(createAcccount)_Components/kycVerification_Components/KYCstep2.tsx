@@ -8,6 +8,7 @@ import ArrowBack from "@/components/arrowback";
 import { KYCstep2Styles as styles } from "@/styles/components/(createAccount)_Components/kycVerification_Components/KYCstep2";
 import Kycbutton from "./KYCbutton";
 import i18n from "@/locales/i18n";
+import { colors } from "@/src/themes";
 
 type CompletionState = {
   frontId: boolean;
@@ -18,7 +19,10 @@ type CompletionState = {
 type KYCstep2Props = {
   handleBack: () => void;
   completedSteps: CompletionState;
-  updateCompletionStatus: (stepKey: keyof CompletionState, completed: boolean) => void;
+  updateCompletionStatus: (
+    stepKey: keyof CompletionState,
+    completed: boolean,
+  ) => void;
 };
 
 export default function KYCstep2({
@@ -32,7 +36,7 @@ export default function KYCstep2({
   useFocusEffect(
     useCallback(() => {
       checkCompletionStatus();
-    }, [])
+    }, []),
   );
 
   const checkCompletionStatus = async () => {
@@ -50,9 +54,7 @@ export default function KYCstep2({
   };
 
   const allStepsCompleted =
-    completedSteps.frontId &&
-    completedSteps.backId &&
-    completedSteps.selfie;
+    completedSteps.frontId && completedSteps.backId && completedSteps.selfie;
 
   const handleFrontCapturePush = () => {
     // Do not pass functions via route params (not serializable); navigate and rely on AsyncStorage + useFocusEffect to pick up completion
@@ -74,48 +76,54 @@ export default function KYCstep2({
         await AsyncStorage.removeItem("kyc_frontId");
         await AsyncStorage.removeItem("kyc_backId");
         await AsyncStorage.removeItem("kyc_selfie");
-        
+
         router.push("/(auth)/(createAccount)/kycVerificationModal");
       } catch (error) {
         console.error("Error clearing KYC data:", error);
         // Still navigate even if clearing fails
-       // router.push("/(auth)/(createAccount)/kycVerificationModal");
+        // router.push("/(auth)/(createAccount)/kycVerificationModal");
       }
     }
   };
 
   return (
     <View>
-      <ArrowBack onPress={handleBack} />
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("kycVerification.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("kycVerification.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("kycVerification.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("kycVerification.description")}
+        </Text>
         <ProgressBar currentStep={6} totalSteps={6} />
       </View>
-      <Text style={styles.description}>{i18n.t("kycVerification.Instruction")}</Text>
+      <Text style={styles.description}>
+        {i18n.t("kycVerification.Instruction")}
+      </Text>
       <View style={{ marginVertical: 40 }}>
         <Kycbutton
           label={i18n.t("kycVerification.kycButtonText1")}
           onPress={handleFrontCapturePush}
-          buttonColor={completedSteps.frontId ? "#00ee" : "#grey"}
-          textColor={completedSteps.frontId ? "black" : "grey"}
+          buttonColor={completedSteps.frontId ? colors.primary : colors.textSecondary}
+          textColor={completedSteps.frontId ? colors.textPrimary : colors.textSecondary}
         />
         <Kycbutton
           label={i18n.t("kycVerification.kycButtonText2")}
           onPress={handleBackCapturePush}
-          buttonColor={completedSteps.backId ? "#00ee" : "grey"}
-          textColor={completedSteps.backId ? "black" : "grey"}
+          buttonColor={completedSteps.backId ? colors.primary : colors.textSecondary}
+          textColor={completedSteps.backId ? colors.textPrimary : colors.textSecondary}
         />
         <Kycbutton
           label={i18n.t("kycVerification.kycButtonText3")}
           onPress={handleTakeSelfiePush}
-          buttonColor={completedSteps.selfie ? "#00ee" : "grey"}
-          textColor={completedSteps.selfie ? "black" : "grey"}
+          buttonColor={completedSteps.selfie ? colors.primary : colors.textSecondary}
+          textColor={completedSteps.selfie ? colors.textPrimary : colors.textSecondary}
         />
       </View>
       <Button
-        theme={allStepsCompleted? "secondary": "tertiary"}
+        theme={allStepsCompleted ? "secondary" : "tertiary"}
         label={i18n.t("kycVerification.buttonText")}
         height={60}
         width={"100%"}

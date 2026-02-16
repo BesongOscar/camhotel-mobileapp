@@ -1,5 +1,6 @@
 import { Text, View, Image, StyleSheet } from "react-native";
 import { regionCardStyles as styles } from "@/styles/components/(Main)_Components/regionCard";
+import { colors } from "@/src/themes";
 
 type RegionCardProps = {
   regionCapital: string;
@@ -14,7 +15,7 @@ export default function RegionCard({
     <View>
       <Image style={styles.imageholder} />
       <Text style={{ fontSize: 15, paddingLeft: 5 }}>{regionCapital}</Text>
-      <Text style={{ color: "grey", paddingLeft: 5 }}>
+      <Text style={{ color: colors.textSecondary, paddingLeft: 5 }}>
         {hotelNumber} Hotels
       </Text>
     </View>

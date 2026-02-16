@@ -1,6 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { progressIndicatorStyles as styles } from "@/styles/components/(createAccount)_Components/ProgressIndicator";
+import { colors } from "@/src/themes";
 
 type ProgressBarProps = {
   currentStep: number; // which step are we on?
@@ -26,7 +27,7 @@ export default function ProgressBar({
                 style={[
                   styles.line,
                   {
-                    backgroundColor: isCompleted ? "#00ee" : "#ccc",
+                    backgroundColor: isCompleted ? colors.primary : colors.secondary,
                   },
                 ]}
               />
@@ -37,9 +38,9 @@ export default function ProgressBar({
               style={[
                 styles.dot,
                 {
-                  backgroundColor: isCompleted ? "#00ee" : "#ccc",
+                  backgroundColor: isCompleted ? colors.primary : colors.secondary,
                   borderWidth: isActive ? 2 : 0,
-                  borderColor: isActive ? "#00ee" : "transparent",
+                  borderColor: isActive ? colors.primary : "transparent",
                 },
               ]}
             />
@@ -50,7 +51,7 @@ export default function ProgressBar({
                 style={[
                   styles.line,
                   {
-                    backgroundColor: isCompleted ? "#00ee" : "#ccc",
+                    backgroundColor: isCompleted ? colors.primary : colors.secondary,
                   },
                 ]}
               />

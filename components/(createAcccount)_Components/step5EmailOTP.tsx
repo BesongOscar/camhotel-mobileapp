@@ -7,6 +7,7 @@ import OTPInput from "./otp_input";
 import ProgressBar from "./ProgressIndicator";
 import i18n from "@/locales/i18n";
 import { Link } from "expo-router";
+import { colors } from "@/src/themes";
 
 type StepFiveProps = StepProps;
 
@@ -21,15 +22,19 @@ export default function StepFive({
 }: StepFiveProps) {
   return (
     <View>
-      <ArrowBack onPress={handlePreviousScreen} />
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("CreateAccountStep5.subtitle")}</Text>
-        <Text style={styles.caption}>{i18n.t("CreateAccountStep5.description")}</Text>
+        <Text style={styles.subtitle}>
+          {i18n.t("CreateAccountStep5.subtitle")}
+        </Text>
+        <Text style={styles.caption}>
+          {i18n.t("CreateAccountStep5.description")}
+        </Text>
         <ProgressBar currentStep={step} totalSteps={6} />
         <Text style={[styles.caption, { marginBottom: 10, marginTop: 30 }]}>
           {i18n.t("CreateAccountStep5.instruction")}
-          <Text style={{ color: "#00ee" }}> +237*******</Text>
+          <Text style={{ color: colors.primary }}> +237*******</Text>
         </Text>
       </View>
 
@@ -50,7 +55,7 @@ export default function StepFive({
       />
       <Text style={[styles.caption, { marginVertical: 10 }]}>
         {i18n.t("CreateAccountStep5.caption")}{" "}
-        <Link style={{ color: "#00ee" }} href={"/"}>
+        <Link style={{ color: colors.primary }} href={"/"}>
           {i18n.t("CreateAccountStep5.resendText")}
         </Link>
       </Text>
