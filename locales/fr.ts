@@ -37,7 +37,7 @@ export default {
         subtitle: "Commencer",
         description: "Ajoutez votre numéro de téléphone et créez un code PIN",
         PhoneNumberPlaceholder: "Numéro de téléphone",
-        CreatePinPlaceholder: "Créer un code PIN",
+        createPinPlaceholder: "Créer un code PIN",
         ConfirmPinPlaceholder: "Confirmer le code PIN",
     },
     CreateAccountStep3: {
@@ -56,7 +56,7 @@ export default {
         ConfirmPasswordPlaceholder: "Confirmer le mot de passe",
         buttonText: "Suivant",
     },
-    createAccountStep5: {
+    CreateAccountStep5: {
         subtitle: "Vérifier l'adresse e-mail",
         description: "Valider l'adresse e-mail existante",
         instruction: "Entrez le code de vérification envoyé à votre email",
@@ -83,6 +83,7 @@ export default {
         kycButtonText2: "la vue arrière de votre carte d'identité",
         kycButtonText3: "Prendre un selfie en tenant votre carte d'identité",
         buttonText: "Vérifier",
+        linkText: "Pourquoi est-ce nécessaire ?",
     },
     kycCameraAccess: {
         title: "L'accès à la caméra est nécessaire pour continuer",

@@ -37,7 +37,7 @@ export default {
         subtitle: "Getting Started",
         description: "Add phone number and create PIN",
         PhoneNumberPlaceholder: "Phone Number",
-        CreatePinPlaceholder: "Create PIN",
+        createPinPlaceholder: "Create PIN",
         ConfirmPinPlaceholder: "Confirm PIN",
     },
     CreateAccountStep3: {
@@ -56,7 +56,7 @@ export default {
         ConfirmPasswordPlaceholder: "Confirm Password",
         buttonText: "Next",
     },
-    createAccountStep5: {
+    CreateAccountStep5: {
         subtitle: "Verify Email",
         description: "validate existing email",
         instruction: "Enter the verification code sent to your email",
@@ -83,6 +83,7 @@ export default {
         kycButtonText2: "Upload back View of your ID",
         kycButtonText3: "Take a Selfie holding ID",
         buttonText: "Verify",
+        linkText: "why is this needed?",
     },
     kycCameraAccess: {
         title: "Camera Access is needed to continue",
