@@ -15,6 +15,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "@/src/themes";
 
 // Hotel type
 type Hotel = {
@@ -81,7 +82,7 @@ export default function ExploreScreen() {
               </View>
 
               <View style={styles.resSeparator}>
-                <Ionicons name="arrow-forward" size={16} color="#777" />
+                <Ionicons name="arrow-forward" size={16} color={colors.textSecondary} />
               </View>
 
               <View style={styles.resColumn}>
@@ -91,12 +92,12 @@ export default function ExploreScreen() {
             </View>
 
             <TouchableOpacity style={styles.detailBox}>
-              <Ionicons name="calendar-outline" size={16} color="#222" />
+              <Ionicons name="calendar-outline" size={16} color={colors.textSecondary} />
               <Text style={styles.detailText}>1 night</Text>
               <Ionicons
                 name="chevron-down"
                 size={16}
-                color="#222"
+                color= {colors.textPrimary}
                 style={{ paddingLeft: 25 }}
               />
             </TouchableOpacity>
@@ -113,7 +114,7 @@ export default function ExploreScreen() {
               <Ionicons
                 name="chevron-down"
                 size={16}
-                color="#222"
+                color={colors.textPrimary}
                 style={{ paddingLeft: 20 }}
               />
             </TouchableOpacity>
@@ -164,7 +165,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   AppBar: {
     paddingVertical: 5,
-    backgroundColor: "white",
+    backgroundColor: colors.background,
     paddingHorizontal: 10,
   },
   AppBarHeader: {
@@ -180,7 +181,7 @@ const styles = StyleSheet.create({
   },
   Separator: {
     height: 1,
-    backgroundColor: "#e5e5e5",
+    backgroundColor: colors.background,
     marginBottom: 15,
     marginTop: 17,
   },
@@ -202,7 +203,7 @@ const styles = StyleSheet.create({
   resDate: {
     fontWeight: "600",
     fontSize: 14,
-    color: "#000",
+    color: colors.textPrimary,
   },
   resSeparator: {
     width: 40,
@@ -211,18 +212,18 @@ const styles = StyleSheet.create({
   },
   detailBox: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: colors.secondary,
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
     borderRadius: 5,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     gap: 10,
     marginTop: 10,
   },
   detailText: {
     fontWeight: "500",
     fontSize: 14,
-    color: "#000",
+    color: colors.textPrimary,
   },
 });

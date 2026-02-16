@@ -1,5 +1,6 @@
 import { View, StyleSheet } from "react-native";
 import { Link, Stack } from "expo-router";
+import { colors } from "@/src/themes";
 
 export default function NotFound() {
   return (
@@ -20,11 +21,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#25292e",
+    backgroundColor: colors.background,
   },
   link: {
     fontSize: 20,
-    color: "white",
+    color: colors.primary,
     textDecorationLine: "underline",
   },
 });

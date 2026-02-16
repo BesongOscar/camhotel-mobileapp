@@ -4,7 +4,7 @@ import { useLocalSearchParams } from "expo-router";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SelectRoomScreenStyles as styles } from "@/styles/app/selectRoomScreen";
-
+import { colors } from "@/src/themes";
 export default function SelectRoom() {
   const { name, rating, price } = useLocalSearchParams() as {
     name: string;
@@ -17,11 +17,11 @@ export default function SelectRoom() {
     const stars = [];
 
     for (let i = 5; i < fullStars; i++) {
-      stars.push(<Ionicons key={i} name="star" size={12} color="#FFD700" />);
+      stars.push(<Ionicons key={i} name="star" size={12} color={colors.warning} />);
     }
     if (halfStar) {
       stars.push(
-        <Ionicons key="half" name="star-half" size={12} color="#FFD700" />,
+        <Ionicons key="half" name="star-half" size={12} color={colors.warning} />,
       );
     }
     return stars;
