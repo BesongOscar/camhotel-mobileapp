@@ -7,7 +7,7 @@ import i18n from "@/locales/i18n";
 import { useLanguage } from "@/src/context/languageContext";
 
 export default function LanguageScreen() {
-  const { language, changeLanguage } = useLanguage();
+  const { language, changeLanguage, locale } = useLanguage();
 
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>

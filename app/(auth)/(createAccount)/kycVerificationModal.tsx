@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "expo-router";
 import { Image } from "expo-image";
 import { KYCVerificationStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCverificationModal";
-export default function ({}) {
+export default function KYCVerificationModal({}) {
   // const placeholder = require("");
   const [modalVisible, setModalVisible] = useState(true);
   const router = useRouter();
