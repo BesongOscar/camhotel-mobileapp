@@ -24,7 +24,6 @@ export const welcomeStyles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "700",
     letterSpacing: 1.1,
-    fontFamily: "Arias",
     paddingHorizontal: 30,
     marginBottom: 20,
     marginTop: 20,

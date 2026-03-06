@@ -10,7 +10,6 @@ export default function RegionCard({
   regionCapital,
   hotelNumber,
 }: RegionCardProps) {
-  const placeholder = null;
   return (
     <View>
       <Image style={styles.imageholder} />

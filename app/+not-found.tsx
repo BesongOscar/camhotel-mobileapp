@@ -5,7 +5,6 @@ import { colors } from "@/src/themes";
 export default function NotFound() {
   return (
     <>
-      <Stack.Screen options={{ headerTitle: "Oops! Not Found" }} />
       <View style={styles.container}>
         <Stack.Screen options={{ headerTitle: "Oops! Not Found" }} />
         <Link href="/" style={styles.link}>

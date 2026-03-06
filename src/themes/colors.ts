@@ -8,7 +8,6 @@ export const colors = {
   textSecondary: "#666",
   //  interactive colors
   link: "#007AFF",
-  border: "",
   buttonText: "#fff",
   buttonSecondary: "#ccc",
   buttonTertiary: "#f2f2ff",
