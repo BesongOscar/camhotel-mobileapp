@@ -20,13 +20,7 @@ export default function SelectDestination() {
   };
 
   return (
-    <SafeAreaView edges={["top", "bottom"]} style={{ padding: 15 }}>
-      {/* Header */}
-      <View style={styles.appBar}>
-        <ArrowBack />
-        <Text style={styles.header}>Select Destination</Text>
-      </View>
-
+    <SafeAreaView edges={["top", "bottom"]} style={styles.container}>
       {/* Search Bar */}
       <View style={styles.searchContainer}>
         <Entypo name="location-pin" size={24} color={colors.primary} />

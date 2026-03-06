@@ -60,7 +60,7 @@ export default function Button({
     return (
       <View style={[styles.buttonContainer, customSize]}>
         <Pressable
-          style={[styles.button, { backgroundColor: colors.background }]}
+          style={[styles.button, { backgroundColor: colors.buttonTertiary }]}
           onPress={
             onPress ? onPress : () => Alert.alert("Button", "Button Pressed!")
           }

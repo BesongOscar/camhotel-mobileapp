@@ -79,7 +79,7 @@ export default function StepTwo({
         )}
 
         <Text style={styles.label}>
-          {i18n.t("CreateAccountStep2.confirmPinPlaceholder")}
+          {i18n.t("CreateAccountStep2.ConfirmPinPlaceholder")}
         </Text>
         <View style={styles.loginInput}>
           <TextInput

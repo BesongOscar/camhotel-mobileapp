@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect } from "expo-router";
 import { useRouter, useLocalSearchParams } from "expo-router";
@@ -17,20 +17,15 @@ export default function InformationContainer() {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [guestInfo, setGuestInfo] = useState("");
 
-  // Load data from AsyncStorage when component mounts
-  useFocusEffect(
-    useCallback(() => {
-      loadBookingData();
-    }, [])
-  );
-
-  // Update AsyncStorage whenever values change
   // normalizeParam handles params that can be string | string[] | undefined
   const normalizeParam = (p: string | string[] | undefined) =>
-    Array.isArray(p) ? p[0] ?? "" : p ?? "";
+    Array.isArray(p) ? (p[0] ?? "") : (p ?? "");
 
   useFocusEffect(
     useCallback(() => {
+      // Load data from AsyncStorage when component mounts and Update AsyncStorage whenever values change
+      loadBookingData();
+
       const dest = normalizeParam(params.destination);
       if (dest) {
         setDestination(dest);
@@ -54,7 +49,7 @@ export default function InformationContainer() {
         setGuestInfo(guests);
         saveToAsyncStorage("guestInfo", guests);
       }
-    }, [params])
+    }, [params]),
   );
 
   const loadBookingData = async () => {
@@ -107,7 +102,12 @@ export default function InformationContainer() {
       saveToAsyncStorage("guestInfo", guestInfo),
     ]);
     // Proceed with search logic
-    console.log("Searching with:", { destination, checkInDate, checkOutDate, guestInfo });
+    console.log("Searching with:", {
+      destination,
+      checkInDate,
+      checkOutDate,
+      guestInfo,
+    });
   };
 
   return (
@@ -120,8 +120,16 @@ export default function InformationContainer() {
         onPress={handleDestinationPress}
       >
         <View style={styles.SearchButtonContents}>
-          <Ionicons name="location-outline" size={24} color={colors.secondary} />
-          <Text style={{ color: destination ? colors.textPrimary : colors.textSecondary }}>
+          <Ionicons
+            name="location-outline"
+            size={24}
+            color={colors.textSecondary}
+          />
+          <Text
+            style={{
+              color: destination ? colors.textPrimary : colors.textSecondary,
+            }}
+          >
             {destination || "Search destination / Hotel name"}
           </Text>
         </View>
@@ -136,8 +144,18 @@ export default function InformationContainer() {
             onPress={() => handleDatePress("checkIn")}
           >
             <View style={styles.DateButtonContents}>
-              <Ionicons name="calendar-outline" size={25} color={colors.secondary} />
-              <Text style={{ color: checkInDate ? colors.textPrimary : colors.textSecondary }}>
+              <Ionicons
+                name="calendar-outline"
+                size={25}
+                color={colors.textSecondary}
+              />
+              <Text
+                style={{
+                  color: checkInDate
+                    ? colors.textPrimary
+                    : colors.textSecondary,
+                }}
+              >
                 {checkInDate || "_ _ /_ _ /_ _ _ _"}
               </Text>
             </View>
@@ -150,8 +168,18 @@ export default function InformationContainer() {
             onPress={() => handleDatePress("checkOut")}
           >
             <View style={styles.DateButtonContents}>
-              <Ionicons name="calendar-outline" size={25} color={colors.secondary} />
-              <Text style={{ color: checkOutDate ? colors.textPrimary : colors.textSecondary }}>
+              <Ionicons
+                name="calendar-outline"
+                size={25}
+                color={colors.textSecondary}
+              />
+              <Text
+                style={{
+                  color: checkOutDate
+                    ? colors.textPrimary
+                    : colors.textSecondary,
+                }}
+              >
                 {checkOutDate || "_ _ /_ _ /_ _ _ _"}
               </Text>
             </View>
@@ -165,16 +193,24 @@ export default function InformationContainer() {
         onPress={handleGuestPress}
       >
         <View style={{ gap: 10 }}>
-          <Text style={{ color: guestInfo ? colors.textPrimary : colors.textSecondary }}>
+          <Text
+            style={{
+              color: guestInfo ? colors.textPrimary : colors.textSecondary,
+            }}
+          >
             {guestInfo || "Select guests and rooms"}
           </Text>
         </View>
-        <Ionicons name="chevron-down-circle" size={25} color={colors.textSecondary} />
+        <Ionicons
+          name="chevron-down-circle"
+          size={25}
+          color={colors.textSecondary}
+        />
       </TouchableOpacity>
 
-      <Button 
-        label="Search" 
-        theme="secondary" 
+      <Button
+        label="Search"
+        theme="secondary"
         height={50}
         onPress={handleSearch}
       />

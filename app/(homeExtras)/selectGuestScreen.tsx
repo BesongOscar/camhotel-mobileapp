@@ -6,6 +6,7 @@ import { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { selectGuestStyles as styles } from "@/styles/app/(homeExtras)/selectGuestScreen";
+import { colors } from "@/src/themes";
 
 export default function SelectGuestScreen() {
   const router = useRouter();
@@ -21,7 +22,6 @@ export default function SelectGuestScreen() {
   const MAX_ROOMS = 8;
   const MIN_ROOMS = 1;
   const MAX_GUESTS_PER_ROOM = 7;
-  const MIN_GUESTS_PER_ROOM = 3;
 
   // Total guests = adults + children
   const totalGuests = adults + children;
@@ -86,12 +86,8 @@ export default function SelectGuestScreen() {
   };
 
   return (
-    <SafeAreaView edges={["top"]} style={{ padding: 15 }}>
-      <View style={styles.appBar}>
-        <ArrowBack/>
-        <Text style={styles.header}>Select Guests and Rooms</Text>
-      </View>
-      <View style={{ marginTop: 35 }}>
+    <SafeAreaView edges={["top"]} style={styles.container}>
+      <View style={{ marginTop: 10 }}>
         <GuestandRoomDetailes
           title="Adults"
           subtitle="Maximum of 4 adults per room"
@@ -120,10 +116,10 @@ export default function SelectGuestScreen() {
           disableSubtract={rooms <= MIN_ROOMS}
         />
       </View>
-      <View style={{ marginTop: 400 }}>
+      <View style={styles.buttonContainer}>
         <Button 
           label="continue" 
-          height={50} 
+          height={60} 
           width={"100%"} 
           theme="secondary"
           onPress={handleContinue}

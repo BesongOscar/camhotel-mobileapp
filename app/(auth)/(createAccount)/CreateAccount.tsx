@@ -14,7 +14,7 @@ import { FormValues } from "@/constants/formValues";
 import StepOne from "../../../components/(createAcccount)_Components/step1PersonalInfo";
 import { createAccountStyles as styles } from "@/styles/app/(auth)/(createAccount)/CreateAccount";
 
-// ✅ Validation schemas
+// Validation schemas
 const stepOneValidation = Yup.object({
   FirstName: Yup.string().required("First Name is required"),
   LastName: Yup.string().required("Last Name is required"),
@@ -34,7 +34,7 @@ const stepTwoValidation = Yup.object({
     .required("Confirm your PIN"),
 });
 
-const stepThreeValidation = Yup.object({
+const stepFourValidation = Yup.object({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string()
     .min(5, "Password must be at least 5 characters")
@@ -105,7 +105,7 @@ export default function MultiForm() {
             : step === 3
             ? Phonevalidation
             : step === 4
-            ? stepThreeValidation
+            ? stepFourValidation
             : step === 5
             ? emailPhoneValidation
             : step === 6

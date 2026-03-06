@@ -7,7 +7,7 @@ export const appBarStyles = StyleSheet.create({
   },
   appBarTitle: {
     fontSize: 18,
-    fontWeight: "400",
+    fontWeight: "500",
     letterSpacing: 0.5,
   },
 });

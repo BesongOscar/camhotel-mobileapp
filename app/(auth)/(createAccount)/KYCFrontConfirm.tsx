@@ -15,8 +15,6 @@ export default function KYCFrontConfirm() {
   const handleRetake = () => {
     router.back(); // Go back to camera screen
   };
-
-3
   const handleConfirm = async () => {
     try {
       // Save the completion status to AsyncStorage

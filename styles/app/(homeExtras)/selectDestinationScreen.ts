@@ -1,15 +1,11 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const selectDestinationStyles = StyleSheet.create({
-  appBar: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 10,
-  },
-  header: {
-    fontSize: 18,
-    fontWeight: "500",
-    marginLeft: 80,
+  container: {
+    paddingHorizontal: 15,
+    backgroundColor: colors.background,
+    flex: 1,
   },
   searchContainer: {
     flexDirection: "row",
@@ -19,7 +15,7 @@ export const selectDestinationStyles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    marginTop: 30,
+    marginTop: 10,
     marginBottom: 12,
   },
   textInput: {

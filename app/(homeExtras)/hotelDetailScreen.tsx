@@ -10,6 +10,7 @@ import {
   MaterialIcons,
 } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useFavorites } from "@/src/context/FavoritesContext";
 import React, { useState } from "react";
 import {
   Image,
@@ -46,19 +47,19 @@ export default function HotelDetailScreen() {
       location?: string;
     };
   const router = useRouter();
-  const handleBack = () => {
-    router.back();
-  };
   const handleSelectRoom = () => {
     router.push({
       pathname: "/selectRoomScreen",
       params: {name, rating, price}
     });
   };
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const { state, dispatch } = useFavorites();
+  const isFavorite = id ? state.favorites.includes(id) : false;
 
   const handleFavorite = () => {
-    setIsFavorite(!isFavorite);
+    if (id) {
+      dispatch({ type: "TOGGLE_FAVORITE", hotelId: id });
+    }
   };
 
   const renderStars = (rating: number) => {
@@ -93,7 +94,14 @@ export default function HotelDetailScreen() {
   const moreCount = gallery.length > 4 ? gallery.length - 4 : 0;
 
   // amenities
-  
+  // const renderAmenities = () => {
+  //   return amenities.map((amenity, index) => (
+  //     <View key={index} style={styles.amenityItem}>
+  //       <MaterialCommunityIcons name={amenity.icon} size={20} color={colors.textPrimary} />
+  //       <Text style={styles.amenityText}>{amenity.name}</Text>
+  //     </View>
+  //   ));
+  // };
 
   return (
     <SafeAreaView style={styles.safe} edges={["top"]}>
@@ -109,7 +117,7 @@ export default function HotelDetailScreen() {
           <Ionicons
             name={isFavorite ? "heart" : "heart-outline"}
             size={22}
-            color={isFavorite ? "red" : "grey"}
+            color={isFavorite ? colors.error : colors.textSecondary}
           />
         </TouchableOpacity>
       </View>

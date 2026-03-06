@@ -12,7 +12,6 @@ export default function KYCFrontCapture() {
   const router = useRouter();
   const cameraRef = useRef<CameraView>(null);
   const [permission, requestPermission] = useCameraPermissions();
-  const params = useLocalSearchParams();
 
   useEffect(() => {
     if (!permission?.granted) {
@@ -33,11 +32,7 @@ export default function KYCFrontCapture() {
       });
     }
   };
-
-  const handleBack = () => {
-    router.back();
-  };
-
+  
   if (!permission) return <View />;
   if (!permission.granted) {
     return (

@@ -13,7 +13,6 @@ export default function KYCBackCapture() {
   const router = useRouter();
   const cameraRef = useRef<CameraView>(null);
   const [permission, requestPermission] = useCameraPermissions();
-  const params = useLocalSearchParams();
 
   useEffect(() => {
     if (!permission?.granted) { 
@@ -29,10 +28,6 @@ export default function KYCBackCapture() {
         params: { imageUri: photo.uri, stepKey: "backId" },
       });
     }
-  };
-
-  const handleBack = () => {
-    router.back();
   };
 
   if (!permission) return <View />;

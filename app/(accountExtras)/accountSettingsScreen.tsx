@@ -30,7 +30,7 @@ export default function AccountSettings() {
             <Ionicons
               name="chevron-forward-outline"
               size={17}
-              color={"black"}
+              color={colors.textPrimary}
             />
           </TouchableOpacity>
         </View>

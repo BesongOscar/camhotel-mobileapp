@@ -19,8 +19,7 @@ export default function LiveLocation() {
   }, []);
   return (
     <SafeAreaView style={styles.Container} edges={["top"]}>
-       <LiveLocationModal visible= {modalVisible} onClose={() => setModalVisible(false)}/>
-      <ArrowBack />
+       <LiveLocationModal visible= {modalVisible} onClose={() => setModalVisible(false)}/>     
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.iconContainer}>
           <Ionicons name="location" size={50} color={colors.primary} />

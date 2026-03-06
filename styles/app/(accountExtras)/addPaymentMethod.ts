@@ -18,7 +18,7 @@ export const AddPaymentMethodStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 15,
-    marginTop: 6
+    marginTop: 6,
   },
   radioOuter: {
     width: 20,
@@ -81,10 +81,10 @@ export const AddPaymentMethodStyles = StyleSheet.create({
   },
   phoneRow: {
     flexDirection: "row",
-    marginBottom: 35
+    marginBottom: 35,
   },
   countryBox: {
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     padding: 12,
     borderRadius: 5,
@@ -92,7 +92,7 @@ export const AddPaymentMethodStyles = StyleSheet.create({
   },
   phoneInput: {
     flex: 1,
-    borderColor: 'black',
+    borderColor: "black",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: 15,
@@ -110,13 +110,17 @@ export const AddPaymentMethodStyles = StyleSheet.create({
     borderRadius: 4,
     marginLeft: 5,
   },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginBottom: 10,
+  },
   button: {
     backgroundColor: PRIMARY,
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
-    position: "absolute",
-    bottom: 20,
+
     width: "100%",
     alignSelf: "center",
   },

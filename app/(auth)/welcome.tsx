@@ -6,7 +6,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import i18n from "@/locales/i18n";
 import { welcomeStyles as styles } from "@/styles/app/(auth)/welcome";
 
-export default function () {
+export default function Welcome() {
   const router = useRouter();
   const handleNav = () => {
     return router.push("/CreateAccount");
@@ -47,5 +47,3 @@ export default function () {
     </SafeAreaView>
   );
 }
-
-

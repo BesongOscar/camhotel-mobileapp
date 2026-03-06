@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -9,7 +9,8 @@ import {
 } from "react-native";
 //import styles from "@/utility/styles";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { slides } from "@/constants/slides";
+import { getSlides } from "@/constants/slides";
+import { useLanguage } from "@/src/context/languageContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "@/components/button";
 import { useRouter } from "expo-router";
@@ -22,6 +23,10 @@ export default function Index() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const flatListRef = useRef<FlatList<any> | null>(null);
+ 
+  //Re-compute slides whenever locale changes so translations update
+  const { locale } = useLanguage();
+  const slides = useMemo(() => getSlides(), [locale]);
 
   // check if onboarding was already shown
   const handleNext = () => {
@@ -102,26 +107,3 @@ export default function Index() {
   );
 }
 
-
-{
-  /* Controls 
-      <View style={styles.buttons}>
-        {currentIndex < slides.length - 1 ? (
-          <TouchableOpacity onPress={handleSkip}>
-            <Text style={styles.skipText}>Skip</Text>
-          </TouchableOpacity>
-        ) : (
-          <View />
-        )}
-*/
-}
-
-{
-  /*useEffect(() => {
-    AsyncStorage.getItem("hasOnboarded").then((value) => {
-      if (value) {
-        router.replace('/(splash)/onBoading'); // skip onboarding if already seen
-      }
-    });
-  }, []);*/
-}

@@ -5,7 +5,7 @@ export const liveLocationStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     justifyContent: "center",
-    padding: 10,
+    paddingHorizontal: 10,
   },
   title: {
     fontSize: 23,

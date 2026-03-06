@@ -7,6 +7,7 @@ type LanguageType = "system" | "en" | "fr";
 
 type LanguageContextType = {
   language: LanguageType;
+  locale: string;
   changeLanguage: (lang: LanguageType) => void;
 };
 
@@ -14,20 +15,25 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
+// Resolves a LanguageType to a concrete BCP-47 locale string /
+const resolveLocale = (lang: LanguageType): string => {
+  if (lang !== "system") return lang;
+  const locales = Localization.getLocales();
+  return locales.length > 0 && locales[0].languageCode
+    ? locales[0].languageCode
+    : "en";
+};
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<LanguageType>("system");
+  const [locale, setLocale] = useState<string>(() => resolveLocale("system"));
+
 
   //  Apply language to i18n
   const applyLanguage = (lang: LanguageType) => {
-    if (lang === "system") {
-      const locales = Localization.getLocales();
-      i18n.locale =
-        locales.length > 0 && locales[0].languageCode
-          ? locales[0].languageCode
-          : "en";
-    } else {
-      i18n.locale = lang;
-    }
+    const resolved = resolveLocale(lang);
+    i18n.locale = resolved;
+    setLocale(resolved); // triggers re-render in all useLanguage() consumers
   };
 
   //  Change language (UI → Context)
@@ -53,7 +59,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <LanguageContext.Provider value={{ language, changeLanguage }}>
+    <LanguageContext.Provider value={{ language, changeLanguage, locale }}>
       {children}
     </LanguageContext.Provider>
   );

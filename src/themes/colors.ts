@@ -1,6 +1,6 @@
 export const colors = {
   // brand colors
-  primary: "#00ee",
+  primary: "#0057ff",
   secondary: "#ccc",
   background: "#fff",
   // text colors
@@ -11,6 +11,7 @@ export const colors = {
   border: "",
   buttonText: "#fff",
   buttonSecondary: "#ccc",
+  buttonTertiary: "#f2f2ff",
   // calendar colors
   calendarPrimary: "#CFE1FF",
   // switch colors

@@ -2,7 +2,7 @@ import { Image } from "expo-image";
 import i18n from "@/locales/i18n";
 const placeholder = undefined;
 
-export const slides = [
+export const getSlides = () => [
   {
     id: "1",
     title: i18n.t("onBoardingSlide1.title"),

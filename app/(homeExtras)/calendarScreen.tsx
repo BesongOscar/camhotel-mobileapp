@@ -133,19 +133,8 @@ export default function ChooseDateScreen() {
       ? differenceInDays(selected.startDate, selected.endDate)
       : 0;
 
-  const HandleBack = () => {
-    router.back();
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <ArrowBack/>
-        <Text style={styles.headerTitle}>Choose date</Text>
-        <View style={{ width: 24 }} />
-      </View>
-
       {/* Check-in / Check-out summary */}
       <View style={styles.dateRow}>
         <View style={styles.dateBox}>

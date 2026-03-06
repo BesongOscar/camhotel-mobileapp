@@ -7,10 +7,14 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
+  FlatList,
+  Image,
 } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
- import MapView from "react-native-maps";
+import MapView from "react-native-maps";
+import hotels from "@/constants/hotelCard";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width, height } = Dimensions.get("window");
 
@@ -18,12 +22,15 @@ const { width, height } = Dimensions.get("window");
 interface Hotel {
   id: string;
   name: string;
-  latitude: number;
-  longitude: number;
   location: string;
-  rating: string;
-  price: string;
+  rating: number;
+  ratingStars: string;
+  price: number;
+  currency: string;
+  reviews: string;
   image: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 interface Region {
@@ -46,52 +53,26 @@ export default function ExploreMapScreen() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
+
   const mapRef = useRef<MapView | null>(null);
   const placesRef = useRef<any>(null);
 
-  const hotels: Hotel[] = [
-    {
-      id: "1",
-      name: "WDC Apart Hotel",
-      latitude: 4.157,
-      longitude: 9.240,
-      location: "Buea - Mile 18 Bolifamba",
-      rating: "8.4/10 Excellent (54 reviews)",
-      price: "XAF 35000",
-      image: "https://via.placeholder.com/300x200.png?text=WDC+Hotel",
-    },
-    {
-      id: "2",
-      name: "Rovie Estate",
-      latitude: 4.150,
-      longitude: 9.230,
-      location: "Buea - 1.7 km from Tiko Golf Club",
-      rating: "8.3/10 Great (60 reviews)",
-      price: "XAF 20000",
-      image: "https://via.placeholder.com/300x200.png?text=Rovie+Estate",
-    },
-  ];
-
-  const handlePlaceSelect = async (
-    data: any,
-    details: any = null
-  ) => {
+  const handlePlaceSelect = async (data: any, details: any = null) => {
     setLoading(true);
     setError(null);
-    
+
     try {
       if (details?.geometry?.location) {
         const lat = details.geometry.location.lat;
         const lng = details.geometry.location.lng;
-        
+
         const newRegion = {
           latitude: lat,
           longitude: lng,
           latitudeDelta: 0.05,
           longitudeDelta: 0.05,
         };
-        
+
         setRegion(newRegion);
         mapRef.current?.animateToRegion(newRegion, 1000);
       }
@@ -104,14 +85,16 @@ export default function ExploreMapScreen() {
   };
 
   const handleMarkerPress = (hotel: Hotel) => {
-    const hotelRegion = {
-      latitude: hotel.latitude,
-      longitude: hotel.longitude,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
-    };
-    setRegion(hotelRegion);
-    mapRef.current?.animateToRegion(hotelRegion, 1000);
+    if (hotel.latitude && hotel.longitude) {
+      const hotelRegion = {
+        latitude: hotel.latitude,
+        longitude: hotel.longitude,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      };
+      setRegion(hotelRegion);
+      mapRef.current?.animateToRegion(hotelRegion, 1000);
+    }
   };
 
   const handleCardPress = (hotel: Hotel) => {
@@ -131,7 +114,7 @@ export default function ExploreMapScreen() {
       onPress={handlePlaceSelect}
       query={{
         key: GOOGLE_PLACES_API_KEY,
-        language: 'en',
+        language: "en",
       }}
       styles={{
         container: {
@@ -139,25 +122,25 @@ export default function ExploreMapScreen() {
         },
         textInput: styles.textInput,
         listView: {
-          position: 'absolute',
+          position: "absolute",
           top: 45,
         },
         description: {
-          fontWeight: 'bold',
+          fontWeight: "bold",
         },
         predefinedPlacesDescription: {
-          color: '#1faadb',
+          color: "#1faadb",
         },
       }}
       currentLocation={false}
       debounce={200}
       enablePoweredByContainer={false}
       onFail={(error: Error) => {
-        console.error('Google Places error:', error);
-        setError('Failed to search locations');
+        console.error("Google Places error:", error);
+        setError("Failed to search locations");
       }}
       onNotFound={() => {
-        setError('No locations found');
+        setError("No locations found");
       }}
       listEmptyComponent={
         <View style={styles.noResultsContainer}>
@@ -171,16 +154,16 @@ export default function ExploreMapScreen() {
   );
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={["top"]}>
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
         <Ionicons name="arrow-back" size={22} color="#000" />
       </TouchableOpacity>
 
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        {renderGooglePlaces()}
-
+      {/* Search Bar column*/}
+      <View style={styles.searchBarColumn}>
+        {/* search bar */}
+        <View style={styles.searchContainer}>{renderGooglePlaces()}</View>
         {/* Filter Button */}
         <TouchableOpacity style={styles.filterBtn}>
           <Ionicons name="options-outline" size={22} color="#fff" />
@@ -195,7 +178,7 @@ export default function ExploreMapScreen() {
       )}
 
       {/* Map */}
-      <MapView/>
+      <MapView ref={mapRef} style={styles.map} region={region} />
 
       {/* Loading Indicator */}
       {loading && (
@@ -207,13 +190,13 @@ export default function ExploreMapScreen() {
 
       {/* Bottom hotel cards */}
       <View style={styles.cardContainer}>
-        {/* <FlatList
+        <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
           data={hotels}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.card}
               onPress={() => handleCardPress(item)}
             >
@@ -226,23 +209,23 @@ export default function ExploreMapScreen() {
               </View>
             </TouchableOpacity>
           )}
-        /> */}
+        />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { 
+  container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
-  map: { 
-    flex: 1 
+  map: {
+    flex: 1,
   },
   backButton: {
     position: "absolute",
-    top: 50,
+    top: 35,
     left: 15,
     zIndex: 3,
     backgroundColor: "#fff",
@@ -254,16 +237,23 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  searchContainer: {
-    position: "absolute",
-    top: 50,
+  searchBarColumn: {
     flexDirection: "row",
-    width: width - 30,
+    alignItems: "center",
+    paddingHorizontal: 15,
+    position: "absolute",
+    top: 90,
+    gap: 10,
+    zIndex: 3,
+  },
+  searchContainer: {
+    flexDirection: "row",
+    width: width - 80,
     backgroundColor: "#fff",
     alignSelf: "center",
-    borderRadius: 12,
+    borderRadius: 5,
     zIndex: 2,
-    padding: 8,
+    padding: 1,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -274,13 +264,17 @@ const styles = StyleSheet.create({
   textInput: {
     height: 40,
     fontSize: 15,
-    color: '#000',
+    color: "#000",
   },
   filterBtn: {
     backgroundColor: "#0057ff",
     borderRadius: 8,
     padding: 8,
-    marginLeft: 4,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   cardContainer: {
     position: "absolute",
@@ -300,28 +294,28 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
   },
-  cardImage: { 
-    width: "100%", 
-    height: 120 
+  cardImage: {
+    width: "100%",
+    height: 120,
   },
-  cardTitle: { 
-    fontWeight: "700", 
-    fontSize: 14, 
-    marginBottom: 2 
+  cardTitle: {
+    fontWeight: "700",
+    fontSize: 14,
+    marginBottom: 2,
   },
-  cardSubtitle: { 
-    fontSize: 12, 
-    color: "#555" 
+  cardSubtitle: {
+    fontSize: 12,
+    color: "#555",
   },
-  cardRating: { 
-    fontSize: 12, 
-    color: "#0066ff", 
-    marginTop: 3 
+  cardRating: {
+    fontSize: 12,
+    color: "#0066ff",
+    marginTop: 3,
   },
-  cardPrice: { 
-    fontSize: 13, 
-    fontWeight: "700", 
-    marginTop: 5 
+  cardPrice: {
+    fontSize: 13,
+    fontWeight: "700",
+    marginTop: 5,
   },
   errorContainer: {
     position: "absolute",
@@ -358,10 +352,10 @@ const styles = StyleSheet.create({
   },
   noResultsContainer: {
     padding: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
   noResultsText: {
-    color: '#666',
+    color: "#666",
     fontSize: 14,
   },
 });

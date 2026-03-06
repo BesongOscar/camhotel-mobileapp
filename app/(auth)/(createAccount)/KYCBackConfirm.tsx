@@ -22,10 +22,6 @@ export default function KYCBackConfirm() {
     router.back(); // Go back to camera screen
   };
 
-  const handleBack = () => {
-    router.back();
-  };
-
   const handleConfirm = async () => {
     try {
       // Save the completion status to AsyncStorage

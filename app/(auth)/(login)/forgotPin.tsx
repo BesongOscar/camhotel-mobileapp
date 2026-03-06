@@ -33,7 +33,7 @@ export default function ForgotPin() {
           <TextInput
             style={styles.textInput}
             placeholder="Enter Phone Number"
-            keyboardType="email-address"
+            keyboardType="phone-pad"
             autoCapitalize="none"
           />
         </View>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import Home from "@/app/(main)/Home";
 import { useFavorites } from "@/src/context/FavoritesContext";
 import { useRouter } from "expo-router";
 import { hotelCardStyles as styles } from "@/styles/components/(Main)_Components/hotelCard";

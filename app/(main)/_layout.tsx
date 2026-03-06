@@ -19,7 +19,7 @@ const Mainlayout = () => {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: colors.textSecondary,
         tabBarStyle: { backgroundColor: colors.background, paddingTop: 2 },
         headerStyle: { backgroundColor: colors.background },
         headerShadowVisible: false,
