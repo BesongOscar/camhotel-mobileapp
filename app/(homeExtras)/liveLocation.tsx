@@ -1,5 +1,4 @@
 import LiveLocationModal from "@/components/modals/liveLocationModal";
-import ArrowBack from "@/components/arrowback";
 import { liveLocationStyles as styles } from "@/styles/app/(homeExtras)/liveLocation";
 import { Ionicons } from "@expo/vector-icons";
 import { Link, useRouter } from "expo-router";
@@ -9,17 +8,14 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "@/src/themes/colors";
 
 export default function LiveLocation() {
-  const router = useRouter();
-  const handleBack = () => {
-    router.back();
-  };
-  const [modalVisible, setModalVisible] = useState(false);
-  useEffect(() => {
-    setModalVisible(true);
-  }, []);
+  const [modalVisible, setModalVisible] = useState(true);
+
   return (
     <SafeAreaView style={styles.Container} edges={["top"]}>
-       <LiveLocationModal visible= {modalVisible} onClose={() => setModalVisible(false)}/>     
+      <LiveLocationModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+      />
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <View style={styles.iconContainer}>
           <Ionicons name="location" size={50} color={colors.primary} />

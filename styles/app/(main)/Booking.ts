@@ -11,7 +11,7 @@ export const BookingStyles = StyleSheet.create({
   imageContainer: {
     height: 200,
     width: "100%",
-    backgroundColor: colors.background,
+    backgroundColor: colors.secondary,
     marginBottom: 20,
     marginTop: 80,
   },
