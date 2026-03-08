@@ -6,20 +6,21 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { forgotPinStyles as styles } from "@/styles/app/(auth)/(login)/forgotPin";
 import ArrowBack from "@/components/arrowback";
 import Button from "@/components/button";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function ForgotPin() {
   const router = useRouter();
+  const { t } = useTranslation();
   const handlePush = () => {
     router.push("/(auth)/(login)/resetPin");
   };
   return (
     <SafeAreaView edges={["top", "bottom"]} style={styles.container}>
-      <ArrowBack/>
+      <ArrowBack />
       <View style={{ marginVertical: 40 }}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("forgotScreen.subtitle2")}</Text>
-        <Text style={styles.caption}>{i18n.t("forgotScreen.description2")}</Text>
+        <Text style={styles.subtitle}>{t("forgotScreen.subtitle2")}</Text>
+        <Text style={styles.caption}>{t("forgotScreen.description2")}</Text>
       </View>
 
       <View style={styles.imgContainer}>
@@ -27,7 +28,9 @@ export default function ForgotPin() {
       </View>
 
       <View style={styles.logininputContainer}>
-        <Text style={styles.loginlabel}>{i18n.t("forgotScreen.phoneNumberPlaceholder")}</Text>
+        <Text style={styles.loginlabel}>
+          {t("forgotScreen.phoneNumberPlaceholder")}
+        </Text>
         <View style={styles.loginInput}>
           <Text>+237 </Text>
           <TextInput
@@ -40,7 +43,7 @@ export default function ForgotPin() {
       </View>
 
       <Button
-        label={i18n.t("forgotScreen.buttonText")}
+        label={t("forgotScreen.buttonText")}
         onPress={handlePush}
         theme="secondary"
         height={60}

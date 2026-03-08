@@ -6,11 +6,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { KYCfrontConfirmStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCFrontConfirm";
 import ArrowBack from "../../../components/arrowback";
 import { colors } from "@/src/themes";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function KYCFrontConfirm() {
   const router = useRouter();
   const { imageUri, stepKey } = useLocalSearchParams();
+  const { t } = useTranslation();
 
   const handleRetake = () => {
     router.back(); // Go back to camera screen
@@ -33,10 +34,12 @@ export default function KYCFrontConfirm() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack/>
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("kycVerificationStep1.subtitle")}</Text>
+        <Text style={styles.subtitle}>
+          {t("kycVerificationStep1.subtitle")}
+        </Text>
       </View>
 
       <View style={localStyles.imageContainer}>
@@ -49,20 +52,22 @@ export default function KYCFrontConfirm() {
           <Text>No image captured</Text>
         )}
       </View>
-      <Text style={styles.caption}>{i18n.t("kycVerificationConfirm.instruction")}</Text>
+      <Text style={styles.caption}>
+        {t("kycVerificationConfirm.instruction")}
+      </Text>
 
       <View style={localStyles.buttonsContainer}>
         <Button
           onPress={handleRetake}
           theme={"tertiary"}
-          label={i18n.t("kycVerificationConfirm.cancelButtonText")}
+          label={t("kycVerificationConfirm.cancelButtonText")}
           height={50}
           width={145}
         />
         <Button
           onPress={handleConfirm}
           theme={"secondary"}
-          label={i18n.t("kycVerificationConfirm.sendButtonText")}
+          label={t("kycVerificationConfirm.sendButtonText")}
           height={50}
           width={145}
         />

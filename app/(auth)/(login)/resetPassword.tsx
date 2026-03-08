@@ -7,10 +7,11 @@ import ArrowBack from "@/components/arrowback";
 import Button from "@/components/button";
 import { resetPasswordStyles as styles } from "@/styles/app/(auth)/(login)/resetPassword";
 import { Ionicons } from "@expo/vector-icons";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 import { colors } from "@/src/themes";
 
 export default function ResetPassword() {
+  const {t} = useTranslation();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState(false);
   const router = useRouter();
@@ -22,13 +23,13 @@ export default function ResetPassword() {
       <ArrowBack/>
       <View style={{ marginTop: 40 }}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("resetScreen.subtitle1")}</Text>
-        <Text style={styles.caption}>{i18n.t("resetScreen.description1")}</Text>
+        <Text style={styles.subtitle}>{t("resetScreen.subtitle1")}</Text>
+        <Text style={styles.caption}>{t("resetScreen.description1")}</Text>
       </View>
 
       <View style={styles.formGroup}>
         <View style={styles.logininputContainer}>
-          <Text style={styles.loginlabel}>{i18n.t("resetScreen.PasswordPlaceholder")}</Text>
+          <Text style={styles.loginlabel}>{t("resetScreen.PasswordPlaceholder")}</Text>
           <View style={styles.loginInput}>
             <TextInput
               style={styles.textInput}
@@ -48,7 +49,7 @@ export default function ResetPassword() {
         </View>
 
         <View style={styles.logininputContainer}>
-          <Text style={styles.loginlabel}>{i18n.t("resetScreen.confirmPasswordPlaceholder")}</Text>
+          <Text style={styles.loginlabel}>{t("resetScreen.confirmPasswordPlaceholder")}</Text>
           <View style={styles.loginInput}>
             <TextInput
               style={styles.textInput}
@@ -68,7 +69,7 @@ export default function ResetPassword() {
         </View>
       </View>
       <Button
-        label={i18n.t("resetScreen.buttonText")}
+        label={t("resetScreen.buttonText")}
         onPress={handlePush}
         theme="secondary"
         height={60}

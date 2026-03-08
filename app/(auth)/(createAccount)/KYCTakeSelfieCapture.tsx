@@ -2,20 +2,19 @@ import { CameraView, useCameraPermissions } from "expo-camera";
 import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
 //components
 import { KYCtakeSelfieCaptureStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCTakeSelfieCapture";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import ArrowBack from "../../../components/arrowback";
 import CameraButton from "@/components/(createAcccount)_Components/kycVerification_Components/cameraButton";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 import { colors } from "@/src/themes/colors";
 
 export default function KYCTakeSelfieCapture() {
   const router = useRouter();
   const cameraRef = useRef<CameraView>(null);
   const [permission, requestPermission] = useCameraPermissions();
-  const params = useLocalSearchParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!permission?.granted) {
@@ -38,10 +37,10 @@ export default function KYCTakeSelfieCapture() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: "center" }}>
-          {i18n.t("kycCameraAccess.title")}
+          {t("kycCameraAccess.title")}
         </Text>
         <TouchableOpacity onPress={requestPermission}>
-          <Text style={{ color: "blue" }}>{i18n.t("kycCameraAccess.subtitle")}</Text>
+          <Text style={{ color: "blue" }}>{t("kycCameraAccess.subtitle")}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -49,10 +48,12 @@ export default function KYCTakeSelfieCapture() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack/>
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("kycVerificationStep3.subtitle")}</Text>
+        <Text style={styles.subtitle}>
+          {t("kycVerificationStep3.subtitle")}
+        </Text>
       </View>
 
       <View style={localStyles.cameraContainer}>
@@ -64,9 +65,11 @@ export default function KYCTakeSelfieCapture() {
       </View>
 
       <View>
-        <Text style={styles.caption}>{i18n.t("kycVerificationStep3.description")}</Text>
         <Text style={styles.caption}>
-          {i18n.t("kycVerificationStep3.instruction")}
+          {t("kycVerificationStep3.description")}
+        </Text>
+        <Text style={styles.caption}>
+          {t("kycVerificationStep3.instruction")}
         </Text>
       </View>
 

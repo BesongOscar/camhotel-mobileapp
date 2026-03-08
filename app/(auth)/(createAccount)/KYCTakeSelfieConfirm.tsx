@@ -2,19 +2,14 @@ import Button from "@/components/button";
 import { KYCtakeSelfieConfirmStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCTakeSelfieConfirm";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import {
-  Alert,
-  Image,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ArrowBack from "../../../components/arrowback";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 import { colors } from "@/src/themes";
 
 export default function KYCTakeSelfieConfirm() {
+  const { t } = useTranslation();
   const router = useRouter();
   const { imageUri, stepKey } = useLocalSearchParams();
 
@@ -39,10 +34,12 @@ export default function KYCTakeSelfieConfirm() {
   };
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack/>
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("kycVerificationStep3.subtitle")}</Text>
+        <Text style={styles.subtitle}>
+          {t("kycVerificationStep3.subtitle")}
+        </Text>
       </View>
 
       <View style={localStyles.imageContainer}>
@@ -56,20 +53,22 @@ export default function KYCTakeSelfieConfirm() {
         )}
       </View>
 
-      <Text style={styles.caption}>{i18n.t("kycVerificationConfirm.instruction")}</Text>
+      <Text style={styles.caption}>
+        {t("kycVerificationConfirm.instruction")}
+      </Text>
 
       <View style={localStyles.buttonsContainer}>
         <Button
           onPress={handleRetake}
           theme={"tertiary"}
-          label={i18n.t("kycVerificationConfirm.cancelButtonText")}
+          label={t("kycVerificationConfirm.cancelButtonText")}
           height={50}
           width={145}
         />
         <Button
           onPress={handleConfirm}
           theme={"secondary"}
-          label={i18n.t("kycVerificationConfirm.sendButtonText")}
+          label={t("kycVerificationConfirm.sendButtonText")}
           height={50}
           width={145}
         />

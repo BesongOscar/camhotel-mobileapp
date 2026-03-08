@@ -1,4 +1,11 @@
-import { View, Text, ActivityIndicator, Modal } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  Modal,
+  Alert,
+  Linking,
+} from "react-native";
 import Button from "@/components/button";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -22,36 +29,104 @@ export default function LiveLocationModal({
   const requestLocation = async () => {
     setLoading(true);
     setError(null);
+
     try {
-      const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setError("Permission denied. Please enable location in settings.");
+      // Step 1: Check if location services are enabled
+      const isEnabled = await Location.hasServicesEnabledAsync();
+      if (!isEnabled) {
+        setError(
+          "Location services are disabled. Please enable GPS in your device settings.",
+        );
         setLoading(false);
         return;
       }
 
-      const coords = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Balanced,
+      // Step 2: Request permission
+      const { status, canAskAgain } =
+        await Location.requestForegroundPermissionsAsync();
+
+      if (status === "denied") {
+        if (!canAskAgain) {
+          setError(
+            "Location permission permanently denied. Please enable it in App Settings.",
+          );
+          Alert.alert(
+            "Permission Required",
+            "Please go to Settings > Apps > CAMHOTEL-APP > Permissions and enable Location.",
+            [
+              { text: "Cancel", style: "cancel" },
+              { text: "Open Settings", onPress: () => Linking.openSettings() },
+            ],
+          );
+        } else {
+          setError("Location permission denied. Please allow location access.");
+        }
+        setLoading(false);
+        return;
+      }
+
+      if (status !== "granted") {
+        setError("Location permission not granted. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      // Step 3: Race location fetch against a 15s timeout
+      const locationPromise = Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Low, // Low is much faster than Balanced
       });
 
-      // Reverse-geocode to get city/region name
-      const [place] = await Location.reverseGeocodeAsync({
-        latitude: coords.coords.latitude,
-        longitude: coords.coords.longitude,
-      });
+      const timeoutPromise = new Promise<never>((_, reject) =>
+        setTimeout(() => reject(new Error("TIMEOUT")), 15000),
+      );
 
-      const city =
-        place?.city || place?.subregion || place?.region || "Your Location";
+      let coords: Location.LocationObject;
+      try {
+        coords = await Promise.race([locationPromise, timeoutPromise]);
+      } catch (raceErr: any) {
+        if (raceErr.message === "TIMEOUT") {
+          // Fallback to last known location
+          const lastKnown = await Location.getLastKnownPositionAsync({
+            maxAge: 300000, // up to 5 minutes old
+            requiredAccuracy: 5000,
+          });
+          if (lastKnown) {
+            coords = lastKnown;
+          } else {
+            setError(
+              "GPS timed out. Make sure GPS is on and you have a clear sky view, then try again.",
+            );
+            setLoading(false);
+            return;
+          }
+        } else {
+          throw raceErr;
+        }
+      }
+
+      // Step 4: Reverse geocode (non-fatal if it fails)
+      let city = "Your Location";
+      try {
+        const [place] = await Location.reverseGeocodeAsync({
+          latitude: coords.coords.latitude,
+          longitude: coords.coords.longitude,
+        });
+        city =
+          place?.city || place?.subregion || place?.region || "Your Location";
+      } catch {
+        // Continue with fallback
+      }
 
       onClose?.();
-
-      // Navigate to Home passing the detected city as destination
       router.push({
         pathname: "/(main)/Home",
         params: { destination: city },
       });
-    } catch (e) {
-      setError("Could not get location. Please try again.");
+    } catch (e: any) {
+      console.error("Location error:", e);
+      setError(
+        "Could not get location. Please check your GPS settings and try again.",
+      );
     } finally {
       setLoading(false);
     }

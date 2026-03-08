@@ -1,12 +1,13 @@
 import { Image } from "expo-image";
-import i18n from "@/locales/i18n";
+
 const placeholder = undefined;
 
-export const getSlides = () => [
+export const getSlides = (t: any) => [
+ 
   {
     id: "1",
-    title: i18n.t("onBoardingSlide1.title"),
-    description: i18n.t("onBoardingSlide1.description"),
+    title: t("onBoardingSlide1.title"),
+    description: t("onBoardingSlide1.description"),
     image: (
       <Image
         source={placeholder}
@@ -16,7 +17,7 @@ export const getSlides = () => [
   },
   {
     id: "2",
-    title: i18n.t("onBoardingSlide2.title"),
+    title: t("onBoardingSlide2.title"),
     description: "",
     image: (
       <Image
@@ -27,13 +28,13 @@ export const getSlides = () => [
   },
   {
     id: "3",
-    title: i18n.t("onBoardingSlide3.title"),
+    title: t("onBoardingSlide3.title"),
     description: "",
     image: <Image source={placeholder} />,
   },
   {
     id: "4",
-    title: i18n.t("onBoardingSlide4.title"),
+    title: t("onBoardingSlide4.title"),
     description: "",
     image: (
       <Image

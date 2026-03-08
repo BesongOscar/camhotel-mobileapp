@@ -5,13 +5,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 //components
 import EmailLogin from "@/components/(login)_Components/EmailLogin";
 import PhoneLogin from "@/components/(login)_Components/PhoneLogin";
-import ArrowBack from "@/components/arrowback";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 import Button from "@/components/button";
 import { loginStyles as styles } from "@/styles/app/(auth)/(login)/login";
-import i18n from "@/locales/i18n";
 
 const LoginScreen = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   const [selectedTab, setSelectedTab] = useState("Phone");
   const handlePush = () => {
     router.push("/(main)/Home");
@@ -22,8 +22,8 @@ const LoginScreen = () => {
       <View style={styles.logincontainer}>
         {/* Header */}
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("loginScreen.subtitle")}</Text>
-        <Text style={styles.description}>{i18n.t("loginScreen.description")}</Text>
+        <Text style={styles.subtitle}>{t("loginScreen.subtitle")}</Text>
+        <Text style={styles.description}>{t("loginScreen.description")}</Text>
 
         {/* Toggle between Phone and Email */}
         <View style={[styles.logintoggleContainer, { marginVertical: 10 }]}>
@@ -69,15 +69,17 @@ const LoginScreen = () => {
         <Button
           theme="secondary"
           onPress={handlePush}
-          label={i18n.t("loginScreen.buttonText")}
+          label={t("loginScreen.buttonText")}
           width={"100%"}
           height={60}
         />
         {/* Footer */}
         <Text style={[styles.caption, { marginVertical: 10 }]}>
-          {i18n.t("loginScreen.caption")}{" "}
+          {t("loginScreen.caption")}{" "}
           <Link href={"/(auth)/(createAccount)/CreateAccount"}>
-            <Text style={styles.link}>{i18n.t("loginScreen.createAccountText")}</Text>
+            <Text style={styles.link}>
+              {t("loginScreen.createAccountText")}
+            </Text>
           </Link>
         </Text>
       </View>

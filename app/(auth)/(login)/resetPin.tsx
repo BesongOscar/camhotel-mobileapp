@@ -8,12 +8,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ArrowBack from "@/components/arrowback";
 import Button from "@/components/button";
 import { resetPinStyles as styles } from "@/styles/app/(auth)/(login)/resetPin";
-import i18n from "@/locales/i18n";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function ResetPin() {
   const [pinVisible, setPinVisible] = useState(false);
   const [confirmPin, setConfirmPin] = useState(false)
   const router = useRouter();
+  const {t} = useTranslation();
   const handlePush = () => {
     router.push("/(auth)/(login)/login");
   };
@@ -23,13 +24,13 @@ export default function ResetPin() {
 
       <View style={{ marginTop: 40 }}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("resetScreen.subtitle2")}</Text>
-        <Text style={styles.caption}>{i18n.t("resetScreen.description2")}</Text>
+        <Text style={styles.subtitle}>{t("resetScreen.subtitle2")}</Text>
+        <Text style={styles.caption}>{t("resetScreen.description2")}</Text>
       </View>
 
       <View style={styles.formGroup}>
         <View style={styles.logininputContainer}>
-          <Text style={styles.loginlabel}>{i18n.t("resetScreen.pinPlaceholder")}</Text>
+          <Text style={styles.loginlabel}>{t("resetScreen.pinPlaceholder")}</Text>
           <View style={styles.loginInput}>
             <TextInput
               style={styles.textInput}
@@ -47,7 +48,7 @@ export default function ResetPin() {
         </View>
 
         <View style={styles.logininputContainer}>
-          <Text style={styles.loginlabel}>{i18n.t("resetScreen.confirmPinPlaceholder")}</Text>
+          <Text style={styles.loginlabel}>{t("resetScreen.confirmPinPlaceholder")}</Text>
           <View style={styles.loginInput}>
             <TextInput
               style={styles.textInput}
@@ -65,7 +66,7 @@ export default function ResetPin() {
         </View>
       </View>
       <Button
-        label={i18n.t("resetScreen.buttonText")}
+        label={t("resetScreen.buttonText")}
         onPress={handlePush}
         theme="secondary"
         height={60}

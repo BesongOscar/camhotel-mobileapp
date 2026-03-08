@@ -4,18 +4,18 @@ import React, { useEffect, useRef } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ArrowBack from "../../../components/arrowback";
-import { KYCbackCaptureStyles as styles} from "@/styles/app/(auth)/(createAccount)/KYCBackCapture";
+import { KYCbackCaptureStyles as styles } from "@/styles/app/(auth)/(createAccount)/KYCBackCapture";
 import CameraButton from "@/components/(createAcccount)_Components/kycVerification_Components/cameraButton";
-import i18n from "@/locales/i18n";
-//import ProgressBar from "../../components/ProgressIndicator";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function KYCBackCapture() {
   const router = useRouter();
+  const { t } = useTranslation();
   const cameraRef = useRef<CameraView>(null);
   const [permission, requestPermission] = useCameraPermissions();
 
   useEffect(() => {
-    if (!permission?.granted) { 
+    if (!permission?.granted) {
       requestPermission();
     }
   }, []);
@@ -35,10 +35,10 @@ export default function KYCBackCapture() {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: "center" }}>
-          {i18n.t("kycCameraAccess.title")}
+          {t("kycCameraAccess.title")}
         </Text>
         <TouchableOpacity onPress={requestPermission}>
-          <Text style={{ color: "blue" }}>{i18n.t("kycCameraAccess.subtitle")}</Text>
+          <Text style={{ color: "blue" }}>{t("kycCameraAccess.subtitle")}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -46,10 +46,12 @@ export default function KYCBackCapture() {
 
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <ArrowBack/>
+      <ArrowBack />
       <View style={styles.header}>
         <Text style={styles.title}>camhotel</Text>
-        <Text style={styles.subtitle}>{i18n.t("kycVerificationStep2.subtitle")}</Text>
+        <Text style={styles.subtitle}>
+          {t("kycVerificationStep2.subtitle")}
+        </Text>
       </View>
 
       <View style={localStyles.cameraContainer}>
@@ -61,9 +63,11 @@ export default function KYCBackCapture() {
       </View>
 
       <View>
-        <Text style={styles.caption}>{i18n.t("kycVerificationStep2.description")}</Text>
         <Text style={styles.caption}>
-          {i18n.t("kycVerificationStep2.instruction")}
+          {t("kycVerificationStep2.description")}
+        </Text>
+        <Text style={styles.caption}>
+          {t("kycVerificationStep2.instruction")}
         </Text>
       </View>
 

@@ -1,18 +1,19 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useState } from "react";
-import * as Localization from "expo-localization";
 import { languageScreenStyles as styles } from "@/styles/app/(accountExtras)/languageScren";
 import i18n from "@/locales/i18n";
 import { useLanguage } from "@/src/context/languageContext";
 
 export default function LanguageScreen() {
   const { language, changeLanguage, locale } = useLanguage();
+  // Binding locale here ensures this component re-renders whenever the
+  // language changes, so all i18n.t() calls below reflect the new locale.
+  const t = (key: string) => i18n.t(key, { locale });
 
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       {/* Title */}
-      <Text style={styles.Title}>{i18n.t("languageScreen.title")}</Text>
+      <Text style={styles.Title}>{t("languageScreen.title")}</Text>
 
       {/* Options */}
       <View style={styles.optionsContainer}>
@@ -26,7 +27,7 @@ export default function LanguageScreen() {
         >
           <Text style={styles.icon}>🌐</Text>
           <Text style={styles.optionText}>
-            {i18n.t("languageScreen.system")}
+            {t("languageScreen.system")}
           </Text>
           <Text style={styles.radio}>{language === "system" ? "✓" : "○"}</Text>
         </TouchableOpacity>
