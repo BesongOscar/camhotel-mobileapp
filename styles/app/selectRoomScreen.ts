@@ -1,20 +1,22 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
+const PRIMARY = colors.primary;
 export const SelectRoomScreenStyles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
   },
   header: {
     backgroundColor: "white",
     paddingHorizontal: 10,
     paddingVertical: 10,
-    position: 'absolute',
+    position: "absolute",
   },
   hotelTitle: {
     fontSize: 18,
     fontWeight: "400",
     marginBottom: 4,
-    color: "#000",
+    color: colors.textPrimary,
   },
   detailBoxContainer: {
     flexDirection: "row",
@@ -24,7 +26,7 @@ export const SelectRoomScreenStyles = StyleSheet.create({
     height: 45,
     borderTopLeftRadius: 5,
     borderBottomLeftRadius: 5,
-    borderColor: "#00ee",
+    borderColor: PRIMARY,
     width: "50%",
     borderWidth: 1,
   },
@@ -33,7 +35,7 @@ export const SelectRoomScreenStyles = StyleSheet.create({
     borderTopRightRadius: 5,
     borderBottomRightRadius: 5,
     width: "50%",
-    borderColor: "#00ee",
+    borderColor: PRIMARY,
     borderWidth: 1,
   },
   bottomBar: {
@@ -44,9 +46,9 @@ export const SelectRoomScreenStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 10,
     paddingBottom: 20,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     borderTopWidth: 1,
-    borderColor: "#e0e0e0",
+    borderColor: colors.buttonBorder,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -56,13 +58,13 @@ export const SelectRoomScreenStyles = StyleSheet.create({
   },
   startFromText: {
     fontSize: 12,
-    color: "#666",
+    color: colors.textSecondary,
     marginBottom: 2,
   },
   priceText: {
     fontSize: 18,
     fontWeight: "800",
-    color: "#00ee",
+    color: PRIMARY,
   },
   priceLittleText: {
     color: "grey",

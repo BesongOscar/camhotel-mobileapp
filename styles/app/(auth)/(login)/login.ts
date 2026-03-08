@@ -1,3 +1,4 @@
+import { colors } from "@/src/themes";
 import { StyleSheet } from "react-native";
 
 export const loginStyles = StyleSheet.create({
@@ -5,12 +6,11 @@ export const loginStyles = StyleSheet.create({
     flex: 1,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    marginTop: 10,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.background,
   },
   logintoggleContainer: {
     flexDirection: "row",
-    backgroundColor: "#f2f2f2",
+    backgroundColor: colors.buttonTertiary,
     borderRadius: 30,
     borderWidth: 0.1,
     marginBottom: 25,
@@ -25,17 +25,17 @@ export const loginStyles = StyleSheet.create({
   },
   logintoggleText: {
     fontSize: 14,
-    color: "#555",
+    color: colors.textSecondary,
     fontWeight: "500",
   },
   loginactiveToggle: {
-    backgroundColor: "#0044ff",
+    backgroundColor: colors.primary,
   },
-  loginactiveText: { color: "#fff" },
+  loginactiveText: { color: colors.background },
   title: {
     fontWeight: "bold",
     fontSize: 27,
-    color: "black",
+    color: colors.textPrimary,
     textAlign: "center",
     marginBottom: 15,
   },
@@ -44,7 +44,7 @@ export const loginStyles = StyleSheet.create({
     textAlign: "center",
   },
   description: {
-    color: "black",
+    color: colors.textPrimary,
     fontSize: 20,
     fontWeight: "400",
     textAlign: "center",
@@ -60,7 +60,7 @@ export const loginStyles = StyleSheet.create({
   },
   link: {
     textDecorationLine: "underline",
-    color: "#00ee",
+    color: colors.primary,
     fontSize: 14,
     margin: 10,
     textAlign: "center",

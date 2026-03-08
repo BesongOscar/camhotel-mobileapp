@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const PaymentMethodStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     paddingHorizontal: 20,
     paddingTop: 10,
   },
@@ -19,7 +20,7 @@ export const PaymentMethodStyles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 150,
     gap: 10,
-    borderColor: "black",
+    borderColor: colors.textPrimary,
     borderWidth: 1,
     borderRadius: 8,
     alignItems: "center",
@@ -29,7 +30,7 @@ export const PaymentMethodStyles = StyleSheet.create({
   },
   AddPaymentLabel: {
     fontSize: 15,
-    color: "black",
+    color: colors.textPrimary,
     fontWeight: "400",
   },
 });

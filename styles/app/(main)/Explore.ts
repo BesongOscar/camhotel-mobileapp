@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const ExploreStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    marginTop: 10,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.background,
   },
   SearchContainer: {
     flexDirection: "row",
@@ -17,12 +17,12 @@ export const ExploreStyles = StyleSheet.create({
     gap: 10,
   },
   SearchButton: {
-    backgroundColor: "white",
+    backgroundColor: colors.background,
     height: 50,
     width: "85%",
     paddingVertical: 12,
     borderWidth: 1,
-    borderColor: "lightgrey",
+    borderColor: colors.buttonBorder,
     borderRadius: 5,
     paddingHorizontal: 10,
     justifyContent: "center",
@@ -32,13 +32,13 @@ export const ExploreStyles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 45,
-    backgroundColor: "#00ee",
+    backgroundColor: colors.primary,
     padding: 10,
     borderRadius: 3,
   },
   divider: {
     borderWidth: 0.2,
-    backgroundColor: "grey",
+    backgroundColor: colors.textSecondary,
     width: "100%",
     marginBottom: 5,
   },

@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
-export const  KYCVerificationStyles= StyleSheet.create({
+export const  KYCVerificationModalStyles= StyleSheet.create({
   ModalOverlay: {
     flex: 1,
     justifyContent: "center",
@@ -20,7 +21,7 @@ export const  KYCVerificationStyles= StyleSheet.create({
   imageContainer: {
     height: 100,
     width: "65%",
-    backgroundColor: "grey",
+    backgroundColor: colors.textSecondary,
     borderRadius: 5,
   },
   modalText: {

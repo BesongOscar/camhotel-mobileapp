@@ -63,7 +63,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
       activeOpacity={0.8}
       onPress={() =>
         router.push({
-          pathname: "/hotelDetailScreen",
+          pathname: "/(homeExtras)/hotelDetailScreen",
           params: { name, rating, location, price, image, reviews },
         })
       }

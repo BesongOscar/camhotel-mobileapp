@@ -1,17 +1,17 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const welcomeStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 5,
+    paddingVertical: 50,
     paddingHorizontal: 10,
-    marginTop: 10,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.background,
   },
   title: {
     fontWeight: "bold",
     fontSize: 27,
-    color: "black",
+    color: colors.textPrimary,
     textAlign: "center",
     marginBottom: 15,
   },
@@ -20,7 +20,7 @@ export const welcomeStyles = StyleSheet.create({
     textAlign: "center",
   },
   description: {
-    color: "black",
+    color: colors.textPrimary,
     fontSize: 22,
     fontWeight: "700",
     letterSpacing: 1.1,
@@ -29,7 +29,7 @@ export const welcomeStyles = StyleSheet.create({
     marginTop: 20,
   },
   link: {
-    color: "blue",
+    color: colors.primary,
     fontWeight: "bold",
     fontSize: 15,
     marginLeft: 10,
@@ -38,7 +38,7 @@ export const welcomeStyles = StyleSheet.create({
     height: 330,
     width: "100%",
     borderRadius: 15,
-    backgroundColor: "lightgrey",
+    backgroundColor: colors.secondary,
     marginVertical: 20,
   },
 });

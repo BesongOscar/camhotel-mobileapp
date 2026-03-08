@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const NotificationSettingsScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: colors.background,
     paddingHorizontal: 20,
     paddingTop: 5,
   },

@@ -7,10 +7,11 @@ export const colors = {
   textPrimary: "#000",
   textSecondary: "#666",
   //  interactive colors
-  link: "#007AFF",
+  link: "#0000EE",
   buttonText: "#fff",
   buttonSecondary: "#ccc",
   buttonTertiary: "#f2f2ff",
+  buttonBorder: "#ddd",
   // calendar colors
   calendarPrimary: "#CFE1FF",
   // switch colors

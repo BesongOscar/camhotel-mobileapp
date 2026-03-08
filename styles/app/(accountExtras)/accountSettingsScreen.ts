@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const AccountSettingsScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     paddingHorizontal: 20,
   },
   Title: {

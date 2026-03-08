@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const PrivacyPolicyStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
   },
    content: {
     paddingHorizontal: 16,
@@ -20,7 +21,7 @@ export const PrivacyPolicyStyles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    color: "#444",
+    color: colors.textPrimary,
     marginTop: 4,
     lineHeight: 20,
   },

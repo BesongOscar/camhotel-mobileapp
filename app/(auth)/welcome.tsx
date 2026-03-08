@@ -14,7 +14,7 @@ export default function Welcome() {
 
   return (
     <SafeAreaView
-      style={[styles.container, { marginTop: 50 }]}
+      style={styles.container}
       edges={["top", "bottom"]}
     >
       <Text style={styles.title}>camhotel</Text>

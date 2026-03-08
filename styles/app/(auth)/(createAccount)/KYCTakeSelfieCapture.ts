@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const KYCtakeSelfieCaptureStyles = StyleSheet.create({
     container: {
@@ -6,12 +7,12 @@ export const KYCtakeSelfieCaptureStyles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginTop: 10,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.background,
   },
   title: {
     fontWeight: "bold",
     fontSize: 27,
-    color: "black",
+    color: colors.textPrimary,
     textAlign: "center",
     marginBottom: 15,
   },

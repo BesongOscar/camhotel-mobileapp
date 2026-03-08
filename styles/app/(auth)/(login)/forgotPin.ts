@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const forgotPinStyles = StyleSheet.create({
     container: {
     flex: 1,
     paddingVertical: 5,
     paddingHorizontal: 10,
-    marginTop: 10,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: colors.background,
   },
   logininputContainer: {
     marginBottom: 20,
@@ -20,8 +20,8 @@ export const forgotPinStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#ddd",
-    backgroundColor: "#F2F2FF",
+    borderColor: colors.buttonBorder,
+    backgroundColor: colors.buttonTertiary,
     borderRadius: 8,
     paddingHorizontal: 10,
   },
@@ -48,7 +48,7 @@ export const forgotPinStyles = StyleSheet.create({
     height: 220,
     width: "100%",
     borderRadius: 15,
-    backgroundColor: "lightgrey",
+    backgroundColor: colors.buttonSecondary,
     marginTop: 5,
     marginBottom: 10,
   },

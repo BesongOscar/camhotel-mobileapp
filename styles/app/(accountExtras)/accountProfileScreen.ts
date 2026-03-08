@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const accountProfileScreenStyles = StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ export const accountProfileScreenStyles = StyleSheet.create({
     backgroundColor: "white",
   },
   profileContainer: {
-    backgroundColor: "#f2f2ff",
+    backgroundColor: colors.buttonTertiary,
     marginTop: 10,
     marginBottom: 20,
     paddingVertical: 20,
@@ -27,7 +28,7 @@ export const accountProfileScreenStyles = StyleSheet.create({
     height: 90,
     borderRadius: 45,
     borderWidth: 2,
-    borderColor: "#00ee",
+    borderColor: colors.primary,
   },
   CameraIconContainer: {
     position: "absolute",
@@ -37,7 +38,7 @@ export const accountProfileScreenStyles = StyleSheet.create({
     height: 40,
     width: 40,
     borderRadius: 20,
-    shadowColor: "#000",
+    shadowColor: colors.textPrimary,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -57,7 +58,7 @@ export const accountProfileScreenStyles = StyleSheet.create({
   },
   userEmail: {
     fontSize: 14,
-    color: "#666",
+    color: colors.textSecondary,
   },
   statsRow: {
     flexDirection: "row",
@@ -75,12 +76,12 @@ export const accountProfileScreenStyles = StyleSheet.create({
     flexDirection: "column",
   },
   totalBookingsText: {
-    color: "#666",
+    color: colors.textSecondary,
     fontSize: 12,
   },
   totalBookingNumber: {
     fontSize: 16,
-    color: "#000",
+    color: colors.textPrimary,
     fontWeight: "600",
   },
   favouriteHotelContainer: {
@@ -88,12 +89,12 @@ export const accountProfileScreenStyles = StyleSheet.create({
     flexDirection: "column",
   },
   favouriteHotelText: {
-    color: "#666",
+    color: colors.textSecondary,
     fontSize: 12,
   },
   favouriteHotelNumber: {
     fontSize: 16,
-    color: "#000",
+    color: colors.textPrimary,
     fontWeight: "600",
   },
   totalReviewsContainer: {
@@ -101,12 +102,12 @@ export const accountProfileScreenStyles = StyleSheet.create({
     flexDirection: "column",
   },
   totalReviewsText: {
-    color: "#666",
+    color: colors.textSecondary,
     fontSize: 12
   },
   totalReviewsNumber: {
     fontSize: 16,
-    color: "#000",
+    color: colors.textPrimary,
     fontWeight: "600",
   },
 });

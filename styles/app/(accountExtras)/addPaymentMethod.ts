@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
-const PRIMARY = "#00ee";
+const PRIMARY = colors.primary;
 export const AddPaymentMethodStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.background,
     paddingHorizontal: 20,
     paddingTop: 10,
   },
@@ -52,7 +53,7 @@ export const AddPaymentMethodStyles = StyleSheet.create({
   operatorCard: {
     width: "48%",
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: colors.buttonBorder,
     borderRadius: 5,
     padding: 15,
     flexDirection: "row",
@@ -102,8 +103,8 @@ export const AddPaymentMethodStyles = StyleSheet.create({
     marginLeft: "auto",
   },
   cardBadge: {
-    backgroundColor: "#111",
-    color: "#fff",
+    backgroundColor: colors.textPrimary,
+    color: colors.background,
     fontSize: 10,
     paddingHorizontal: 6,
     paddingVertical: 3,
@@ -125,7 +126,7 @@ export const AddPaymentMethodStyles = StyleSheet.create({
     alignSelf: "center",
   },
   buttonText: {
-    color: "#fff",
+    color: colors.background,
     fontWeight: "600",
     fontSize: 16,
   },

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { colors } from "@/src/themes";
 
 export const favoriteScreenStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: colors.background,
     paddingVertical: 1,
     paddingHorizontal: 15,
   },
@@ -17,11 +18,11 @@ export const favoriteScreenStyles = StyleSheet.create({
   favoriteHotelsText: {
     fontSize: 18,
     fontWeight: "400",
-    color: "black",
+    color: colors.textPrimary,
   },
   favoriteHotelsCount: {
     fontSize: 14,
     fontWeight: "400",
-    color: "grey",
+    color: colors.textSecondary,
   },
 });
