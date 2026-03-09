@@ -7,8 +7,15 @@ import { forgotPinStyles as styles } from "@/styles/app/(auth)/(login)/forgotPin
 import ArrowBack from "@/components/arrowback";
 import Button from "@/components/button";
 import { useTranslation } from "@/src/hooks/Usetranslation";
+import CountryCodePicker, {
+  DEFAULT_COUNTRY,
+} from "@/components/(createAcccount)_Components/countryCodePicker";
+import { Country } from "@/constants/countries";
+import { useState } from "react";
 
 export default function ForgotPin() {
+  const [selectedCountry, setSelectedCountry] =
+    useState<Country>(DEFAULT_COUNTRY);
   const router = useRouter();
   const { t } = useTranslation();
   const handlePush = () => {
@@ -32,7 +39,10 @@ export default function ForgotPin() {
           {t("forgotScreen.phoneNumberPlaceholder")}
         </Text>
         <View style={styles.loginInput}>
-          <Text>+237 </Text>
+          <CountryCodePicker
+          selectedCountry={selectedCountry}
+          onSelect={setSelectedCountry}
+          />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Phone Number"

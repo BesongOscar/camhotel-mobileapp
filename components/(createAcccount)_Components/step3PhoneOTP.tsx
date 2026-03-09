@@ -1,7 +1,7 @@
 import ArrowBack from "@/components/arrowback";
 import { StepProps } from "@/constants/formValues";
 import { Text, View } from "react-native";
-import { step3Styles as styles } from "@/styles/components/(createAccount)_Components/step3PhonePIN";
+import { step3Styles as styles } from "@/styles/components/(createAccount)_Components/step3PhoneOTP";
 import Button from "../button";
 import OTPInput from "./otp_input";
 import ProgressBar from "./ProgressIndicator";

@@ -22,13 +22,8 @@ export const step2Styles = StyleSheet.create({
     marginVertical: 30,
   },
   input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    backgroundColor: "#F2F2FF",
-    padding: 12,
+    flex: 1,
     height: 50,
-    marginBottom: 10,
-    borderRadius: 5,
   },
   label: {
     color: "#000018",

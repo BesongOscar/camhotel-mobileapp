@@ -8,6 +8,8 @@ import Button from "../button";
 import ProgressBar from "./ProgressIndicator";
 import i18n from "@/locales/i18n";
 import { colors } from "@/src/themes";
+import CountryCodePicker, { DEFAULT_COUNTRY } from "./countryCodePicker";
+import { Country } from "@/constants/countries";
 
 type StepTwoProps = StepProps;
 
@@ -23,6 +25,9 @@ export default function StepTwo({
 }: StepTwoProps) {
   const [pinVisible, setPinVisible] = useState(false);
   const [confirmPINVisible, setConfirmPINVisible] = useState(false);
+  const [selectedCountry, setSelectedCountry] =
+    useState<Country>(DEFAULT_COUNTRY);
+
   return (
     <View>
       <ArrowBack />
@@ -41,14 +46,21 @@ export default function StepTwo({
         <Text style={styles.label}>
           {i18n.t("CreateAccountStep2.PhoneNumberPlaceholder")}
         </Text>
-        <TextInput
-          placeholder="Enter Phone Number"
-          style={styles.input}
-          value={values.PhoneNumber}
-          onChangeText={handleChange("PhoneNumber")}
-          onBlur={handleBlur("PhoneNumber")}
-          keyboardType="phone-pad"
-        />
+        <View style={styles.loginInput}>
+          <CountryCodePicker
+            selectedCountry={selectedCountry}
+            onSelect={setSelectedCountry}
+          />
+          <TextInput
+            placeholder="Enter Phone Number"
+            style={styles.input}
+            value={values.PhoneNumber}
+            onChangeText={handleChange("PhoneNumber")}
+            onBlur={handleBlur("PhoneNumber")}
+            keyboardType="phone-pad"
+          />
+        </View>
+
         {touched.PhoneNumber && errors.PhoneNumber && (
           <Text style={styles.error}>{errors.PhoneNumber}</Text>
         )}

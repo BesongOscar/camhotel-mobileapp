@@ -3,8 +3,6 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useRef, useState } from "react";
 import {
   ActivityIndicator,
-  Dimensions,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -15,8 +13,8 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import MapView from "react-native-maps";
 import hotels from "@/constants/hotelCard";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { mapStyles as styles } from "@/styles/app/(homeExtras)/map";
 
-const { width, height } = Dimensions.get("window");
 
 // Types
 interface Hotel {
@@ -214,148 +212,3 @@ export default function ExploreMapScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-  map: {
-    flex: 1,
-  },
-  backButton: {
-    position: "absolute",
-    top: 35,
-    left: 15,
-    zIndex: 3,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 6,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  searchBarColumn: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 15,
-    position: "absolute",
-    top: 90,
-    gap: 10,
-    zIndex: 3,
-  },
-  searchContainer: {
-    flexDirection: "row",
-    width: width - 80,
-    backgroundColor: "#fff",
-    alignSelf: "center",
-    borderRadius: 5,
-    zIndex: 2,
-    padding: 1,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  textInput: {
-    height: 40,
-    fontSize: 15,
-    color: "#000",
-  },
-  filterBtn: {
-    backgroundColor: "#0057ff",
-    borderRadius: 8,
-    padding: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  cardContainer: {
-    position: "absolute",
-    bottom: 25,
-    left: 15,
-    right: 15,
-  },
-  card: {
-    backgroundColor: "#fff",
-    width: 220,
-    borderRadius: 12,
-    marginHorizontal: 8,
-    overflow: "hidden",
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  cardImage: {
-    width: "100%",
-    height: 120,
-  },
-  cardTitle: {
-    fontWeight: "700",
-    fontSize: 14,
-    marginBottom: 2,
-  },
-  cardSubtitle: {
-    fontSize: 12,
-    color: "#555",
-  },
-  cardRating: {
-    fontSize: 12,
-    color: "#0066ff",
-    marginTop: 3,
-  },
-  cardPrice: {
-    fontSize: 13,
-    fontWeight: "700",
-    marginTop: 5,
-  },
-  errorContainer: {
-    position: "absolute",
-    top: 120,
-    alignSelf: "center",
-    backgroundColor: "#ff6b6b",
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
-    zIndex: 2,
-  },
-  errorText: {
-    color: "#fff",
-    fontSize: 14,
-    fontWeight: "500",
-  },
-  loadingContainer: {
-    position: "absolute",
-    top: 120,
-    alignSelf: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.9)",
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 8,
-    zIndex: 2,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  loadingText: {
-    color: "#0057ff",
-    fontSize: 14,
-    fontWeight: "500",
-    marginLeft: 8,
-  },
-  noResultsContainer: {
-    padding: 10,
-    alignItems: "center",
-  },
-  noResultsText: {
-    color: "#666",
-    fontSize: 14,
-  },
-});
