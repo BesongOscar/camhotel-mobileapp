@@ -14,7 +14,6 @@ import { Country } from "@/constants/countries";
 type StepTwoProps = StepProps;
 
 export default function StepTwo({
-  handlePreviousScreen,
   step,
   values,
   touched,

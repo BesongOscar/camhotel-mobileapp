@@ -64,7 +64,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
       onPress={() =>
         router.push({
           pathname: "/(homeExtras)/hotelDetailScreen",
-          params: { name, rating, location, price, image, reviews },
+          params: { id,name, rating, location, price, image, reviews },
         })
       }
     >

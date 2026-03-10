@@ -9,6 +9,7 @@ export default function RootLayout() {
       <LanguageProvider>
         <StatusBar style="dark" />
         <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="splash" />
           <Stack.Screen name="(boardingFlow)" />
           <Stack.Screen name="(auth)" />
           <Stack.Screen name="(main)" />
