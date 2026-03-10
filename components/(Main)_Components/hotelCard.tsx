@@ -18,6 +18,7 @@ type HotelCardProps = {
   reviews: string;
   image: string;
   style?: object;
+  onPress?: () => void;
 };
 
 const HotelCard: React.FC<HotelCardProps> = ({
@@ -30,6 +31,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
   reviews,
   style,
   currency,
+  onPress,
 }) => {
   const router = useRouter();
 
@@ -46,7 +48,12 @@ const HotelCard: React.FC<HotelCardProps> = ({
     }
     if (halfStar) {
       stars.push(
-        <Ionicons key="half" name="star-half" size={12} color={colors.warning} />,
+        <Ionicons
+          key="half"
+          name="star-half"
+          size={12}
+          color={colors.warning}
+        />,
       );
     }
     return stars;
@@ -56,17 +63,24 @@ const HotelCard: React.FC<HotelCardProps> = ({
   const handleFavoiteToggle = () => {
     dispatch({ type: "TOGGLE_FAVORITE", hotelId: id });
   };
+  const handlePress = () => {
+    if (onPress) {
+      // Custom handler supplied (e.g. map screen focuses the marker)
+      onPress();
+    } else {
+      // Default: navigate to hotel detail screen
+      router.push({
+        pathname: "/(homeExtras)/hotelDetailScreen",
+        params: { id,name, rating, location, price, image, reviews },
+      });
+    }
+  };
 
   return (
     <TouchableOpacity
       style={[styles.card, style]}
       activeOpacity={0.8}
-      onPress={() =>
-        router.push({
-          pathname: "/(homeExtras)/hotelDetailScreen",
-          params: { id,name, rating, location, price, image, reviews },
-        })
-      }
+      onPress={handlePress}
     >
       <View style={styles.imageContainer}>
         <Image source={{ uri: image }} style={styles.cardImage} />
@@ -93,7 +107,8 @@ const HotelCard: React.FC<HotelCardProps> = ({
           <View style={styles.hotelStar}>{renderStars(rating)}</View>
         </View>
         <Text style={styles.hotelLocation}>
-          <Ionicons name="location" size={10} color={colors.textSecondary} /> {location}
+          <Ionicons name="location" size={10} color={colors.textSecondary} />{" "}
+          {location}
         </Text>
 
         <View style={styles.hotelreviewDetails}>
@@ -118,7 +133,11 @@ const HotelCard: React.FC<HotelCardProps> = ({
               including extra fees
             </Text>
           </View>
-          <Ionicons name="chevron-forward-circle" size={25} color={colors.primary} />
+          <Ionicons
+            name="chevron-forward-circle"
+            size={25}
+            color={colors.primary}
+          />
         </View>
       </View>
     </TouchableOpacity>

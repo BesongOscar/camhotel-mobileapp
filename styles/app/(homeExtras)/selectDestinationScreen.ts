@@ -15,7 +15,7 @@ export const selectDestinationStyles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    marginTop: 10,
+    marginTop: 1,
     marginBottom: 12,
   },
   textInput: {
