@@ -2,10 +2,7 @@ import HotelCard from "@/components/(Main)_Components/hotelCard";
 import ExploreScreenButton from "@/components/(Main)_Components/exploreScreenButtons";
 import ArrowBack from "@/components/arrowback";
 import hotels from "@/constants/hotelCard";
-import {
-  Ionicons,
-  MaterialIcons
-} from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import {
   FlatList,
@@ -49,55 +46,65 @@ export default function ExploreScreen() {
       style={{ flex: 1, margin: 5 }}
     />
   );
-  const { name, capital, number } = useLocalSearchParams() as {
-    name?: string;
-    capital?: string;
-    number?: number;
+  const {destination, checkInDate, checkOutDate, guestInfo } = useLocalSearchParams() as {
+    // name?: string;
+    // capital?: string;
+    // number?: number;
+     destination?: string;
+    checkInDate?: string;
+    checkOutDate?: string;
+    guestInfo?: string;
   };
 
   return (
-    <SafeAreaView edges={["top", "bottom"]} style={{ flex: 1 }}>
+    <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
       <View style={styles.AppBar}>
-        {/* Line */}
-        <View style={styles.Separator} />
         {/* Header */}
         <View style={styles.AppBarHeader}>
-          <ArrowBack/>
+          <ArrowBack />
           <Text style={styles.AppBarTitle}>
-            {capital},{name}
+            {/* {capital},{name} */} Hello Guys
           </Text>
         </View>
 
         {/* Line */}
         <View style={styles.Separator} />
 
-        {/* Reservation Row */}
+        {/* Reservation Section */}
         <View style={styles.reservationRow}>
           {/* Left Column */}
           <View style={styles.resColumn}>
             <View style={{ flexDirection: "row" }}>
               <View style={styles.resColumn}>
                 <Text style={styles.resLabel}>Check in</Text>
-                <Text style={styles.resDate}>15 April</Text>
+                <Text style={styles.resDate}>{checkInDate || "_ _ /_ _ /_ _ _ _"}</Text>
               </View>
 
               <View style={styles.resSeparator}>
-                <Ionicons name="arrow-forward" size={16} color={colors.textSecondary} />
+                <Ionicons
+                  name="arrow-forward"
+                  size={16}
+                  color={colors.textSecondary}
+                />
               </View>
 
               <View style={styles.resColumn}>
                 <Text style={styles.resLabel}>Check out</Text>
-                <Text style={styles.resDate}>16 April</Text>
+               <Text style={styles.resDate}>{checkOutDate || "_ _ /_ _ /_ _ _ _"}</Text> <Text style={styles.resDate}>16 April</Text>
               </View>
             </View>
 
             <TouchableOpacity style={styles.detailBox}>
-              <Ionicons name="calendar-outline" size={16} color={colors.textSecondary} />
+              <Ionicons
+                name="calendar-outline"
+                size={16}
+                color={colors.textSecondary}
+              />
               <Text style={styles.detailText}>1 night</Text>
               <Ionicons
                 name="chevron-down"
                 size={16}
-                color= {colors.textPrimary}
+                color={colors.textPrimary}
                 style={{ paddingLeft: 25 }}
               />
             </TouchableOpacity>
@@ -122,41 +129,44 @@ export default function ExploreScreen() {
         </View>
       </View>
 
-      <View
-        style={{
-          flexDirection: "row",
-          paddingHorizontal: 15,
-          justifyContent: "space-between",
-          marginTop: 15,
-        }}
-      >
-        <ExploreScreenButton name="Sort" iconName="arrow-up" />
-        <ExploreScreenButton name="Filter" iconName="filter" />
-        <ExploreScreenButton name="Map" iconName="map-outline" />
-      </View>
-
-      {/* Line */}
-      <View style={styles.Separator} />
-
-      <View style={{ paddingHorizontal: 15 }}>
+      <View>
+        {/* action buttons */}
         <View
           style={{
             flexDirection: "row",
+            paddingHorizontal: 15,
             justifyContent: "space-between",
-            paddingBottom: 10,
+            marginTop: 15,
           }}
         >
-          <Text style={{}}>Hotels found</Text>
-          <Text style={{}}>{number} results</Text>
+          <ExploreScreenButton name="Sort" iconName="arrow-up" />
+          <ExploreScreenButton name="Filter" iconName="filter" />
+          <ExploreScreenButton name="Map" iconName="map-outline" />
         </View>
-        <FlatList<Hotel>
-          data={hotels}
-          keyExtractor={(item) => item.id}
-          renderItem={renderHotelCard}
-          showsVerticalScrollIndicator={false}
-          numColumns={2}
-          contentContainerStyle={{ paddingBottom: 80 }}
-        />
+
+        {/* Seperator */}
+        <View style={styles.Separator} />
+        <View style={{ paddingHorizontal: 15 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              paddingBottom: 10,
+            }}
+          >
+            <Text style={{ fontSize: 17 }}>Hotels found</Text>
+            <Text style={{}}>results</Text>
+          </View>
+          <FlatList<Hotel>
+            data={hotels}
+            keyExtractor={(item) => item.id}
+            renderItem={renderHotelCard}
+            showsVerticalScrollIndicator={false}
+            numColumns={2}
+            contentContainerStyle={{ paddingBottom: 80}}
+            scrollEnabled={true}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -164,9 +174,9 @@ export default function ExploreScreen() {
 
 const styles = StyleSheet.create({
   AppBar: {
-    paddingVertical: 5,
+    paddingTop: 60,
     backgroundColor: colors.background,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
   },
   AppBarHeader: {
     flexDirection: "row",
@@ -181,7 +191,7 @@ const styles = StyleSheet.create({
   },
   Separator: {
     height: 1,
-    backgroundColor: colors.background,
+    backgroundColor: colors.secondary,
     marginBottom: 15,
     marginTop: 17,
   },

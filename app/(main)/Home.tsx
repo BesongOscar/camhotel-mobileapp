@@ -30,16 +30,16 @@ type Hotel = {
 
 const Home = () => {
   const router = useRouter();
-  const handleRegionPress = (regionName: string, regionCapital: string, hotelNumber: number) => {
-    router.push({
-      pathname: "/exploreScreen",
-      params: {
-        capital: regionCapital,
-        name: regionName,
-        number: hotelNumber
-      },
-    });
-  };
+  // const handleRegionPress = (regionName: string, regionCapital: string, hotelNumber: number) => {
+  //   router.push({
+  //     pathname: "/exploreScreen",
+  //     params: {
+  //       capital: regionCapital,
+  //       name: regionName,
+  //       number: hotelNumber
+  //     },
+  //   });
+  // };
 
   const renderHotelCard = ({
     item,
@@ -60,7 +60,7 @@ const Home = () => {
     />
   );
 
-  const {state} = useFavorites();
+  const { state } = useFavorites();
   console.log("Favorite Hotels IDs:", state.favorites);
 
   return (
@@ -98,9 +98,7 @@ const Home = () => {
               <TouchableOpacity
                 key={region.capital}
                 activeOpacity={0.8}
-                onPress={() =>
-                  handleRegionPress(region.regionName, region.capital, region.Number)
-                }
+                onPress={() => {}}
               >
                 <RegionCard
                   regionCapital={region.capital}

@@ -21,7 +21,7 @@ export const forgotPasswordStyles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderColor: colors.secondary,
-    backgroundColor: colors.background,
+    backgroundColor: colors.buttonTertiary,
     borderRadius: 8,
     paddingHorizontal: 10,
   },

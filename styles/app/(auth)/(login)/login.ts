@@ -14,6 +14,7 @@ export const loginStyles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 0.1,
     marginBottom: 25,
+    padding: 5,
     width: "80%",
     alignSelf: "center",
   },

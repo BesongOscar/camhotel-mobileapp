@@ -93,6 +93,18 @@ export default function InformationContainer() {
     router.push("/selectGuestScreen");
   };
 
+  const handleRegionPress = () =>{
+    router.push({
+      pathname: '/exploreScreen',
+      params: {
+        destination,
+        checkInDate,
+        checkOutDate,
+        guestInfo
+      }
+    })
+  }
+
   const handleSearch = async () => {
     // Save all data before searching
     await Promise.all([
@@ -108,6 +120,7 @@ export default function InformationContainer() {
       checkOutDate,
       guestInfo,
     });
+    handleRegionPress();
   };
 
   return (
