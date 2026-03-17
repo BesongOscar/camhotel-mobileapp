@@ -2,11 +2,11 @@ import HotelCard from "@/components/(Main)_Components/hotelCard";
 import ExploreScreenButton from "@/components/(Main)_Components/exploreScreenButtons";
 import ArrowBack from "@/components/arrowback";
 import hotels from "@/constants/hotelCard";
+import { exploreScreenStyles as styles } from "@/styles/app/exploreScreen";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import {
   FlatList,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -46,194 +46,158 @@ export default function ExploreScreen() {
       style={{ flex: 1, margin: 5 }}
     />
   );
-  const {destination, checkInDate, checkOutDate, guestInfo } = useLocalSearchParams() as {
-    // name?: string;
-    // capital?: string;
-    // number?: number;
-     destination?: string;
-    checkInDate?: string;
-    checkOutDate?: string;
-    guestInfo?: string;
+
+  const { destination, checkInDate, checkOutDate, guestInfo } =
+    useLocalSearchParams() as {
+      destination?: string;
+      checkInDate?: string;
+      checkOutDate?: string;
+      guestInfo?: string;
+    };
+
+  // Safely parse "MM/DD/YYYY" format
+  const parseDate = (str?: string): Date | null => {
+    if (!str) return null;
+    const parts = str.split("/");
+    if (parts.length !== 3) return null;
+    const [month, day, year] = parts;
+    return new Date(Number(year), Number(month) - 1, Number(day));
   };
+
+  // Convert "MM/DD/YYYY" → "15 April"
+  const formatDisplayDate = (str?: string): string => {
+    const date = parseDate(str);
+    if (!date) return "--";
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "long" });
+    return `${day} ${month}`;
+  };
+
+  // Compute number of nights
+  const computeNights = (): number => {
+    const checkInParsed = parseDate(checkInDate);
+    const checkOutParsed = parseDate(checkOutDate);
+    if (!checkInParsed || !checkOutParsed) return 0;
+    const diff = checkOutParsed.getTime() - checkInParsed.getTime();
+    return Math.max(0, Math.round(diff / (1000 * 60 * 60 * 24)));
+  };
+  const nights = computeNights();
+
+  // Parse number of rooms from guestInfo string
+  // guestInfo format: "2 Adults, 1 Children, 1 Room"
+  const parseRooms = (info?: string): number => {
+    if (!info) return 1;
+    const match = info.match(/(\d+)\s+Room/i);
+    return match ? parseInt(match[1], 10) : 1;
+  };
+  const roomCount = parseRooms(guestInfo);
 
   return (
     <SafeAreaView edges={["bottom"]} style={{ flex: 1 }}>
+      {/* AppBar */}
       <View style={styles.AppBar}>
         {/* Header */}
         <View style={styles.AppBarHeader}>
           <ArrowBack />
-          <Text style={styles.AppBarTitle}>
-            {/* {capital},{name} */} Hello Guys
-          </Text>
+          <Text style={styles.AppBarTitle}>{destination || "Search Results"}</Text>
         </View>
 
-        {/* Line */}
+        {/* Separator */}
         <View style={styles.Separator} />
 
-        {/* Reservation Section */}
-        <View style={styles.reservationRow}>
-          {/* Left Column */}
-          <View style={styles.resColumn}>
-            <View style={{ flexDirection: "row" }}>
-              <View style={styles.resColumn}>
-                <Text style={styles.resLabel}>Check in</Text>
-                <Text style={styles.resDate}>{checkInDate || "_ _ /_ _ /_ _ _ _"}</Text>
-              </View>
+        {/* Reservation Block — 2 columns */}
+        <View style={styles.reservationBlock}>
 
-              <View style={styles.resSeparator}>
-                <Ionicons
-                  name="arrow-forward"
-                  size={16}
-                  color={colors.textSecondary}
-                />
-              </View>
+          {/* Column 1: Check in + Check out dates, then Nights box */}
+          <View style={styles.reservationColumn}>
 
-              <View style={styles.resColumn}>
-                <Text style={styles.resLabel}>Check out</Text>
-               <Text style={styles.resDate}>{checkOutDate || "_ _ /_ _ /_ _ _ _"}</Text> <Text style={styles.resDate}>16 April</Text>
+            {/* Check in & Check out side by side */}
+            <View style={styles.datesRow}>
+              <View style={styles.dateCell}>
+                <Text style={styles.infoLabel}>Check in</Text>
+                <Text style={styles.infoValue}>{formatDisplayDate(checkInDate)}</Text>
+              </View>
+              
+              <View style={styles.dateCell}>
+                <Text style={styles.infoLabel}>Check out</Text>
+                <Text style={styles.infoValue}>{formatDisplayDate(checkOutDate)}</Text>
               </View>
             </View>
 
+            {/* Nights detail box */}
             <TouchableOpacity style={styles.detailBox}>
-              <Ionicons
-                name="calendar-outline"
-                size={16}
-                color={colors.textSecondary}
-              />
-              <Text style={styles.detailText}>1 night</Text>
-              <Ionicons
-                name="chevron-down"
-                size={16}
-                color={colors.textPrimary}
-                style={{ paddingLeft: 25 }}
-              />
+              <View style={styles.detailBoxInner}>
+                <Ionicons name="calendar-outline" size={16} color={colors.textSecondary} />
+                <Text style={styles.detailText}>
+                  {nights} {nights === 1 ? "Night" : "Nights"}
+                </Text>
+              </View>
+              <Ionicons name="chevron-down" size={16} color={colors.textPrimary} />
             </TouchableOpacity>
+
           </View>
 
-          {/* Right Column */}
-          <View style={styles.resColumn}>
-            <Text style={styles.resLabel}>Guest</Text>
-            <Text>1 Adults, 0 Children</Text>
+          {/* Column 2: Guest info, then Rooms box */}
+          <View style={styles.reservationColumn}>
 
+            {/* Guest info */}
+            <View>
+              <Text style={styles.infoLabel}>Guest</Text>
+               <Text style={styles.infoValue}>
+                {guestInfo
+                  ? guestInfo.replace(/,?\s*\d+\s+Rooms?/i, "").trim()
+                  : "1 Adult, 0 Children"}
+              </Text>
+            </View>
+
+            {/* Rooms detail box */}
             <TouchableOpacity style={styles.detailBox}>
-              <MaterialIcons name="meeting-room" size={24} color="black" />
-              <Text style={styles.detailText}>1 Rooms</Text>
-              <Ionicons
-                name="chevron-down"
-                size={16}
-                color={colors.textPrimary}
-                style={{ paddingLeft: 20 }}
-              />
+              <View style={styles.detailBoxInner}>
+                <MaterialIcons name="meeting-room" size={16} color={colors.textSecondary} />
+                <Text style={styles.detailText}>
+                  {roomCount} {roomCount === 1 ? "Room" : "Rooms"}
+                </Text>
+              </View>
+              <Ionicons name="chevron-down" size={16} color={colors.textPrimary} />
             </TouchableOpacity>
+
           </View>
+
         </View>
       </View>
 
-      <View>
-        {/* action buttons */}
-        <View
-          style={{
-            flexDirection: "row",
-            paddingHorizontal: 15,
-            justifyContent: "space-between",
-            marginTop: 15,
-          }}
-        >
-          <ExploreScreenButton name="Sort" iconName="arrow-up" />
-          <ExploreScreenButton name="Filter" iconName="filter" />
-          <ExploreScreenButton name="Map" iconName="map-outline" />
-        </View>
+      {/* Action Buttons */}
+      <View
+        style={{
+          flexDirection: "row",
+          paddingHorizontal: 15,
+          justifyContent: "space-between",
+          marginTop: 15,
+        }}
+      >
+        <ExploreScreenButton name="Sort" iconName="arrow-up" />
+        <ExploreScreenButton name="Filter" iconName="filter" />
+        <ExploreScreenButton name="Map" iconName="map-outline" />
+      </View>
 
-        {/* Seperator */}
-        <View style={styles.Separator} />
-        <View style={{ paddingHorizontal: 15 }}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingBottom: 10,
-            }}
-          >
-            <Text style={{ fontSize: 17 }}>Hotels found</Text>
-            <Text style={{}}>results</Text>
-          </View>
-          <FlatList<Hotel>
-            data={hotels}
-            keyExtractor={(item) => item.id}
-            renderItem={renderHotelCard}
-            showsVerticalScrollIndicator={false}
-            numColumns={2}
-            contentContainerStyle={{ paddingBottom: 80}}
-            scrollEnabled={true}
-          />
+      {/* Separator */}
+      <View style={styles.Separator} />
+
+      {/* Hotels List */}
+      <View style={{ paddingHorizontal: 15, flex: 1 }}>
+        <View style={styles.hotelsFoundRow}>
+          <Text style={styles.hotelsFoundText}>Hotels found</Text>
+          <Text style={styles.resultsText}>{hotels.length} results</Text>
         </View>
+        <FlatList<Hotel>
+          data={hotels}
+          keyExtractor={(item) => item.id}
+          renderItem={renderHotelCard}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
+          contentContainerStyle={{ paddingBottom: 80 }}
+        />
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  AppBar: {
-    paddingTop: 60,
-    backgroundColor: colors.background,
-    paddingHorizontal: 15,
-  },
-  AppBarHeader: {
-    flexDirection: "row",
-    gap: 100,
-    alignItems: "center",
-  },
-  AppBarTitle: {
-    fontSize: 17,
-    textAlign: "center",
-    fontWeight: "500",
-    letterSpacing: 0.5,
-  },
-  Separator: {
-    height: 1,
-    backgroundColor: colors.secondary,
-    marginBottom: 15,
-    marginTop: 17,
-  },
-  reservationRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 15,
-    gap: 20,
-  },
-  resColumn: {
-    flex: 1,
-    paddingBottom: 5,
-  },
-  resLabel: {
-    color: "grey",
-    fontSize: 12,
-    marginBottom: 4,
-  },
-  resDate: {
-    fontWeight: "600",
-    fontSize: 14,
-    color: colors.textPrimary,
-  },
-  resSeparator: {
-    width: 40,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  detailBox: {
-    borderWidth: 1,
-    borderColor: colors.secondary,
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: colors.background,
-    gap: 10,
-    marginTop: 10,
-  },
-  detailText: {
-    fontWeight: "500",
-    fontSize: 14,
-    color: colors.textPrimary,
-  },
-});

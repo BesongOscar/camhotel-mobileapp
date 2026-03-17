@@ -14,7 +14,7 @@ const hotels = [
   },
   {
     id: "2",
-    name: "Marcsons Hotels",
+    name: "Macsons Hotels",
     location: "Limbe - Karata Junction",
     rating: 9.6,
     ratingStars: "⭐⭐⭐⭐⭐",
