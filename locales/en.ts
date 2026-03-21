@@ -149,5 +149,177 @@ export default {
     languageScreen: {
         title: "Choose the Language",
         system: "Default System Language"
+    },
+    homeScreen: {
+        heroTitle: "Every Stay is a new Adventure",
+        heroSubtitle: "Book your stay your way",
+        favouriteDestinationsTitle: "Favourite Destinations",
+        favouriteDestinationsSubtitle: "Best choice for travellers",
+        topHotelsTitle: "Top Hotels in Buea",
+        topHotelsSubtitle: "Recommended based on your location",
+        findMore: "Find More"
+    },
+    exploreScreen: {
+        searchPlaceholder: "Search destination / Hotel name",
+        all: "All",
+        popular: "Popular",
+        nearby: "Nearby",
+        priceUp: "Price (Low to High)",
+        priceDown: "Price (High to Low)",
+        hotelsInLocation: "Hotels in Buea",
+        results: "results",
+        searchResults: "Search Results",
+        checkIn: "Check in",
+        checkOut: "Check out",
+        night: "Night",
+        nights: "Nights",
+        guest: "Guest",
+        room: "Room",
+        rooms: "Rooms",
+        sort: "Sort",
+        filter: "Filter",
+        map: "Map",
+        hotelsFound: "Hotels found"
+    },
+    bookingsScreen: {
+        active: "Active",
+        checkedIn: "Checked In",
+        complete: "Complete",
+        cancel: "Cancel",
+        findHotel: "Find a hotel",
+        noReservations: "No reservations yet. Once you book a reservation it will appear here"
+    },
+    accountScreen: {
+        preferences: "Preferences",
+        favorite: "Favorite",
+        language: "Language",
+        savedPaymentMethod: "Saved payment method",
+        settings: "Settings",
+        kycVerification: "KYC Verification",
+        notificationSettings: "Notification Settings",
+        securitySettings: "Security Settings",
+        accountSettings: "Account Settings",
+        information: "Information",
+        customerSupport: "Customer Support",
+        helpCenter: "Help Center",
+        privacyPolicy: "Privacy Policy",
+        rateOurApp: "Rate Our App",
+        logout: "Logout"
+    },
+    hotelDetailScreen: {
+        excellent: "Excellent",
+        seeReviews: "See reviews",
+        availableReservation: "Available Reservation",
+        checkIn: "Check in",
+        checkOut: "Check out",
+        night: "1 night",
+        guest: "Guest",
+        adultsChildren: "Adults, Children",
+        room: "1 Room",
+        popularAmenities: "Popular Amenities",
+        startFrom: "Start from",
+        perNight: "night",
+        selectRoom: "Select Room"
+    },
+    calendarScreen: {
+        rangeTooLong: "Range too long",
+        rangeTooLongMessage: "Please select a period within 6 months.",
+        selectBothDates: "Select both dates",
+        selectBothDatesMessage: "Please choose check-in and check-out.",
+        checkIn: "Check in",
+        checkOut: "Check out",
+        selectDate: "Select date",
+        confirm: "Confirm",
+        night: "Night",
+        nights: "Nights"
+    },
+    selectDestinationScreen: {
+        searchPlaceholder: "Search destination / Hotel name",
+        continueOnMap: "Continue on map",
+        liveLocation: "Live Location"
+    },
+    selectGuestScreen: {
+        adults: "Adults",
+        adultsSubtitle: "Maximum of 4 adults per room",
+        children: "Children",
+        childrenSubtitle: "0-17 years",
+        ageOfChild: "Age of Child",
+        ageNeeded: "Age Needed",
+        rooms: "Rooms",
+        roomsSubtitle: "Maximum of 8 rooms",
+        selectAge: "Select Age",
+        continue: "Continue"
+    },
+    selectRoomScreen: {
+        startFrom: "Start from",
+        perNight: "night",
+        reserve: "Reserve"
+    },
+    favoriteScreen: {
+        favoriteHotels: "Favorite Hotels"
+    },
+    accountProfileScreen: {
+        totalBookings: "Total Bookings",
+        favoriteHotels: "Favorite Hotels",
+        totalReviews: "Total Reviews",
+        myReviews: "My Reviews",
+        editProfile: "Edit Profile"
+    },
+    accountSettingsScreen: {
+        title: "Account Settings",
+        darkMode: "Dark Mode",
+        deleteAccount: "Delete Account"
+    },
+    helpCenterScreen: {
+        title: "Help Center",
+        helpType: "What kind of help do you need?",
+        accountManagement: "Account Management",
+        howToCreateAccount: "How do I create an account?",
+        howToDeleteAccount: "How do I delete an account?"
+    },
+    privacyPolicyScreen: {
+        title: "Privacy Policy"
+    },
+    securitySettingsScreen: {
+        title: "Security Settings",
+        changeEmail: "Change Email",
+        changePasswordAndPin: "Change Password and PIN"
+    },
+    notificationSettingsScreen: {
+        title: "Notification Settings",
+        discountOffers: "Discount and special offers",
+        validatedBookings: "Validated Bookings",
+        hotelReviews: "Hotel Reviews",
+        promotions: "Promotions and Advertising"
+    },
+    paymentMethodScreen: {
+        title: "Saved Payment Method",
+        addPaymentMethod: "Add Payment Method"
+    },
+    addPaymentMethodScreen: {
+        title: "Add Payment Method",
+        digitalWallet: "Digital wallet",
+        chooseOperator: "Choose operator",
+        mtnMomo: "MTN MoMo",
+        orangeMoney: "Orange Money",
+        mobileMoneyNumber: "Mobile Money Number",
+        creditDebitCard: "Credit/debit card",
+        addPayment: "Add payment"
+    },
+    mapScreen: {
+        searchPlaceholder: "Search destination / Hotel name",
+        failedToLoadLocation: "Failed to load location",
+        failedToSearchLocations: "Failed to search locations",
+        noLocationsFound: "No locations found",
+        hotelFound: "hotel found",
+        hotelsFound: "hotels found",
+        searching: "Searching...",
+        noHotelsMatch: "No hotels match your search"
+    },
+    liveLocationScreen: {
+        title: "What is your location",
+        subtitle1: "We need to know your location in order",
+        subtitle2: "to provide nearby services",
+        enterManually: "Enter Location manually"
     }
 }

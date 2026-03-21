@@ -4,14 +4,16 @@ import { AccountSettingsScreenStyles as styles } from "@/styles/app/(accountExtr
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
 import { colors } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function AccountSettings() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={styles.container}>
-        <Text style={styles.Title}>Account Settings</Text>
+        <Text style={styles.Title}>{t("accountSettingsScreen.title")}</Text>
         <View style={styles.switchtab}>
-          <Text style={styles.switchtabText}>Dark Mode</Text>
+          <Text style={styles.switchtabText}>{t("accountSettingsScreen.darkMode")}</Text>
           <Switch
             value={isDarkMode}
             onValueChange={setIsDarkMode}
@@ -25,7 +27,7 @@ export default function AccountSettings() {
             onPress={() => {}}
           >
             <Text style={{ fontSize: 16, letterSpacing: 0.2,color:colors.error }}>
-              Delete Account
+              {t("accountSettingsScreen.deleteAccount")}
             </Text>
             <Ionicons
               name="chevron-forward-outline"

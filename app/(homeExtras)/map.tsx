@@ -15,6 +15,7 @@ import hotels from "@/constants/hotelCard";
 import HotelCard from "@/components/(Main)_Components/hotelCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { mapStyles as styles } from "@/styles/app/(homeExtras)/map";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 // Types
 interface Hotel {
@@ -38,8 +39,7 @@ interface Region {
   longitudeDelta: number;
 }
 
-// Environment variable (replace with your actual environment setup)
-const GOOGLE_PLACES_API_KEY = "AIzaSyCEOOToO0gfuOoq1Mx9Ej3H_FMKwiYKhjs";
+const GOOGLE_PLACES_API_KEY = process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY;
 
 // Custom map pin with hotel name label above a location icon
 const HotelMapMarker = ({
@@ -83,6 +83,7 @@ const markerStyles = StyleSheet.create({
 
 export default function ExploreMapScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [region, setRegion] = useState<Region>({
     latitude: 4.1527,
     longitude: 9.2416,
@@ -180,7 +181,7 @@ export default function ExploreMapScreen() {
         mapRef.current?.animateToRegion(newRegion, 1000);
       }
     } catch (err) {
-      setError("Failed to load location");
+      setError(t("mapScreen.failedToLoadLocation"));
     } finally {
       setLoading(false);
     }
@@ -234,7 +235,7 @@ export default function ExploreMapScreen() {
   const renderGooglePlaces = () => (
     <GooglePlacesAutocomplete
       ref={placesRef}
-      placeholder="Search destination / Hotel name"
+      placeholder={t("mapScreen.searchPlaceholder")}
       fetchDetails={true}
       onPress={handlePlaceSelect}
       query={{
@@ -277,14 +278,14 @@ export default function ExploreMapScreen() {
           msg.includes("billing")
         )
           return;
-        setError("Failed to search locations");
+        setError(t("mapScreen.failedToSearchLocations"));
       }}
       onNotFound={() => {
-        setError("No locations found");
+        setError(t("mapScreen.noLocationsFound"));
       }}
       listEmptyComponent={
         <View style={styles.noResultsContainer}>
-          <Text style={styles.noResultsText}>No locations found</Text>
+          <Text style={styles.noResultsText}>{t("mapScreen.noLocationsFound")}</Text>
         </View>
       }
       textInputProps={{
@@ -355,8 +356,7 @@ export default function ExploreMapScreen() {
       {searchQuery.trim().length > 0 && (
         <View style={styles.resultsBadge}>
           <Text style={styles.resultsBadgeText}>
-            {filteredHotels.length} hotel
-            {filteredHotels.length !== 1 ? "s" : ""} found
+            {filteredHotels.length} {filteredHotels.length !== 1 ? t("mapScreen.hotelsFound") : t("mapScreen.hotelFound")}
           </Text>
         </View>
       )}
@@ -372,7 +372,7 @@ export default function ExploreMapScreen() {
       {loading && (
         <View style={styles.loadingContainer}>
           <ActivityIndicator size="small" color="#0057ff" />
-          <Text style={styles.loadingText}>Searching...</Text>
+          <Text style={styles.loadingText}>{t("mapScreen.searching")}</Text>
         </View>
       )}
 
@@ -381,7 +381,7 @@ export default function ExploreMapScreen() {
         {filteredHotels.length === 0 ? (
           <View style={styles.noHotelsContainer}>
             <Ionicons name="search-outline" size={18} color="#999" />
-            <Text style={styles.noHotelsText}>No hotels match your search</Text>
+            <Text style={styles.noHotelsText}>{t("mapScreen.noHotelsMatch")}</Text>
           </View>
         ) : (
           <FlatList

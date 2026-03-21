@@ -5,7 +5,9 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SelectRoomScreenStyles as styles } from "@/styles/app/selectRoomScreen";
 import { colors } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 export default function SelectRoom() {
+  const { t } = useTranslation();
   const { name, rating, price } = useLocalSearchParams() as {
     name: string;
     rating: string | number;
@@ -48,12 +50,12 @@ export default function SelectRoom() {
       {/* BOTTOM BAR - Fixed*/}
       <View style={styles.bottomBar}>
         <View style={styles.priceSection}>
-          <Text style={styles.startFromText}>Start from</Text>
+          <Text style={styles.startFromText}>{t("selectRoomScreen.startFrom")}</Text>
           <Text style={styles.priceText}>XAF {price}</Text>
-          <Text style={styles.priceLittleText}>1 night - XAF {price}</Text>
+          <Text style={styles.priceLittleText}>1 {t("selectRoomScreen.perNight")} - XAF {price}</Text>
         </View>
 
-        <Button theme="secondary" label="Reserve" height={50} width={170} />
+        <Button theme="secondary" label={t("selectRoomScreen.reserve")} height={50} width={170} />
       </View>
     </SafeAreaView>
   );

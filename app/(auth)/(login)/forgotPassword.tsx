@@ -8,7 +8,7 @@ import Button from "@/components/button";
 import { forgotPasswordStyles as styles } from "@/styles/app/(auth)/(login)/forgotPassword";
 import { useTranslation } from "@/src/hooks/Usetranslation";
 
-export default function forgotPassword() {
+export default function ForgotPassword() {
   const router = useRouter();
   const { t } = useTranslation();
   const handlePush = () => {

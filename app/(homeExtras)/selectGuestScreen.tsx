@@ -18,6 +18,7 @@ import { colors } from "@/src/themes";
 import { AgeOptions } from "@/constants/ageOptions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useCallback } from "react";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 const STORAGE_KEYS = {
   rooms: "guest_rooms",
@@ -28,6 +29,7 @@ const STORAGE_KEYS = {
 
 export default function SelectGuestScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(1);
@@ -164,8 +166,8 @@ export default function SelectGuestScreen() {
       >
         <View style={{ marginTop: 10 }}>
           <GuestandRoomDetailes
-            title="Adults"
-            subtitle="Maximum of 4 adults per room"
+            title={t("selectGuestScreen.adults")}
+            subtitle={t("selectGuestScreen.adultsSubtitle")}
             value={adults}
             onAdd={handleAddAdult}
             onSubtract={handleSubtractAdult}
@@ -173,8 +175,8 @@ export default function SelectGuestScreen() {
             disableSubtract={adults <= rooms}
           />
           <GuestandRoomDetailes
-            title="Children"
-            subtitle="0-17 years"
+            title={t("selectGuestScreen.children")}
+            subtitle={t("selectGuestScreen.childrenSubtitle")}
             value={children}
             onAdd={handleAddChild}
             onSubtract={handleSubtractChild}
@@ -186,7 +188,7 @@ export default function SelectGuestScreen() {
           {children > 0 &&
             Array.from({ length: children }).map((_, index) => (
               <View key={index} style={styles.ageRow}>
-                <Text style={styles.ageLabel}>Age of Child {index + 1}</Text>
+                <Text style={styles.ageLabel}>{t("selectGuestScreen.ageOfChild")} {index + 1}</Text>
                 <TouchableOpacity
                   style={styles.dropdown}
                   onPress={() => openDropdown(index)}
@@ -198,7 +200,7 @@ export default function SelectGuestScreen() {
                       !childAges[index] && styles.placeholder,
                     ]}
                   >
-                    {childAges[index] ?? "Age Needed"}
+                    {childAges[index] ?? t("selectGuestScreen.ageNeeded")}
                   </Text>
                   <Ionicons
                     name="chevron-down"
@@ -210,8 +212,8 @@ export default function SelectGuestScreen() {
             ))}
 
           <GuestandRoomDetailes
-            title="Rooms"
-            subtitle="Maximum of 8 rooms"
+            title={t("selectGuestScreen.rooms")}
+            subtitle={t("selectGuestScreen.roomsSubtitle")}
             value={rooms}
             onAdd={handleAddRoom}
             onSubtract={handleSubtractRoom}
@@ -235,7 +237,7 @@ export default function SelectGuestScreen() {
         >
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>
-              Select Age — Child{" "}
+              {t("selectGuestScreen.selectAge")} — {t("selectGuestScreen.children")}{" "}
               {activeChildIndex !== null ? activeChildIndex + 1 : ""}
             </Text>
             <FlatList
@@ -266,7 +268,7 @@ export default function SelectGuestScreen() {
 
       <View style={styles.buttonContainer}>
         <Button
-          label="continue"
+          label={t("selectGuestScreen.continue")}
           height={60}
           width={"100%"}
           theme="secondary"

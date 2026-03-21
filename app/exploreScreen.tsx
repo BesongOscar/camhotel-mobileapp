@@ -9,10 +9,12 @@ import {
   FlatList,
   Text,
   TouchableOpacity,
+  Pressable,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 // Hotel type
 type Hotel = {
@@ -28,6 +30,7 @@ type Hotel = {
 };
 
 export default function ExploreScreen() {
+  const { t } = useTranslation();
   const renderHotelCard = ({
     item,
   }: {
@@ -99,7 +102,7 @@ export default function ExploreScreen() {
         {/* Header */}
         <View style={styles.AppBarHeader}>
           <ArrowBack />
-          <Text style={styles.AppBarTitle}>{destination || "Search Results"}</Text>
+          <Text style={styles.AppBarTitle}>{destination || t("exploreScreen.searchResults")}</Text>
         </View>
 
         {/* Separator */}
@@ -114,26 +117,26 @@ export default function ExploreScreen() {
             {/* Check in & Check out side by side */}
             <View style={styles.datesRow}>
               <View style={styles.dateCell}>
-                <Text style={styles.infoLabel}>Check in</Text>
+                <Text style={styles.infoLabel}>{t("exploreScreen.checkIn")}</Text>
                 <Text style={styles.infoValue}>{formatDisplayDate(checkInDate)}</Text>
               </View>
               
               <View style={styles.dateCell}>
-                <Text style={styles.infoLabel}>Check out</Text>
+                <Text style={styles.infoLabel}>{t("exploreScreen.checkOut")}</Text>
                 <Text style={styles.infoValue}>{formatDisplayDate(checkOutDate)}</Text>
               </View>
             </View>
 
             {/* Nights detail box */}
-            <TouchableOpacity style={styles.detailBox}>
+            <Pressable style={styles.detailBox}>
               <View style={styles.detailBoxInner}>
                 <Ionicons name="calendar-outline" size={16} color={colors.textSecondary} />
                 <Text style={styles.detailText}>
-                  {nights} {nights === 1 ? "Night" : "Nights"}
+                  {nights} {nights === 1 ? t("exploreScreen.night") : t("exploreScreen.nights")}
                 </Text>
               </View>
               <Ionicons name="chevron-down" size={16} color={colors.textPrimary} />
-            </TouchableOpacity>
+            </Pressable>
 
           </View>
 
@@ -142,24 +145,24 @@ export default function ExploreScreen() {
 
             {/* Guest info */}
             <View>
-              <Text style={styles.infoLabel}>Guest</Text>
+              <Text style={styles.infoLabel}>{t("exploreScreen.guest")}</Text>
                <Text style={styles.infoValue}>
                 {guestInfo
                   ? guestInfo.replace(/,?\s*\d+\s+Rooms?/i, "").trim()
-                  : "1 Adult, 0 Children"}
+                  : `1 ${t("exploreScreen.guest")}`}
               </Text>
             </View>
 
             {/* Rooms detail box */}
-            <TouchableOpacity style={styles.detailBox}>
+            <Pressable style={styles.detailBox}>
               <View style={styles.detailBoxInner}>
                 <MaterialIcons name="meeting-room" size={16} color={colors.textSecondary} />
                 <Text style={styles.detailText}>
-                  {roomCount} {roomCount === 1 ? "Room" : "Rooms"}
+                  {roomCount} {roomCount === 1 ? t("exploreScreen.room") : t("exploreScreen.rooms")}
                 </Text>
               </View>
               <Ionicons name="chevron-down" size={16} color={colors.textPrimary} />
-            </TouchableOpacity>
+            </Pressable>
 
           </View>
 
@@ -175,9 +178,9 @@ export default function ExploreScreen() {
           marginTop: 15,
         }}
       >
-        <ExploreScreenButton name="Sort" iconName="arrow-up" />
-        <ExploreScreenButton name="Filter" iconName="filter" />
-        <ExploreScreenButton name="Map" iconName="map-outline" />
+        <ExploreScreenButton name={t("exploreScreen.sort")} iconName="arrow-up" />
+        <ExploreScreenButton name={t("exploreScreen.filter")} iconName="filter" />
+        <ExploreScreenButton name={t("exploreScreen.map")} iconName="map-outline" />
       </View>
 
       {/* Separator */}
@@ -186,8 +189,8 @@ export default function ExploreScreen() {
       {/* Hotels List */}
       <View style={{ paddingHorizontal: 15, flex: 1 }}>
         <View style={styles.hotelsFoundRow}>
-          <Text style={styles.hotelsFoundText}>Hotels found</Text>
-          <Text style={styles.resultsText}>{hotels.length} results</Text>
+          <Text style={styles.hotelsFoundText}>{t("exploreScreen.hotelsFound")}</Text>
+          <Text style={styles.resultsText}>{hotels.length} {t("exploreScreen.results")}</Text>
         </View>
         <FlatList<Hotel>
           data={hotels}

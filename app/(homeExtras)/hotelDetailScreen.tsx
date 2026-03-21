@@ -21,6 +21,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 type Hotel = {
   id: string;
@@ -36,6 +37,7 @@ type Hotel = {
 };
 
 export default function HotelDetailScreen() {
+  const { t } = useTranslation();
   const { id, name, rating, currency, price, reviews, location } =
     useLocalSearchParams() as {
       id?: string;
@@ -148,35 +150,35 @@ export default function HotelDetailScreen() {
             <View style={styles.ratingBadge}>
               <Text style={styles.ratingBadgeText}>{rating}/10</Text>
             </View>
-            <Text style={styles.ratingLabel}> Excellent • {reviews}</Text>
+            <Text style={styles.ratingLabel}> {t("hotelDetailScreen.excellent")} • {reviews}</Text>
           </View>
           <TouchableOpacity style={{ marginLeft: 8 }}>
-            <Text style={styles.seeReviews}>See reviews</Text>
+            <Text style={styles.seeReviews}>{t("hotelDetailScreen.seeReviews")}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Available Reservation section */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Available Reservation</Text>
+          <Text style={styles.sectionTitle}>{t("hotelDetailScreen.availableReservation")}</Text>
 
           <View style={styles.reservationRow}>
             <View style={styles.resColumn}>
               <View style={{ flexDirection: "row" }}>
                 <View style={styles.resColumn}>
-                  <Text style={styles.resLabel}>Check in</Text>
+                  <Text style={styles.resLabel}>{t("hotelDetailScreen.checkIn")}</Text>
                   <Text style={styles.resDate}>15 April</Text>
                 </View>
                 <View style={styles.resSeparator}>
                   <Ionicons name="arrow-forward" size={16} color={colors.textSecondary} />
                 </View>
                 <View style={styles.resColumn}>
-                  <Text style={styles.resLabel}>Check out</Text>
+                  <Text style={styles.resLabel}>{t("hotelDetailScreen.checkOut")}</Text>
                   <Text style={styles.resDate}>16 April</Text>
                 </View>
               </View>
               <TouchableOpacity style={styles.detailBox}>
                 <Ionicons name="calendar-outline" size={16} color={colors.textPrimary} />
-                <Text style={styles.detailText}>1 night</Text>
+                <Text style={styles.detailText}>{t("hotelDetailScreen.night")}</Text>
                 <Ionicons
                   name="chevron-down"
                   size={16}
@@ -187,11 +189,11 @@ export default function HotelDetailScreen() {
             </View>
 
             <View style={styles.resColumn}>
-              <Text style={styles.resLabel}>Guest</Text>
-              <Text>1 Adults, 0 Children</Text>
+              <Text style={styles.resLabel}>{t("hotelDetailScreen.guest")}</Text>
+              <Text>{t("hotelDetailScreen.adultsChildren")}</Text>
               <TouchableOpacity style={styles.detailBox}>
                 <MaterialIcons name="meeting-room" size={24} color={colors.textPrimary} />
-                <Text style={styles.detailText}>1 Room</Text>
+                <Text style={styles.detailText}>{t("hotelDetailScreen.room")}</Text>
                 <Ionicons
                   name="chevron-down"
                   size={16}
@@ -205,7 +207,7 @@ export default function HotelDetailScreen() {
 
         {/* Popular Amenities */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Popular Amenities</Text>
+          <Text style={styles.sectionTitle}>{t("hotelDetailScreen.popularAmenities")}</Text>
 
           <View style={styles.amenitiesGrid}>
             {amenities.map((amenity) => (
@@ -230,14 +232,14 @@ export default function HotelDetailScreen() {
       {/* BOTTOM BAR - Fixed*/}
       <View style={styles.bottomBar}>
         <View style={styles.priceSection}>
-          <Text style={styles.startFromText}>Start from</Text>
+          <Text style={styles.startFromText}>{t("hotelDetailScreen.startFrom")}</Text>
           <Text style={styles.priceText}>XAF {price}</Text>
-          <Text style={styles.priceLittleText}>1 night - XAF {price}</Text>
+          <Text style={styles.priceLittleText}>1 {t("hotelDetailScreen.perNight")} - XAF {price}</Text>
         </View>
 
         <Button
           theme="secondary"
-          label="Select Room"
+          label={t("hotelDetailScreen.selectRoom")}
           height={50}
           width={170}
           onPress={handleSelectRoom}

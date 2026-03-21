@@ -91,7 +91,7 @@ export default {
     },
     kycVerificationStep1: {
         subtitle: "la vue avant de votre carte d'identité",
-        description: "Veuillez inscrire votre identifiant dans l'espace prévu",
+        description: "Veuillez'inscrire votre identifiant dans l'espace prévu",
         instruction: "Assurez-vous que toutes les lettres sont visibles.",
     },
     kycVerificationConfirm: {
@@ -101,7 +101,7 @@ export default {
     },
     kycVerificationStep2: {
         subtitle: "la vue arrière de votre carte d'identité",
-        description: "Veuillez inscrire votre identifiant dans l'espace prévu",
+        description: "Veuillez'inscrire votre identifiant dans l'espace prévu",
         instruction: "Assurez-vous que toutes les lettres sont visibles",
     },
     kycVerificationStep3: {
@@ -118,7 +118,7 @@ export default {
         description: "Connectez-vous pour accéder à votre compte",
         phoneNumberPlaceholder: "Numéro de téléphone",
         pinCodePlaceholder: "Code PIN",
-        forgotPinCodeLink: "Code PIN oublié ?",
+        forgotPinCodeLink: "Code PIN oublié ?",
         emailPlaceholder: "E-mail",
         passwordPlaceholder: "Mot de passe",
         forgotPasswordLink: "Mot de passe oublié?",
@@ -149,5 +149,177 @@ export default {
     languageScreen: {
         title: "Choisissez la langue",
         system: "Langue système par défaut"
+    },
+    homeScreen: {
+        heroTitle: "Chaque sejour est une nouvelle aventure",
+        heroSubtitle: "Réservez votre séjour à votre façon",
+        favouriteDestinationsTitle: "Destinations favorites",
+        favouriteDestinationsSubtitle: "Meilleur choix pour les voyageurs",
+        topHotelsTitle: "Meilleurs hôtels à Buea",
+        topHotelsSubtitle: "Recommandé en fonction de votre position",
+        findMore: "Trouver plus"
+    },
+    exploreScreen: {
+        searchPlaceholder: "Rechercher une destination / Nom de l'hôtel",
+        all: "Tous",
+        popular: "Populaire",
+        nearby: "À proximité",
+        priceUp: "Prix (croissant)",
+        priceDown: "Prix (décroissant)",
+        hotelsInLocation: "Hôtels à Buea",
+        results: "résultats",
+        searchResults: "Résultats de recherche",
+        checkIn: "Arrivée",
+        checkOut: "Départ",
+        night: "Nuit",
+        nights: "Nuits",
+        guest: "Voyageur",
+        room: "Chambre",
+        rooms: "Chambres",
+        sort: "Trier",
+        filter: "Filtrer",
+        map: "Carte",
+        hotelsFound: "Hôtels trouvés"
+    },
+    bookingsScreen: {
+        active: "Actif",
+        checkedIn: "Enregistré",
+        complete: "Terminé",
+        cancel: "Annulé",
+        findHotel: "Trouver un hôtel",
+        noReservations: "Aucune réservation. Vos réservations apparaîtront ici une fois effectuées"
+    },
+    accountScreen: {
+        preferences: "Préférences",
+        favorite: "Favoris",
+        language: "Langue",
+        savedPaymentMethod: "Mode de paiement enregistré",
+        settings: "Paramètres",
+        kycVerification: "Vérification KYC",
+        notificationSettings: "Paramètres de notification",
+        securitySettings: "Paramètres de sécurité",
+        accountSettings: "Paramètres du compte",
+        information: "Informations",
+        customerSupport: "Support client",
+        helpCenter: "Centre d'aide",
+        privacyPolicy: "Politique de confidentialité",
+        rateOurApp: "Noter notre application",
+        logout: "Déconnexion"
+    },
+    hotelDetailScreen: {
+        excellent: "Excellent",
+        seeReviews: "Voir les avis",
+        availableReservation: "Réservation disponible",
+        checkIn: "Arrivée",
+        checkOut: "Départ",
+        night: "1 nuit",
+        guest: "Voyageur",
+        adultsChildren: "Adultes, Enfants",
+        room: "1 Chambre",
+        popularAmenities: "Équipements populaires",
+        startFrom: "À partir de",
+        perNight: "nuit",
+        selectRoom: "Sélectionner une chambre"
+    },
+    calendarScreen: {
+        rangeTooLong: "Période trop longue",
+        rangeTooLongMessage: "Veuillez sélectionner une période de 6 mois maximum.",
+        selectBothDates: "Sélectionnez les deux dates",
+        selectBothDatesMessage: "Veuillez choisir les dates d'arrivée et de départ.",
+        checkIn: "Arrivée",
+        checkOut: "Départ",
+        selectDate: "Sélectionner une date",
+        confirm: "Confirmer",
+        night: "Nuit",
+        nights: "Nuits"
+    },
+    selectDestinationScreen: {
+        searchPlaceholder: "Rechercher une destination / Nom de l'hôtel",
+        continueOnMap: "Continuer sur la carte",
+        liveLocation: "Position en direct"
+    },
+    selectGuestScreen: {
+        adults: "Adultes",
+        adultsSubtitle: "Maximum de 4 adultes par chambre",
+        children: "Enfants",
+        childrenSubtitle: "0-17 ans",
+        ageOfChild: "Âge de l'enfant",
+        ageNeeded: "Âge requis",
+        rooms: "Chambres",
+        roomsSubtitle: "Maximum de 8 chambres",
+        selectAge: "Sélectionner l'âge",
+        continue: "Continuer"
+    },
+    selectRoomScreen: {
+        startFrom: "À partir de",
+        perNight: "nuit",
+        reserve: "Réserver"
+    },
+    favoriteScreen: {
+        favoriteHotels: "Hôtels favoris"
+    },
+    accountProfileScreen: {
+        totalBookings: "Réservations totales",
+        favoriteHotels: "Hôtels favoris",
+        totalReviews: "Avis totaux",
+        myReviews: "Mes avis",
+        editProfile: "Modifier le profil"
+    },
+    accountSettingsScreen: {
+        title: "Paramètres du compte",
+        darkMode: "Mode sombre",
+        deleteAccount: "Supprimer le compte"
+    },
+    helpCenterScreen: {
+        title: "Centre d'aide",
+        helpType: "De quel type d'aide avez-vous besoin?",
+        accountManagement: "Gestion du compte",
+        howToCreateAccount: "Comment créer un compte?",
+        howToDeleteAccount: "Comment supprimer un compte?"
+    },
+    privacyPolicyScreen: {
+        title: "Politique de confidentialité"
+    },
+    securitySettingsScreen: {
+        title: "Paramètres de sécurité",
+        changeEmail: "Modifier l'e-mail",
+        changePasswordAndPin: "Modifier le mot de passe et le PIN"
+    },
+    notificationSettingsScreen: {
+        title: "Paramètres de notification",
+        discountOffers: "Réductions et offres spéciales",
+        validatedBookings: "Réservations validées",
+        hotelReviews: "Avis sur les hôtels",
+        promotions: "Promotions et publicités"
+    },
+    paymentMethodScreen: {
+        title: "Mode de paiement enregistré",
+        addPaymentMethod: "Ajouter un mode de paiement"
+    },
+    addPaymentMethodScreen: {
+        title: "Ajouter un mode de paiement",
+        digitalWallet: "Portefeuille numérique",
+        chooseOperator: "Choisir l'opérateur",
+        mtnMomo: "MTN MoMo",
+        orangeMoney: "Orange Money",
+        mobileMoneyNumber: "Numéro Mobile Money",
+        creditDebitCard: "Carte de crédit/débit",
+        addPayment: "Ajouter le paiement"
+    },
+    mapScreen: {
+        searchPlaceholder: "Rechercher une destination / Nom de l'hôtel",
+        failedToLoadLocation: "Échec du chargement de l'emplacement",
+        failedToSearchLocations: "Échec de la recherche d'emplacements",
+        noLocationsFound: "Aucun emplacement trouvé",
+        hotelFound: "hôtel trouvé",
+        hotelsFound: "hôtels trouvés",
+        searching: "Recherche en cours...",
+        noHotelsMatch: "Aucun hôtel ne correspond à votre recherche"
+    },
+    liveLocationScreen: {
+        title: "Quelle est votre position",
+        subtitle1: "Nous avons besoin de connaître votre position",
+        subtitle2: "pour vous fournir des services à proximité",
+        enterManually: "Saisir la position manuellement"
     }
 }

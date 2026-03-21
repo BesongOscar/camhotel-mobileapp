@@ -5,13 +5,15 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { useRouter } from "expo-router";
 import { PaymentMethodStyles as styles } from "@/styles/app/(accountExtras)/paymentMethod";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function PaymentMethod() {
     const router = useRouter();
+    const { t } = useTranslation();
   return (
     <SafeAreaView edges={["top"]} style={styles.container}>
       <View>
-        <Text style={styles.Title}> Saved Payment Method</Text>
+        <Text style={styles.Title}> {t("paymentMethodScreen.title")}</Text>
         {/* <Pressable>
           <Image />
           <View>
@@ -25,7 +27,7 @@ export default function PaymentMethod() {
         router.push('/(accountExtras)/addPaymentMethod')
       }} style={styles.AddPaymentButton}>
         <FontAwesome6 name="add" size={24} color="black" />
-        <Text style={styles.AddPaymentLabel}>Add Payment Method</Text>
+        <Text style={styles.AddPaymentLabel}>{t("paymentMethodScreen.addPaymentMethod")}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

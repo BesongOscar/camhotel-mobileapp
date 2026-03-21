@@ -8,14 +8,16 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AddPaymentMethodStyles as styles } from "@/styles/app/(accountExtras)/addPaymentMethod";
 import { useState } from "react";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function AddPaymentMethod() {
   const [paymentType, setPaymentType] = useState<"wallet" | "card">("wallet");
   const [operator, setOperator] = useState<"mtn" | "orange">("mtn");
   const [phone, setPhone] = useState("");
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={styles.container} edges={["top", "bottom"]}>
-      <Text style={styles.title}>Add Payment Method</Text>
+      <Text style={styles.title}>{t("addPaymentMethodScreen.title")}</Text>
 
       {/* Digital Wallet Option */}
       <TouchableOpacity
@@ -25,12 +27,12 @@ export default function AddPaymentMethod() {
         <View style={styles.radioOuter}>
           {paymentType === "wallet" && <View style={styles.radioInner} />}
         </View>
-        <Text style={styles.radioLabel}>Digital wallet</Text>
+        <Text style={styles.radioLabel}>{t("addPaymentMethodScreen.digitalWallet")}</Text>
       </TouchableOpacity>
 
       {paymentType === "wallet" && (
         <>
-          <Text style={styles.subLabel}>Choose operator</Text>
+          <Text style={styles.subLabel}>{t("addPaymentMethodScreen.chooseOperator")}</Text>
 
           <View style={styles.operatorRow}>
             {/* MTN */}
@@ -44,7 +46,7 @@ export default function AddPaymentMethod() {
               <View style={styles.radioSmall}>
                 {operator === "mtn" && <View style={styles.radioInnerSmall} />}
               </View>
-              <Text style={styles.operatorText}>MTN MoMo</Text>
+              <Text style={styles.operatorText}>{t("addPaymentMethodScreen.mtnMomo")}</Text>
             </TouchableOpacity>
 
             {/* Orange */}
@@ -60,12 +62,12 @@ export default function AddPaymentMethod() {
                   <View style={styles.radioInnerSmall} />
                 )}
               </View>
-              <Text style={styles.operatorText}>Orange Money</Text>
+              <Text style={styles.operatorText}>{t("addPaymentMethodScreen.orangeMoney")}</Text>
             </TouchableOpacity>
           </View>
 
           {/* Phone Input */}
-          <Text style={styles.subLabel}>Mobile Money Number *</Text>
+          <Text style={styles.subLabel}>{t("addPaymentMethodScreen.mobileMoneyNumber")}</Text>
 
           <View style={styles.phoneRow}>
             <View style={styles.countryBox}>
@@ -91,7 +93,7 @@ export default function AddPaymentMethod() {
         <View style={styles.radioOuter}>
           {paymentType === "card" && <View style={styles.radioInner} />}
         </View>
-        <Text style={styles.radioLabel}>Credit/debit card</Text>
+        <Text style={styles.radioLabel}>{t("addPaymentMethodScreen.creditDebitCard")}</Text>
 
         <View style={styles.cardIcons}>
           <Text style={styles.cardBadge}>VISA</Text>
@@ -101,7 +103,7 @@ export default function AddPaymentMethod() {
       {/* Bottom Button */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Add payment</Text>
+          <Text style={styles.buttonText}>{t("addPaymentMethodScreen.addPayment")}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

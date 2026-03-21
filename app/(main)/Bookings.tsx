@@ -4,9 +4,11 @@ import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BookingStyles as styles } from "@/styles/app/(main)/Booking";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 const placeholder = require("../../assets/images/hotel3.jpg");
 const Bookings = () => {
+  const { t } = useTranslation();
   return (
     <SafeAreaView edges={["bottom"]} style={styles.container}>
       <View>
@@ -15,10 +17,10 @@ const Bookings = () => {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ padding: 5 }}
         >
-          <Button label="Active" theme="secondary" height={50} width={100} />
-          <Button label="Checked In" theme="tertiary" height={50} width={100} />
-          <Button label="Complete" theme="tertiary" height={50} width={100} />
-          <Button label="Cancel" theme="tertiary" height={50} width={100} />
+          <Button label={t("bookingsScreen.active")} theme="secondary" height={50} width={100} />
+          <Button label={t("bookingsScreen.checkedIn")} theme="tertiary" height={50} width={100} />
+          <Button label={t("bookingsScreen.complete")} theme="tertiary" height={50} width={100} />
+          <Button label={t("bookingsScreen.cancel")} theme="tertiary" height={50} width={100} />
         </ScrollView>
       </View>
 
@@ -27,10 +29,10 @@ const Bookings = () => {
       <View style={{ paddingHorizontal: 40 }}>
         <Image style={styles.imageContainer} />
         <Text style={[styles.description, { marginVertical: 10 }]}>
-          Find a hotel
+          {t("bookingsScreen.findHotel")}
         </Text>
         <Text style={[styles.caption, { textAlign: "center" }]}>
-          No reservations yet. Once you book a reservation it will appear here
+          {t("bookingsScreen.noReservations")}
         </Text>
       </View>
     </SafeAreaView>

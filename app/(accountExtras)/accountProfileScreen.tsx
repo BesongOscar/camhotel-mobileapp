@@ -6,10 +6,12 @@ import { useFavorites } from "@/src/context/FavoritesContext";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { colors,spacing,typography } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function AccountProfile() {
     const router = useRouter();
     const { state } = useFavorites();
+    const { t } = useTranslation();
 
     const favoriteCount = state.favorites.length;
   return (
@@ -36,7 +38,7 @@ export default function AccountProfile() {
         <View style={styles.statsRow}>
           {/* Total Bookings */}
           <View style={styles.totalBookingsContainer}>
-            <Text style={styles.totalBookingsText}>Total Bookings</Text>
+            <Text style={styles.totalBookingsText}>{t("accountProfileScreen.totalBookings")}</Text>
             <View
               style={styles.statsNumberContainer}
             >
@@ -46,7 +48,7 @@ export default function AccountProfile() {
           </View>
           {/* Favorite Hotels */}
           <View style={styles.favouriteHotelContainer}>
-            <Text style={styles.favouriteHotelText}>Favorite Hotels</Text>
+            <Text style={styles.favouriteHotelText}>{t("accountProfileScreen.favoriteHotels")}</Text>
             <View
               style={styles.statsNumberContainer}
             >
@@ -56,7 +58,7 @@ export default function AccountProfile() {
           </View>
           {/* Total Reviews */}
           <View style={styles.totalReviewsContainer}>
-            <Text style={styles.totalReviewsText}>Total Reviews</Text>
+            <Text style={styles.totalReviewsText}>{t("accountProfileScreen.totalReviews")}</Text>
             <View
               style={styles.statsNumberContainer}
             >
@@ -67,8 +69,8 @@ export default function AccountProfile() {
         </View>
       </View>
 
-      <ProfileScreenTab tabName="My Reviews" onPress={() => {}} />
-      <ProfileScreenTab tabName="Edit Profile" onPress={() => {}} />
+      <ProfileScreenTab tabName={t("accountProfileScreen.myReviews")} onPress={() => {}} />
+      <ProfileScreenTab tabName={t("accountProfileScreen.editProfile")} onPress={() => {}} />
     </SafeAreaView>
   );
 }

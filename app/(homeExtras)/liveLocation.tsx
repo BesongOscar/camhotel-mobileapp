@@ -6,9 +6,11 @@ import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "@/src/themes/colors";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 export default function LiveLocation() {
   const [modalVisible, setModalVisible] = useState(true);
+  const { t } = useTranslation();
 
   return (
     <SafeAreaView style={styles.Container} edges={["top"]}>
@@ -21,18 +23,18 @@ export default function LiveLocation() {
           <Ionicons name="location" size={50} color={colors.primary} />
         </View>
         <View style={styles.TextContainer}>
-          <Text style={styles.title}>What is your location</Text>
+          <Text style={styles.title}>{t("liveLocationScreen.title")}</Text>
           <Text style={styles.subtitle}>
-            We need to know your location in order
+            {t("liveLocationScreen.subtitle1")}
           </Text>
-          <Text style={styles.subtitle}>To provide nearby services</Text>
+          <Text style={styles.subtitle}>{t("liveLocationScreen.subtitle2")}</Text>
         </View>
 
         <Link
           href={"/(homeExtras)/selectDestinationScreen"}
           style={styles.link}
         >
-          Enter Location manually
+          {t("liveLocationScreen.enterManually")}
         </Link>
       </View>
     </SafeAreaView>

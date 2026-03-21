@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 // Hotel type
 type Hotel = {
@@ -27,6 +28,7 @@ type Hotel = {
 };
 
 const Explore: React.FC = () => {
+  const { t } = useTranslation();
   const renderHotelCard = ({
     item,
   }: {
@@ -58,7 +60,7 @@ const Explore: React.FC = () => {
           <View style={styles.SearchButtonContents}>
             <Ionicons name="location-outline" size={24} color="blue" />
             <Text style={{ color: "grey" }}>
-              Search destination / Hotel name
+              {t("exploreScreen.searchPlaceholder")}
             </Text>
           </View>
         </TouchableOpacity>
@@ -77,35 +79,35 @@ const Explore: React.FC = () => {
           <Button
             theme="secondary"
             onPress={() => {}}
-            label="All"
+            label={t("exploreScreen.all")}
             height={40}
             width={80}
           />
           <Button
             theme="tertiary"
             onPress={() => {}}
-            label="Popular"
+            label={t("exploreScreen.popular")}
             height={40}
             width={100}
           />
           <Button
             theme="tertiary"
             onPress={() => {}}
-            label="NearBy"
+            label={t("exploreScreen.nearby")}
             height={40}
             width={100}
           />
           <Button
             theme="tertiary"
             onPress={() => {}}
-            label="PriceUp"
+            label={t("exploreScreen.priceUp")}
             height={40}
             width={100}
           />
           <Button
             theme="tertiary"
             onPress={() => {}}
-            label="PriceDown"
+            label={t("exploreScreen.priceDown")}
             height={40}
             width={100}
           />
@@ -122,9 +124,9 @@ const Explore: React.FC = () => {
           }}
         >
           <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-            Hotels in Buea
+            {t("exploreScreen.hotelsInLocation")}
           </Text>
-          <Text style={{ color: "grey" }}>234 results</Text>
+          <Text style={{ color: "grey" }}>{hotels.length} {t("exploreScreen.results")}</Text>
         </View>
 
         <FlatList<Hotel>

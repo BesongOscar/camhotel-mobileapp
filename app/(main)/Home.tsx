@@ -15,6 +15,7 @@ import RegionCard from "@/components/(Main)_Components/regionCards";
 import Button from "@/components/button";
 import hotels from "@/constants/hotelCard";
 import regions from "@/constants/regions";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 type Hotel = {
   id: string;
@@ -30,6 +31,7 @@ type Hotel = {
 
 const Home = () => {
   const router = useRouter();
+  const { t } = useTranslation();
   // const handleRegionPress = (regionName: string, regionCapital: string, hotelNumber: number) => {
   //   router.push({
   //     pathname: "/exploreScreen",
@@ -74,19 +76,19 @@ const Home = () => {
       ListHeaderComponent={
         <>
           <Text style={{ fontSize: 17, fontWeight: "bold", marginTop: 10 }}>
-            Every Stay is a new Adventure
+            {t("homeScreen.heroTitle")}
           </Text>
           <Text style={{ color: "grey", marginBottom: 7 }}>
-            Book your stay your way
+            {t("homeScreen.heroSubtitle")}
           </Text>
           <InformationCotainer />
 
           {/* Favourite Destinations */}
           <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-            Favourite Destinations
+            {t("homeScreen.favouriteDestinationsTitle")}
           </Text>
           <Text style={{ color: "grey", marginBottom: 10 }}>
-            Best choice for travellers
+            {t("homeScreen.favouriteDestinationsSubtitle")}
           </Text>
 
           <ScrollView
@@ -110,10 +112,10 @@ const Home = () => {
 
           {/* Top Hotels Section Header */}
           <Text style={{ fontSize: 17, fontWeight: "bold" }}>
-            Top Hotels in Buea
+            {t("homeScreen.topHotelsTitle")}
           </Text>
           <Text style={{ color: "grey", marginBottom: 5 }}>
-            Recommended based on your location
+            {t("homeScreen.topHotelsSubtitle")}
           </Text>
         </>
       }
@@ -124,7 +126,7 @@ const Home = () => {
           >
             <Button
               theme="secondary"
-              label="Find More"
+              label={t("homeScreen.findMore")}
               height={40}
               width={100}
             />

@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import ArrowBack from "@/components/arrowback";
 import { calendarStyles as styles } from "@/styles/app/(homeExtras)/calendarScreen";
 import { colors } from "@/src/themes";
+import { useTranslation } from "@/src/hooks/Usetranslation";
 
 // --- Helpers ---
 const formatDate = (dateString: string | null) => {
@@ -37,6 +38,7 @@ const differenceInDays = (start: string, end: string) => {
 export default function ChooseDateScreen() {
   const router = useRouter();
   const params = useLocalSearchParams();
+  const { t } = useTranslation();
 
   const todayIso = new Date().toISOString().split("T")[0];
   const [selected, setSelected] = useState<{
@@ -57,8 +59,8 @@ export default function ChooseDateScreen() {
       const diffDays = differenceInDays(selected.startDate, dateString);
       if (diffDays > 180) {
         Alert.alert(
-          "Range too long",
-          "Please select a period within 6 months."
+          t("calendarScreen.rangeTooLong"),
+          t("calendarScreen.rangeTooLongMessage")
         );
         return;
       }
@@ -109,7 +111,7 @@ export default function ChooseDateScreen() {
 
   const handleConfirm = () => {
     if (!selected.startDate || !selected.endDate) {
-      Alert.alert("Select both dates", "Please choose check-in and check-out.");
+      Alert.alert(t("calendarScreen.selectBothDates"), t("calendarScreen.selectBothDatesMessage"));
       return;
     }
     const nights = differenceInDays(selected.startDate, selected.endDate);
@@ -138,20 +140,20 @@ export default function ChooseDateScreen() {
       {/* Check-in / Check-out summary */}
       <View style={styles.dateRow}>
         <View style={styles.dateBox}>
-          <Text style={styles.dateLabel}>Check in</Text>
+          <Text style={styles.dateLabel}>{t("calendarScreen.checkIn")}</Text>
           <Text style={styles.dateValue}>
             {selected.startDate
               ? formatDate(selected.startDate)
-              : "Select date"}
+              : t("calendarScreen.selectDate")}
           </Text>
         </View>
 
         <Ionicons name="arrow-forward" size={22} color={colors.textPrimary} />
 
         <View style={styles.dateBox}>
-          <Text style={styles.dateLabel}>Check out</Text>
+          <Text style={styles.dateLabel}>{t("calendarScreen.checkOut")}</Text>
           <Text style={styles.dateValue}>
-            {selected.endDate ? formatDate(selected.endDate) : "Select date"}
+            {selected.endDate ? formatDate(selected.endDate) : t("calendarScreen.selectDate")}
           </Text>
         </View>
       </View>
@@ -197,8 +199,8 @@ export default function ChooseDateScreen() {
         >
           <Text style={styles.confirmText}>
             {selected.startDate && selected.endDate
-              ? `Confirm (${nights} ${nights === 1 ? "Night" : "Nights"})`
-              : "Confirm"}
+              ? `${t("calendarScreen.confirm")} (${nights} ${nights === 1 ? t("calendarScreen.night") : t("calendarScreen.nights")})`
+              : t("calendarScreen.confirm")}
           </Text>
         </TouchableOpacity>
       </View>
